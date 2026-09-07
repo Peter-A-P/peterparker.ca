@@ -1,0 +1,18 @@
+{% set page = pages.get(project.slug) %}
+<article class="card status-{{ project.status.value }}" id="{{ project.slug }}">
+  <header>
+    <span class="num">{{ project.number }}</span>
+    <h3>{% if page %}<a href="{{ page.path }}">{{ project.name }}</a>{% else %}{{ project.name }}{% endif %}</h3>
+    <span class="badge">{{ status_label(project.status) }}</span>
+  </header>
+  <p class="one-liner">{{ project.one_liner }}</p>
+  <p class="tech">{{ project.technical_line }}</p>
+  {% if page or project.demo or project.note %}
+  <p class="links">
+    {% if page %}<a href="{{ page.path }}">Results</a>{% endif %}
+    {% if page %}<a href="{{ page.repo.html_url }}">Repository</a>{% endif %}
+    {% if project.demo %}<a href="{{ project.demo }}">Live demo</a>{% endif %}
+    {% if project.note %}<span class="note">{{ project.note }}</span>{% endif %}
+  </p>
+  {% endif %}
+</article>

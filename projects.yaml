@@ -1,0 +1,233 @@
+# The public content of peterparker.ca. Everything in this file is public.
+#
+# One-liners are the portfolio's own and match the opening paragraph of each project's
+# public repository README. A project gets a page on the site when its repository is
+# public; the build reads the README from GitHub and never sees private repositories.
+# Status values: live, shipped, building, planned.
+
+site:
+  title: Peter Parker
+  tagline: Production machine learning and applied AI, with the numbers to check.
+  intro: >-
+    Eight years of production machine learning in health and government, most of it behind
+    a wall. These projects put the work where it can be inspected: each one ends with a
+    measured result in a table, reproducible from its public repository with one command.
+  description: >-
+    Ten production-grade machine learning and AI projects, each ending in a measured result
+    a stranger can check.
+  base_url: https://peterparker.ca
+  github: https://github.com/Peter-A-P
+
+projects:
+  - number: "01"
+    slug: intervention-targeting
+    name: Intervention Targeting Engine
+    group: portfolio
+    status: planned
+    repo: Peter-A-P/intervention-targeting-engine
+    technical_line: >-
+      uplift modelling · S/T/X/DR/R meta-learners and causal forests · budget-constrained
+      policy optimisation · sensitivity analysis
+    one_liner: >-
+      Tells an organisation which customers, cases or patients to spend a limited
+      intervention budget on: only the ones whose outcome the intervention actually
+      changes. Retention offers, outreach, fraud review, clinical follow-up: a large share
+      of every such budget goes to people who would have behaved the same way regardless,
+      and this finds them.
+
+  - number: "02"
+    slug: model-selection
+    name: Model Selection at a Tenth of the Cost
+    group: portfolio
+    status: planned
+    repo: Peter-A-P/model-selection-tenth-cost
+    technical_line: >-
+      item response theory (2PL/3PL) · computerised adaptive testing · benchmark
+      reliability and bias
+    one_liner: >-
+      Answers "which AI model should we use, and did the new version get worse?" with
+      statistical confidence, using about a tenth of the evaluation calls a full benchmark
+      needs. For a team re-evaluating models every month, that is a day instead of a week
+      and tens of dollars instead of thousands, and it exposes the benchmark questions that
+      were never measuring anything.
+
+  - number: "03"
+    slug: ai-release-gate
+    name: AI Release Gate
+    group: portfolio
+    status: planned
+    repo: Peter-A-P/ai-release-gate
+    technical_line: >-
+      LLM evaluation platform · judge calibration · confidence intervals and power
+      analysis · CI regression gating · longitudinal drift
+    one_liner: >-
+      No prompt or model change reaches users unless it is proven not to have regressed:
+      the discipline a test suite gives code, applied to AI, with an audit trail a
+      regulator can read. Includes a public month-by-month record of how the major
+      vendors' "frozen" models silently change, which is the evidence most teams wish they
+      had when something breaks.
+    note: Monthly drift record begins September 2026.
+
+  - number: "04"
+    slug: compliant-ai-gateway
+    name: Compliant AI Gateway
+    group: portfolio
+    status: building
+    repo: Peter-A-P/compliant-ai-gateway
+    technical_line: >-
+      provider routing by configuration · OpenTelemetry span and cost record per call ·
+      PII detection and reversible redaction · data-residency routing · semantic cache ·
+      hash-chained audit log · per-team budgets
+    one_liner: >-
+      Lets a bank, insurer, hospital or government department use frontier AI models
+      without personal data ever leaving the boundary, with a tamper-evident record of
+      every call and a hard cap on every team's spend. This is the single blocker most
+      regulated organisations cite for AI adoption, removed, with the latency overhead
+      measured and published.
+    note: Every model call in this portfolio routes through it.
+
+  - number: "05"
+    slug: verified-filings-analyst
+    name: Verified Filings Analyst
+    group: portfolio
+    status: planned
+    repo: Peter-A-P/verified-filings-analyst
+    technical_line: >-
+      retrieval over SEC filings · table-aware chunking · hybrid retrieval with reranking ·
+      XBRL fact-level grounding and automatic verification
+    one_liner: >-
+      Answers questions across thousands of financial filings where every figure is traced
+      to, and checked against, the number the company actually filed; a wrong number fails
+      loudly instead of reaching a decision. Cuts analyst hours, and eliminates by
+      construction the invented figure that stops finance and legal teams trusting AI with
+      documents.
+
+  - number: "06"
+    slug: fraction-of-the-bill
+    name: Frontier Quality at a Fraction of the Bill
+    group: portfolio
+    status: planned
+    repo: Peter-A-P/fraction-of-the-bill
+    technical_line: >-
+      QLoRA fine-tuning · AWQ / GPTQ / GGUF quantisation · vLLM serving · quality, latency
+      and cost frontier
+    one_liner: >-
+      Proves, with measurements, that a small model an organisation owns and hosts matches
+      a frontier API on a high-volume task at a small fraction of the per-call cost, and
+      shows exactly at what volume the switch pays for itself. For a team spending five
+      figures a month on API calls, this is the project that finds most of it.
+
+  - number: "07"
+    slug: access-to-information-redaction
+    name: Access-to-Information Redaction
+    group: portfolio
+    status: planned
+    repo: Peter-A-P/access-to-information-redaction
+    technical_line: >-
+      context-dependent PII redaction · exemption-category decision layer (rules plus LLM)
+      · document layout parsing and OCR · per-category redaction confusion matrix ·
+      reviewer workflow with audit log
+    one_liner: >-
+      Turns an access-to-information request from days of staff reading into hours of
+      review: every proposed redaction carries the exemption category it rests on, a
+      reviewer approves page by page with a full audit log, and the tool publishes how
+      often it withholds what must go and, the number blunt PII tools never show, how
+      often it keeps what must stay.
+
+  - number: "08"
+    slug: capacity-planning-forecaster
+    name: Capacity Planning Forecaster
+    group: portfolio
+    status: planned
+    repo: Peter-A-P/capacity-planning-forecaster
+    technical_line: >-
+      hierarchical probabilistic forecasting · neural forecasters (N-HiTS, PatchTST)
+      against statistical baselines · MinT reconciliation · adaptive conformal intervals ·
+      CRPS and pinball loss · decision layer
+    one_liner: >-
+      Forecasts demand (emergency-department arrivals, call volume, orders) with
+      uncertainty ranges that actually hold when conditions shift, and turns them into a
+      staffing number at a chosen service level. Overstaffing costs money and understaffing
+      costs patients or customers; this puts a defensible number on both, site by site,
+      rolling up to the region.
+
+  - number: "09"
+    slug: realtime-risk-platform
+    name: Real-Time Fraud and Risk Decisioning Platform
+    group: portfolio
+    status: planned
+    repo: Peter-A-P/realtime-risk-platform
+    technical_line: >-
+      streaming feature store · point-in-time correctness · online/offline parity tests ·
+      shadow deployment · drift-triggered retraining · expected-loss review queue
+    one_liner: >-
+      Scores every transaction in under 50 milliseconds, thousands per second, before the
+      money moves, and keeps working as fraud patterns shift, without the
+      training-versus-production mismatch that quietly breaks most deployed models. The
+      platform around the model is what organisations are actually missing, and this is a
+      working one you can watch run.
+
+  - number: "10"
+    slug: self-healing-production-ai
+    name: Self-Healing Production AI
+    group: portfolio
+    status: planned
+    repo: Peter-A-P/self-healing-production-ai
+    technical_line: >-
+      agentic incident triage · failure clustering · adversarial second-model review ·
+      human-gated patch proposals · confidence routing
+    one_liner: >-
+      When a production system fails, this captures the failure with full context, drafts
+      the fix, has a second AI review it adversarially, and hands an engineer a
+      ready-to-approve pull request. Triage in minutes instead of days, engineers back on
+      new work, and nothing changes without a person saying yes.
+
+  - number: "11"
+    slug: overload
+    name: Overload
+    group: alongside
+    status: live
+    repo: Peter-A-P/TrainAI
+    technical_line: >-
+      agentic running coach · LangGraph agent graph · Claude · training-load and recovery
+      modelling from logged runs
+    one_liner: >-
+      A running coach that rebuilds next week's plan from what the runner actually ran,
+      every week, adjusting load and recovery from every logged session rather than
+      handing out a static template, for a few dollars a month in model calls instead of a
+      human coach's monthly fee.
+    note: Running privately since 2025; the repository opens with its first measured result.
+
+  - number: "13"
+    slug: grounded-email-response-drafting
+    name: Grounded Email Response Drafting
+    group: alongside
+    status: planned
+    repo: Peter-A-P/grounded-email-response-drafting
+    technical_line: >-
+      grounded response drafting · hybrid retrieval over a policy corpus · LangGraph
+      triage, retrieve, draft, verify, escalate · citation verification · faithfulness
+      measured with a calibrated judge · human approval before anything is sent
+    one_liner: >-
+      For an inbox that receives hundreds of thousands of enquiries a year, a draft reply
+      for each one, grounded in the organisation's own documents, with every claim cited
+      to the passage that supports it and a clear escalation when the documents cannot
+      answer. A person reads, edits and sends; the system sends nothing.
+
+  - number: "14"
+    slug: department-news-digest
+    name: Department News Digest
+    group: alongside
+    status: planned
+    repo: Peter-A-P/department-news-digest
+    technical_line: >-
+      multi-source ingestion (RSS, GDELT, Reddit API, Bluesky) · clustering and
+      deduplication · per-audience relevance ranking · cited summarisation with quote
+      verification · LangGraph pipeline on GCP Cloud Run · precision and recall against a
+      labelled week
+    one_liner: >-
+      One product, configured per department in a few lines, that reads the day's news,
+      public forums and social feeds, removes the duplicates, ranks what matters to that
+      audience, and delivers a short digest with every claim cited and every quote verified
+      against its source. One system in place of dozens of people each doing this by hand,
+      at a few dollars a month per department.

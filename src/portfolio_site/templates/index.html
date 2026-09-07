@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="hero">
+  <h1>{{ site.title }}</h1>
+  <p class="tagline">{{ site.tagline }}</p>
+  <p>{{ site.intro }}</p>
+</section>
+
+<section>
+  <h2>The portfolio</h2>
+  <p class="lede">Ten projects, built in sequence over twelve months. A project gets a link
+  here the day its repository turns public, and a repository turns public only when it has
+  a measured result to show.</p>
+  {% for project in site.in_group(Group.PORTFOLIO) %}
+    {% include "_card.html" %}
+  {% endfor %}
+</section>
+
+{% set alongside = site.in_group(Group.ALONGSIDE) %}
+{% if alongside %}
+<section>
+  <h2>Alongside</h2>
+  <p class="lede">Built outside the twelve-month sequence, to the same standard.</p>
+  {% for project in alongside %}
+    {% include "_card.html" %}
+  {% endfor %}
+</section>
+{% endif %}
+
+<section class="about">
+  <h2>How this was built</h2>
+  <p>Design, methodology, evaluation choices and judgement are {{ site.title }}'s. AI coding
+  assistants were used for implementation and drafting, the way a senior engineer uses
+  them in 2026. Every number in every results table is reproducible from its repository
+  with one command, and that reproducibility is the evidence that matters. Each repository
+  also records one approach that was tried and did not work, with the evidence.</p>
+</section>
+{% endblock %}

@@ -1,0 +1,53 @@
+name: Build and deploy
+
+# Rebuilds on every push, once a day, and on demand. The daily run is what makes a
+# project appear on the site within a day of its repository turning public: the build
+# only ever reads repositories that are public at build time.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+
+      - name: Lint and type-check
+        run: |
+          ruff check .
+          ruff format --check .
+          mypy
+
+      - name: Test
+        run: pytest -q
+
+      - name: Build site
+        env:
+          # The repository's own token only sees public repositories of other owners and
+          # repositories, so a private project repository cannot leak into the build.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python -m portfolio_site build --out dist
+
+      - name: Deploy to Azure Static Web Apps
+        if: github.event_name != 'pull_request'
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: upload
+          app_location: dist
+          skip_app_build: true
+          skip_api_build: true

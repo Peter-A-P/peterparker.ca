@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ project.name }} | {{ site.title }}{% endblock %}
+{% block description %}{{ project.one_liner }}{% endblock %}
+{% block canonical %}{{ path }}{% endblock %}
+{% block main %}
+<article class="project">
+  <p class="crumbs"><a href="/">All projects</a></p>
+  <header>
+    <p class="num">Project {{ project.number }} <span class="badge">{{ status_label(project.status) }}</span></p>
+    <h1>{{ project.name }}</h1>
+    <p class="tech">{{ project.technical_line }}</p>
+    <p class="links">
+      <a href="{{ repo.html_url }}">Repository</a>
+      {% if project.demo %}<a href="{{ project.demo }}">Live demo</a>{% endif %}
+      <span class="note">Repository last updated {{ repo.pushed_on.isoformat() }}</span>
+    </p>
+  </header>
+  <div class="readme">
+    {{ body | safe }}
+  </div>
+  <p class="fine">This page is the repository's README, rendered as of {{ generated }}. Relative
+  links open on GitHub.</p>
+</article>
+{% endblock %}

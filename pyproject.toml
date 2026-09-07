@@ -1,0 +1,50 @@
+[project]
+name = "portfolio-site"
+version = "0.1.0"
+description = "Static generator for peterparker.ca: one page per public project repository, built from its README."
+requires-python = ">=3.13"
+license = "MIT"
+dependencies = [
+    # Major versions pinned so a routine rebuild cannot change the output.
+    "jinja2>=3,<4",          # templating; 3.x is the stable line with autoescape by default
+    "markdown-it-py>=3,<4",  # CommonMark plus GFM tables, the Markdown the READMEs use
+    "pyyaml>=6,<7",          # projects.yaml
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.6",
+    "mypy>=1.11",
+    "pytest>=8,<9",
+    "types-PyYAML>=6,<7",
+]
+
+[project.scripts]
+portfolio-site = "portfolio_site.build:main"
+
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+portfolio_site = ["templates/*.html", "static/*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "W", "ANN", "S", "PTH", "RUF"]
+ignore = ["S101"]  # assert is how pytest tests are written
+
+[tool.mypy]
+strict = true
+python_version = "3.13"
+files = ["src", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
