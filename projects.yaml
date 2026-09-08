@@ -193,7 +193,7 @@ projects:
   - number: "11"
     themes: [agents, decisioning]
     slug: overload
-    name: Overload
+    name: 'Overload: AI Coaching Team for Runners'
     status: live
     repo: Peter-A-P/TrainAI
     technical_line: >-
@@ -202,14 +202,15 @@ projects:
       corrected for grade, heat, sun and wind · VDOT from training runs · race projection
       and age grading · per-call cost accounting
     one_liner: >-
-      A coaching staff for one runner: AI specialists in injury prevention, fitness and race
+      A coaching team for runners: AI specialists in injury prevention, fitness and race
       planning report each week to a head coach that writes next week's plan from what was
       actually run and talks it through before anything is committed. It works from Strava
-      and Garmin data made better than those platforms leave it: every run's pace corrected
-      for hills, heat, sun and wind, fitness tracked as VDOT from ordinary training runs, and
-      race predictions, pace tables and age grading to match. Hard safety limits are plain
-      code the coaches cannot override. Built and used every week by a race-winning road
-      runner after years on Garmin, Strava and TrainingPeaks.
+      and Garmin data made better than those platforms leave it: every run corrected for
+      heat, sun, wind and hills, fitness measured precisely with VDOT formulas on every run,
+      and race predictions, individual training paces and more than a dozen conversion and
+      prediction tables. Hard safety limits are plain code the coaches cannot override. Built
+      by a data scientist and race-winning road runner after years on Garmin, Strava and
+      TrainingPeaks.
     note: In private use since 2025; the repository opens with its first measured result.
 
   - number: "13"
