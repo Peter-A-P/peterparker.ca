@@ -13,17 +13,17 @@ site:
     a wall. These projects put the work where it can be inspected: each one ends with a
     measured result in a table, reproducible from its public repository with one command.
   description: >-
-    Ten production-grade machine learning and AI projects, each ending in a measured result
-    a stranger can check.
+    Production-grade machine learning and AI projects, each ending in a measured result a
+    stranger can check.
   base_url: https://peterparker.ca
   github: https://github.com/Peter-A-P
   # Filter chips on the index, in this order. At most eight.
   themes:
     decisioning: Decisioning and forecasting
     llm-eval: LLM evaluation and cost
-    compliance: Compliance and privacy
+    agents: AI agents and automation
     grounded: Grounded generation
-    agents: Agents and automation
+    compliance: Compliance and privacy
     realtime: Real-time systems
 
 projects:

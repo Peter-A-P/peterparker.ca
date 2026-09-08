@@ -18,6 +18,34 @@ from portfolio_site.models import STATUS_LABEL, Group, Project, Site, Status, lo
 from portfolio_site.render import render_readme, split_title
 
 ROOT_FILES = ("staticwebapp.config.json",)
+WORDS = (
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
+)
+
+
+def number_word(n: int) -> str:
+    """Spell out small counts for headings; larger ones stay digits."""
+    return WORDS[n] if 0 <= n < len(WORDS) else str(n)
 
 
 @dataclass(slots=True)
@@ -59,6 +87,7 @@ def _environment() -> Environment:
         lstrip_blocks=True,
     )
     env.globals["status_label"] = lambda s: STATUS_LABEL[Status(s)]
+    env.globals["number_word"] = number_word
     return env
 
 
