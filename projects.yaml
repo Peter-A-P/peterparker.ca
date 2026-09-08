@@ -208,9 +208,8 @@ projects:
       and Garmin data made better than those platforms leave it: every run corrected for
       heat, sun, wind and hills, fitness measured precisely with VDOT formulas on every run,
       and race predictions, individual training paces and more than a dozen conversion and
-      prediction tables. Hard safety limits are plain code the coaches cannot override. Built
-      by a data scientist and race-winning road runner after years on Garmin, Strava and
-      TrainingPeaks.
+      prediction tables. Built by a data scientist and race-winning road runner after years
+      on Garmin, Strava and TrainingPeaks.
     note: In private use since 2025; the repository opens with its first measured result.
 
   - number: "13"
