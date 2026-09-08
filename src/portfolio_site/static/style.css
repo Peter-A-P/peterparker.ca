@@ -135,15 +135,6 @@ body:has(#f-t5:checked) .card:not(.t5),
 body:has(#f-t6:checked) .card:not(.t6),
 body:has(#f-t7:checked) .card:not(.t7),
 body:has(#f-t8:checked) .card:not(.t8) { display: none; }
-/* An alongside section with nothing left to show disappears with its heading. */
-body:has(#f-t1:checked) #alongside:not(:has(.card.t1)),
-body:has(#f-t2:checked) #alongside:not(:has(.card.t2)),
-body:has(#f-t3:checked) #alongside:not(:has(.card.t3)),
-body:has(#f-t4:checked) #alongside:not(:has(.card.t4)),
-body:has(#f-t5:checked) #alongside:not(:has(.card.t5)),
-body:has(#f-t6:checked) #alongside:not(:has(.card.t6)),
-body:has(#f-t7:checked) #alongside:not(:has(.card.t7)),
-body:has(#f-t8:checked) #alongside:not(:has(.card.t8)) { display: none; }
 
 /* Sections */
 section.block { padding: 3rem 0 1rem; }

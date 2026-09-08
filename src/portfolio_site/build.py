@@ -14,7 +14,7 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from portfolio_site.github import GitHub, PublicRepo
-from portfolio_site.models import STATUS_LABEL, Group, Project, Site, Status, load_site
+from portfolio_site.models import STATUS_LABEL, Project, Site, Status, load_site
 from portfolio_site.render import render_readme, split_title
 
 ROOT_FILES = ("staticwebapp.config.json",)
@@ -109,7 +109,7 @@ def build(
     report = BuildReport()
     env = _environment()
     generated = today or datetime.now(UTC).date().isoformat()
-    common = {"site": site, "generated": generated, "Group": Group, "Status": Status}
+    common = {"site": site, "generated": generated, "Status": Status}
 
     if out.exists():
         shutil.rmtree(out)

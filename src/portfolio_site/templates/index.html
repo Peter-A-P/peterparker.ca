@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 {% block main %}
-{% set portfolio = site.in_group(Group.PORTFOLIO) %}
-{% set alongside = site.in_group(Group.ALONGSIDE) %}
 <section class="hero">
   <div class="wrap">
     <p class="eyebrow">Portfolio</p>
@@ -11,10 +9,10 @@
   </div>
 </section>
 
-<section class="block" id="portfolio">
+<section class="block" id="projects">
   <div class="wrap">
     <header>
-      <p class="eyebrow">The portfolio</p>
+      <p class="eyebrow">The projects</p>
       <h2>{{ number_word(site.projects | length) | capitalize }} projects, one standard.</h2>
       <p class="lede">A project gets a link here the day its repository turns public, and a
       repository turns public only when it has a measured result to show.</p>
@@ -30,28 +28,12 @@
       {% endif %}
     </header>
     <div class="grid">
-      {% for project in portfolio %}
+      {% for project in site.projects %}
         {% include "_card.html" %}
       {% endfor %}
     </div>
   </div>
 </section>
-
-{% if alongside %}
-<section class="block" id="alongside">
-  <div class="wrap">
-    <header>
-      <p class="eyebrow">Alongside</p>
-      <h2>Alongside the portfolio, to the same standard.</h2>
-    </header>
-    <div class="grid">
-      {% for project in alongside %}
-        {% include "_card.html" %}
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
 
 <section class="about">
   <div class="wrap">

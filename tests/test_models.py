@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from portfolio_site.models import DataError, Group, Status, load_site
+from portfolio_site.models import DataError, Status, load_site
 
 ROOT = Path(__file__).resolve().parents[1]
 # Em dash, en dash, curly single and double quotes, ellipsis, as code points so the
@@ -17,9 +17,8 @@ TYPOGRAPHIC = tuple(chr(c) for c in (0x2014, 0x2013, 0x2018, 0x2019, 0x201C, 0x2
 def test_real_projects_yaml_loads() -> None:
     site = load_site(ROOT / "projects.yaml")
     assert site.base_url == "https://peterparker.ca"
-    numbers = [p.number for p in site.in_group(Group.PORTFOLIO)]
-    assert numbers == sorted(numbers), "portfolio projects are listed in numeric order"
-    assert len(numbers) == 10
+    numbers = [p.number for p in site.projects]
+    assert numbers == sorted(numbers), "projects are listed in numeric order"
     assert site.themes, "the index filters need at least one theme"
     for project in site.projects:
         assert project.themes, f"{project.slug}: every project carries at least one theme"
@@ -45,7 +44,7 @@ def _write(tmp_path: Path, projects: str) -> Path:
 
 GOOD = (
     "  - number: '01'\n    slug: one\n    name: One\n    one_liner: A.\n"
-    "    technical_line: t\n    status: planned\n    group: portfolio\n"
+    "    technical_line: t\n    status: planned\n"
 )
 
 
@@ -60,7 +59,6 @@ def test_minimal_file_loads_and_strips_trailing_slash(tmp_path: Path) -> None:
     ("bad", "message"),
     [
         (GOOD.replace("planned", "done"), "status 'done'"),
-        (GOOD.replace("portfolio", "extras"), "group 'extras'"),
         (GOOD.replace("slug: one", "slug: One"), "slug 'One'"),
         (GOOD + "    repo: not-a-repo\n", "repo 'not-a-repo'"),
         (GOOD + "    demo: http://insecure.example\n", "must be an https URL"),

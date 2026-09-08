@@ -6,7 +6,7 @@ from pathlib import Path
 
 from portfolio_site.build import build
 from portfolio_site.github import GitHub
-from portfolio_site.models import Group, Project, Site, Status
+from portfolio_site.models import Project, Site, Status
 from tests.conftest import FakeFetch
 
 
@@ -18,7 +18,6 @@ def _project(number: str, slug: str, name: str, status: Status, repo: str | None
         one_liner=f"{name} does a thing.",
         technical_line="t",
         status=status,
-        group=Group.PORTFOLIO,
         repo=repo,
     )
 

@@ -32,13 +32,6 @@ STATUS_LABEL: dict[Status, str] = {
 }
 
 
-class Group(StrEnum):
-    """The two lists on the index page."""
-
-    PORTFOLIO = "portfolio"
-    ALONGSIDE = "alongside"
-
-
 @dataclass(frozen=True, slots=True)
 class Project:
     """One card on the index and, when its repository is public, one page."""
@@ -49,7 +42,6 @@ class Project:
     one_liner: str
     technical_line: str
     status: Status
-    group: Group
     repo: str | None = None  # "owner/name" on GitHub
     demo: str | None = None  # URL of the live demo, when publicly reachable
     note: str | None = None  # one short public sentence shown under the links
@@ -81,10 +73,6 @@ class Site:
     def theme_count(self, slug: str) -> int:
         """How many projects carry a theme."""
         return sum(slug in p.themes for p in self.projects)
-
-    def in_group(self, group: Group) -> list[Project]:
-        """Projects in one group, in the order they appear in the file."""
-        return [p for p in self.projects if p.group is group]
 
 
 class DataError(ValueError):
@@ -119,12 +107,6 @@ def _project(raw: dict[str, Any], index: int) -> Project:
     except ValueError as exc:
         allowed = ", ".join(s.value for s in Status)
         raise DataError(f"{where}: status '{status_raw}' is not one of {allowed}") from exc
-    group_raw = _require(raw, "group", where)
-    try:
-        group = Group(group_raw)
-    except ValueError as exc:
-        allowed = ", ".join(g.value for g in Group)
-        raise DataError(f"{where}: group '{group_raw}' is not one of {allowed}") from exc
     repo = _optional(raw, "repo", where)
     if repo is not None and not REPO_RE.match(repo):
         raise DataError(f"{where}: repo '{repo}' must be 'owner/name'")
@@ -141,7 +123,6 @@ def _project(raw: dict[str, Any], index: int) -> Project:
         one_liner=_require(raw, "one_liner", where),
         technical_line=_require(raw, "technical_line", where),
         status=status,
-        group=group,
         repo=repo,
         demo=demo,
         note=_optional(raw, "note", where),

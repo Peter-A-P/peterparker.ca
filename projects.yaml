@@ -31,7 +31,6 @@ projects:
     themes: [decisioning]
     slug: intervention-targeting
     name: Intervention Targeting Engine
-    group: portfolio
     status: planned
     repo: Peter-A-P/intervention-targeting-engine
     technical_line: >-
@@ -48,7 +47,6 @@ projects:
     themes: [llm-eval]
     slug: model-selection
     name: Model Selection at a Tenth of the Cost
-    group: portfolio
     status: planned
     repo: Peter-A-P/model-selection-tenth-cost
     technical_line: >-
@@ -65,7 +63,6 @@ projects:
     themes: [llm-eval, compliance]
     slug: ai-release-gate
     name: AI Release Gate
-    group: portfolio
     status: planned
     repo: Peter-A-P/ai-release-gate
     technical_line: >-
@@ -83,7 +80,6 @@ projects:
     themes: [compliance, llm-eval]
     slug: compliant-ai-gateway
     name: Compliant AI Gateway
-    group: portfolio
     status: building
     repo: Peter-A-P/compliant-ai-gateway
     technical_line: >-
@@ -102,7 +98,6 @@ projects:
     themes: [grounded]
     slug: verified-filings-analyst
     name: Verified Filings Analyst
-    group: portfolio
     status: planned
     repo: Peter-A-P/verified-filings-analyst
     technical_line: >-
@@ -119,7 +114,6 @@ projects:
     themes: [llm-eval]
     slug: fraction-of-the-bill
     name: Frontier Quality at a Fraction of the Bill
-    group: portfolio
     status: planned
     repo: Peter-A-P/fraction-of-the-bill
     technical_line: >-
@@ -135,7 +129,6 @@ projects:
     themes: [compliance, grounded]
     slug: access-to-information-redaction
     name: Access-to-Information Redaction
-    group: portfolio
     status: planned
     repo: Peter-A-P/access-to-information-redaction
     technical_line: >-
@@ -153,7 +146,6 @@ projects:
     themes: [decisioning]
     slug: capacity-planning-forecaster
     name: Capacity Planning Forecaster
-    group: portfolio
     status: planned
     repo: Peter-A-P/capacity-planning-forecaster
     technical_line: >-
@@ -171,7 +163,6 @@ projects:
     themes: [decisioning, realtime]
     slug: realtime-risk-platform
     name: Real-Time Fraud and Risk Decisioning Platform
-    group: portfolio
     status: planned
     repo: Peter-A-P/realtime-risk-platform
     technical_line: >-
@@ -188,7 +179,6 @@ projects:
     themes: [agents]
     slug: self-healing-production-ai
     name: Self-Healing Production AI
-    group: portfolio
     status: planned
     repo: Peter-A-P/self-healing-production-ai
     technical_line: >-
@@ -201,27 +191,31 @@ projects:
       new work, and nothing changes without a person saying yes.
 
   - number: "11"
-    themes: [agents]
+    themes: [agents, decisioning]
     slug: overload
     name: Overload
-    group: alongside
     status: live
     repo: Peter-A-P/TrainAI
     technical_line: >-
-      agentic running coach · LangGraph agent graph · Claude · training-load and recovery
-      modelling from logged runs
+      LangGraph coaching staff · Claude Opus head coach, Sonnet specialists · human-approved
+      plans · guardrails in code, not prompts · Strava, Garmin and Open-Meteo data · pace
+      corrected for grade, heat, sun and wind · VDOT from training runs · race projection
+      and age grading · per-call cost accounting
     one_liner: >-
-      A running coach that rebuilds next week's plan from what the runner actually ran,
-      every week, adjusting load and recovery from every logged session rather than
-      handing out a static template, for a few dollars a month in model calls instead of a
-      human coach's monthly fee.
-    note: Running privately since 2025; the repository opens with its first measured result.
+      A coaching staff for one runner: AI specialists in injury prevention, fitness and race
+      planning report each week to a head coach that writes next week's plan from what was
+      actually run and talks it through before anything is committed. It works from Strava
+      and Garmin data made better than those platforms leave it: every run's pace corrected
+      for hills, heat, sun and wind, fitness tracked as VDOT from ordinary training runs, and
+      race predictions, pace tables and age grading to match. Hard safety limits are plain
+      code the coaches cannot override. Built and used every week by a race-winning road
+      runner after years on Garmin, Strava and TrainingPeaks.
+    note: In private use since 2025; the repository opens with its first measured result.
 
   - number: "13"
     themes: [grounded, agents]
     slug: grounded-email-response-drafting
     name: Grounded Email Response Drafting
-    group: alongside
     status: planned
     repo: Peter-A-P/grounded-email-response-drafting
     technical_line: >-
@@ -238,7 +232,6 @@ projects:
     themes: [grounded, agents]
     slug: department-news-digest
     name: Department News Digest
-    group: alongside
     status: planned
     repo: Peter-A-P/department-news-digest
     technical_line: >-
