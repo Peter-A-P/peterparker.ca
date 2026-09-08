@@ -106,30 +106,44 @@ h3 { font-size: 1.42rem; line-height: 1.22; }
 .lede { color: var(--ink-2); font-size: 1.05rem; max-width: 44rem; margin: .6rem 0 0; }
 
 /* Hero */
-.hero { padding: 4.5rem 0 3rem; }
+.hero { padding: 4.5rem 0 2rem; }
 .hero .tagline {
   font-family: var(--serif); font-style: italic; font-weight: 400;
   font-size: clamp(1.35rem, 2.2vw, 1.7rem); line-height: 1.3;
   color: var(--accent-ink); margin: 1rem 0 1.25rem; max-width: 40rem;
 }
 .hero .intro { font-size: 1.08rem; color: var(--ink-2); max-width: 42rem; margin: 0; }
-.facts {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px;
-  background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
-  margin: 2.75rem 0 0;
+/* Theme filters: radio buttons as chips, no script. Browsers without :has() show all. */
+.filters { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.4rem 0 0; }
+.filters input { position: absolute; opacity: 0; width: 1px; height: 1px; overflow: hidden; pointer-events: none; }
+.filters label {
+  cursor: pointer; font-size: .82rem; font-weight: 500; line-height: 1;
+  padding: .5rem .9rem; border: 1px solid var(--line-2); border-radius: 999px;
+  color: var(--ink-2); background: var(--surface);
+  transition: background .12s ease, border-color .12s ease, color .12s ease;
 }
-.facts div { background: var(--surface); padding: 1.1rem 1.25rem; }
-.facts strong { display: block; font-family: var(--serif); font-weight: 500; font-size: 2.1rem; line-height: 1; color: var(--ink); }
-.facts span { display: block; font-size: .88rem; color: var(--muted); margin-top: .45rem; }
-@media (max-width: 40rem) {
-  .hero { padding-top: 3rem; }
-  .facts { grid-template-columns: 1fr; }
-  .facts div { display: flex; align-items: baseline; gap: 1rem; padding: .8rem 1.1rem; }
-  .facts strong { font-size: 1.6rem; min-width: 2rem; }
-  .facts span { margin-top: 0; }
-  .top .wrap { height: auto; flex-wrap: wrap; gap: .5rem 1rem; padding-top: .8rem; padding-bottom: .8rem; }
-  .top nav { gap: 1rem; font-size: .88rem; }
-}
+.filters label:hover { border-color: var(--accent); color: var(--accent-ink); }
+.filters label span { color: var(--muted); margin-left: .35rem; font-variant-numeric: tabular-nums; }
+.filters input:checked + label { background: var(--accent); border-color: var(--accent); color: #fdfcf9; }
+.filters input:checked + label span { color: rgba(253, 252, 249, .75); }
+.filters input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+body:has(#f-t1:checked) .card:not(.t1),
+body:has(#f-t2:checked) .card:not(.t2),
+body:has(#f-t3:checked) .card:not(.t3),
+body:has(#f-t4:checked) .card:not(.t4),
+body:has(#f-t5:checked) .card:not(.t5),
+body:has(#f-t6:checked) .card:not(.t6),
+body:has(#f-t7:checked) .card:not(.t7),
+body:has(#f-t8:checked) .card:not(.t8) { display: none; }
+/* An alongside section with nothing left to show disappears with its heading. */
+body:has(#f-t1:checked) #alongside:not(:has(.card.t1)),
+body:has(#f-t2:checked) #alongside:not(:has(.card.t2)),
+body:has(#f-t3:checked) #alongside:not(:has(.card.t3)),
+body:has(#f-t4:checked) #alongside:not(:has(.card.t4)),
+body:has(#f-t5:checked) #alongside:not(:has(.card.t5)),
+body:has(#f-t6:checked) #alongside:not(:has(.card.t6)),
+body:has(#f-t7:checked) #alongside:not(:has(.card.t7)),
+body:has(#f-t8:checked) #alongside:not(:has(.card.t8)) { display: none; }
 
 /* Sections */
 section.block { padding: 3rem 0 1rem; }

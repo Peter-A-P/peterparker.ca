@@ -20,6 +20,10 @@ def test_real_projects_yaml_loads() -> None:
     numbers = [p.number for p in site.in_group(Group.PORTFOLIO)]
     assert numbers == sorted(numbers), "portfolio projects are listed in numeric order"
     assert len(numbers) == 10
+    assert site.themes, "the index filters need at least one theme"
+    for project in site.projects:
+        assert project.themes, f"{project.slug}: every project carries at least one theme"
+    assert site.theme_slot(next(iter(site.themes))) == 1
     for project in site.projects:
         assert project.one_liner.rstrip().endswith("."), project.slug
         for ch in TYPOGRAPHIC:
@@ -62,6 +66,8 @@ def test_minimal_file_loads_and_strips_trailing_slash(tmp_path: Path) -> None:
         (GOOD + "    demo: http://insecure.example\n", "must be an https URL"),
         (GOOD + GOOD.replace("'01'", "'02'"), "duplicate slug"),
         (GOOD + GOOD.replace("slug: one", "slug: two"), "duplicate number"),
+        (GOOD + "    themes: [nope]\n", "unknown theme 'nope'"),
+        (GOOD + "    themes: nope\n", "must be a list"),
     ],
 )
 def test_bad_files_fail_with_a_reason(tmp_path: Path, bad: str, message: str) -> None:

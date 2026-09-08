@@ -1,5 +1,5 @@
 {% set page = pages.get(project.slug) %}
-<article class="card status-{{ project.status.value }}" id="{{ project.slug }}">
+<article class="card status-{{ project.status.value }}{% for t in project.themes %} t{{ site.theme_slot(t) }}{% endfor %}" id="{{ project.slug }}">
   <div class="card-top">
     <span class="num">{{ project.number }}</span>
     <span class="status">{{ status_label(project.status) }}</span>

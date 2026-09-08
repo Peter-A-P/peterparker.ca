@@ -8,11 +8,6 @@
     <h1>{{ site.title }}</h1>
     <p class="tagline">{{ site.tagline }}</p>
     <p class="intro">{{ site.intro }}</p>
-    <div class="facts">
-      <div><strong>{{ portfolio | length }}</strong><span>projects, built in sequence</span></div>
-      <div><strong>12</strong><span>months, September 2026 to August 2027</span></div>
-      <div><strong>1</strong><span>command reproduces every published number</span></div>
-    </div>
   </div>
 </section>
 
@@ -23,6 +18,16 @@
       <h2>Ten projects, one standard.</h2>
       <p class="lede">A project gets a link here the day its repository turns public, and a
       repository turns public only when it has a measured result to show.</p>
+      {% if site.themes %}
+      <div class="filters" role="radiogroup" aria-label="Filter projects by theme">
+        <input type="radio" name="theme" id="f-all" checked>
+        <label for="f-all">All <span>{{ site.projects | length }}</span></label>
+        {% for slug, label in site.themes.items() %}
+        <input type="radio" name="theme" id="f-t{{ loop.index }}">
+        <label for="f-t{{ loop.index }}">{{ label }} <span>{{ site.theme_count(slug) }}</span></label>
+        {% endfor %}
+      </div>
+      {% endif %}
     </header>
     <div class="grid">
       {% for project in portfolio %}
@@ -37,7 +42,7 @@
   <div class="wrap">
     <header>
       <p class="eyebrow">Alongside</p>
-      <h2>Built outside the sequence, to the same standard.</h2>
+      <h2>Beyond the ten, to the same standard.</h2>
     </header>
     <div class="grid">
       {% for project in alongside %}
@@ -54,9 +59,9 @@
     <h2>Judgement is human. Implementation is assisted. Results are reproducible.</h2>
     <p>Design, methodology, evaluation choices and judgement are {{ site.title }}'s. AI coding
     assistants were used for implementation and drafting, the way a senior engineer uses
-    them in 2026. Every number in every results table is reproducible from its repository
-    with one command, and that reproducibility is the evidence that matters. Each repository
-    also records one approach that was tried and did not work, with the evidence.</p>
+    them. Every number in every results table is reproducible from its repository with one
+    command, and that reproducibility is the evidence that matters. Each repository also
+    records one approach that was tried and did not work, with the evidence.</p>
   </div>
 </section>
 {% endblock %}

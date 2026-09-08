@@ -17,9 +17,18 @@ site:
     a stranger can check.
   base_url: https://peterparker.ca
   github: https://github.com/Peter-A-P
+  # Filter chips on the index, in this order. At most eight.
+  themes:
+    decisioning: Decisioning and forecasting
+    llm-eval: LLM evaluation and cost
+    compliance: Compliance and privacy
+    grounded: Grounded generation
+    agents: Agents and automation
+    realtime: Real-time systems
 
 projects:
   - number: "01"
+    themes: [decisioning]
     slug: intervention-targeting
     name: Intervention Targeting Engine
     group: portfolio
@@ -36,6 +45,7 @@ projects:
       and this finds them.
 
   - number: "02"
+    themes: [llm-eval]
     slug: model-selection
     name: Model Selection at a Tenth of the Cost
     group: portfolio
@@ -52,6 +62,7 @@ projects:
       were never measuring anything.
 
   - number: "03"
+    themes: [llm-eval, compliance]
     slug: ai-release-gate
     name: AI Release Gate
     group: portfolio
@@ -66,9 +77,10 @@ projects:
       regulator can read. Includes a public month-by-month record of how the major
       vendors' "frozen" models silently change, which is the evidence most teams wish they
       had when something breaks.
-    note: Monthly drift record begins September 2026.
+    note: Publishes a monthly public record of frontier-model drift.
 
   - number: "04"
+    themes: [compliance, llm-eval]
     slug: compliant-ai-gateway
     name: Compliant AI Gateway
     group: portfolio
@@ -87,6 +99,7 @@ projects:
     note: Every model call in this portfolio routes through it.
 
   - number: "05"
+    themes: [grounded]
     slug: verified-filings-analyst
     name: Verified Filings Analyst
     group: portfolio
@@ -103,6 +116,7 @@ projects:
       documents.
 
   - number: "06"
+    themes: [llm-eval]
     slug: fraction-of-the-bill
     name: Frontier Quality at a Fraction of the Bill
     group: portfolio
@@ -118,6 +132,7 @@ projects:
       figures a month on API calls, this is the project that finds most of it.
 
   - number: "07"
+    themes: [compliance, grounded]
     slug: access-to-information-redaction
     name: Access-to-Information Redaction
     group: portfolio
@@ -135,6 +150,7 @@ projects:
       often it keeps what must stay.
 
   - number: "08"
+    themes: [decisioning]
     slug: capacity-planning-forecaster
     name: Capacity Planning Forecaster
     group: portfolio
@@ -152,6 +168,7 @@ projects:
       rolling up to the region.
 
   - number: "09"
+    themes: [decisioning, realtime]
     slug: realtime-risk-platform
     name: Real-Time Fraud and Risk Decisioning Platform
     group: portfolio
@@ -168,6 +185,7 @@ projects:
       working one you can watch run.
 
   - number: "10"
+    themes: [agents]
     slug: self-healing-production-ai
     name: Self-Healing Production AI
     group: portfolio
@@ -183,6 +201,7 @@ projects:
       new work, and nothing changes without a person saying yes.
 
   - number: "11"
+    themes: [agents]
     slug: overload
     name: Overload
     group: alongside
@@ -199,6 +218,7 @@ projects:
     note: Running privately since 2025; the repository opens with its first measured result.
 
   - number: "13"
+    themes: [grounded, agents]
     slug: grounded-email-response-drafting
     name: Grounded Email Response Drafting
     group: alongside
@@ -215,6 +235,7 @@ projects:
       answer. A person reads, edits and sends; the system sends nothing.
 
   - number: "14"
+    themes: [grounded, agents]
     slug: department-news-digest
     name: Department News Digest
     group: alongside

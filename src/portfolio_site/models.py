@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import StrEnum
 from pathlib import Path
 from typing import Any
@@ -12,6 +12,7 @@ import yaml
 
 REPO_RE = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 SLUG_RE = re.compile(r"^[a-z0-9-]+$")
+MAX_THEMES = 8  # the stylesheet carries one filter rule per slot
 
 
 class Status(StrEnum):
@@ -52,6 +53,7 @@ class Project:
     repo: str | None = None  # "owner/name" on GitHub
     demo: str | None = None  # URL of the live demo, when publicly reachable
     note: str | None = None  # one short public sentence shown under the links
+    themes: tuple[str, ...] = ()  # slugs from Site.themes; drive the index filters
 
     @property
     def repo_url(self) -> str | None:
@@ -70,6 +72,15 @@ class Site:
     base_url: str
     github: str
     projects: tuple[Project, ...]
+    themes: dict[str, str] = field(default_factory=dict)  # slug -> label, in display order
+
+    def theme_slot(self, slug: str) -> int:
+        """1-based position of a theme; the stylesheet has one filter rule per slot."""
+        return list(self.themes).index(slug) + 1
+
+    def theme_count(self, slug: str) -> int:
+        """How many projects carry a theme."""
+        return sum(slug in p.themes for p in self.projects)
 
     def in_group(self, group: Group) -> list[Project]:
         """Projects in one group, in the order they appear in the file."""
@@ -120,6 +131,9 @@ def _project(raw: dict[str, Any], index: int) -> Project:
     demo = _optional(raw, "demo", where)
     if demo is not None and not demo.startswith("https://"):
         raise DataError(f"{where}: demo '{demo}' must be an https URL")
+    themes_raw = raw.get("themes", [])
+    if not isinstance(themes_raw, list) or not all(isinstance(t, str) for t in themes_raw):
+        raise DataError(f"{where}: 'themes' must be a list of theme slugs")
     return Project(
         number=number,
         slug=slug,
@@ -131,6 +145,7 @@ def _project(raw: dict[str, Any], index: int) -> Project:
         repo=repo,
         demo=demo,
         note=_optional(raw, "note", where),
+        themes=tuple(themes_raw),
     )
 
 
@@ -152,6 +167,11 @@ def load_site(path: Path) -> Site:
         projects.append(_project(p, i))
     _check_unique(projects, "slug")
     _check_unique(projects, "number")
+    themes = _themes(site_raw.get("themes"), path)
+    for p in projects:
+        for t in p.themes:
+            if t not in themes:
+                raise DataError(f"{p.slug}: unknown theme '{t}'")
     return Site(
         title=_require(site_raw, "title", "site"),
         tagline=_require(site_raw, "tagline", "site"),
@@ -160,7 +180,21 @@ def load_site(path: Path) -> Site:
         base_url=_require(site_raw, "base_url", "site").rstrip("/"),
         github=_require(site_raw, "github", "site"),
         projects=tuple(projects),
+        themes=themes,
     )
+
+
+def _themes(raw: object, path: Path) -> dict[str, str]:
+    if raw is None:
+        return {}
+    if not isinstance(raw, dict) or not all(
+        isinstance(k, str) and SLUG_RE.match(k) and isinstance(v, str) and v.strip()
+        for k, v in raw.items()
+    ):
+        raise DataError(f"{path}: 'site.themes' must map slugs to non-empty labels")
+    if len(raw) > MAX_THEMES:
+        raise DataError(f"{path}: at most {MAX_THEMES} themes are supported")
+    return {k: v.strip() for k, v in raw.items()}
 
 
 def _check_unique(projects: list[Project], attr: str) -> None:
