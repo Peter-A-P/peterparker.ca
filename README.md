@@ -15,6 +15,9 @@ Live at https://peterparker.ca.
   API marks it public, the README is rendered into `dist/projects/<slug>/`; otherwise the
   project gets a card on the index and no page. Relative links in a README are rewritten
   to open on GitHub. Raw HTML in a README is escaped; the site ships no JavaScript.
+- Typefaces are Inter and Newsreader, self-hosted from `src/portfolio_site/static/fonts/`
+  under the SIL Open Font License, so the page makes no third-party requests and the
+  content security policy stays `'self'` only.
 - GitHub Actions rebuilds on every push, once a day, and on demand, and deploys `dist/` to
   Azure Static Web Apps. The daily run is what publishes a newly public repository within
   a day without anyone touching this repository.

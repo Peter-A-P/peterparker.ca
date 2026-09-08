@@ -71,6 +71,7 @@ def test_build_pages_index_and_sitemap(tmp_path: Path, readme: str) -> None:
     assert "https://example.org/projects/open/</loc>" in sitemap
     assert "secret" not in sitemap
     assert (out / "style.css").exists()
+    assert (out / "fonts" / "inter-latin.woff2").exists()
     assert (out / "robots.txt").read_text(encoding="utf-8").endswith("sitemap.xml\n")
 
 

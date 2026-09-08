@@ -30,7 +30,7 @@ build-backend = "setuptools.build_meta"
 where = ["src"]
 
 [tool.setuptools.package-data]
-portfolio_site = ["templates/*.html", "static/*"]
+portfolio_site = ["templates/*.html", "static/*", "static/fonts/*"]
 
 [tool.ruff]
 line-length = 100

@@ -121,7 +121,7 @@ def build(
         + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls)
         + "</urlset>\n",
     )
-    shutil.copyfile(_package_dir("static") / "style.css", out / "style.css")
+    shutil.copytree(_package_dir("static"), out, dirs_exist_ok=True)
     if repo_root is not None:
         for name in ROOT_FILES:
             source = repo_root / name

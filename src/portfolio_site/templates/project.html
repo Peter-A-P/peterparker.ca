@@ -1,24 +1,31 @@
 {% extends "base.html" %}
-{% block title %}{{ project.name }} | {{ site.title }}{% endblock %}
-{% block description %}{{ project.one_liner }}{% endblock %}
-{% block canonical %}{{ path }}{% endblock %}
+{% set meta_title = project.name ~ " | " ~ site.title %}
+{% set meta_description = project.one_liner %}
+{% set canonical_path = path %}
 {% block main %}
-<article class="project">
-  <p class="crumbs"><a href="/">All projects</a></p>
-  <header>
-    <p class="num">Project {{ project.number }} <span class="badge">{{ status_label(project.status) }}</span></p>
-    <h1>{{ project.name }}</h1>
-    <p class="tech">{{ project.technical_line }}</p>
-    <p class="links">
-      <a href="{{ repo.html_url }}">Repository</a>
-      {% if project.demo %}<a href="{{ project.demo }}">Live demo</a>{% endif %}
-      <span class="note">Repository last updated {{ repo.pushed_on.isoformat() }}</span>
-    </p>
-  </header>
-  <div class="readme">
-    {{ body | safe }}
+<article class="project status-{{ project.status.value }}">
+  <div class="project-hero">
+    <div class="wrap">
+      <p class="crumbs"><a href="/#portfolio">All projects</a></p>
+      <p class="eyebrow">Project {{ project.number }}</p>
+      <h1>{{ project.name }}</h1>
+      <ul class="tags">
+        {% for tag in project.technical_line.split(" · ") %}
+        <li>{{ tag }}</li>
+        {% endfor %}
+      </ul>
+      <div class="meta">
+        <div><span>Status</span><span class="status">{{ status_label(project.status) }}</span></div>
+        <div><span>Repository</span><a href="{{ repo.html_url }}">{{ repo.full_name }}</a></div>
+        {% if project.demo %}<div><span>Live demo</span><a href="{{ project.demo }}">{{ project.demo | replace("https://", "") }}</a></div>{% endif %}
+        <div><span>Last updated</span>{{ repo.pushed_on.isoformat() }}</div>
+      </div>
+    </div>
   </div>
-  <p class="fine">This page is the repository's README, rendered as of {{ generated }}. Relative
-  links open on GitHub.</p>
+  <div class="wrap narrow readme">
+    {{ body | safe }}
+    <p class="fine">This page is the repository's README, rendered as of {{ generated }}. Relative
+    links open on GitHub.</p>
+  </div>
 </article>
 {% endblock %}
