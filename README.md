@@ -10,13 +10,21 @@ Live at https://peterparker.ca.
 ## How it works
 
 - `projects.yaml` lists the projects: name, one-liner, technical line, status, repository.
-  It is the only hand-written content. Its `log:` section records every change of a
+  Together with the explainers in `content/`, it is the only hand-written content.
+  Its `log:` section records every change of a
   project's status with a date and one sentence; the site renders it at `/log/`, as a
   "Latest" strip on the index, and as history on each project page.
 - `python -m portfolio_site build` reads each listed repository from the GitHub API. If the
   API marks it public, the README is rendered into `dist/projects/<slug>/`; otherwise the
-  project gets a card on the index and no page. Relative links in a README are rewritten
-  to open on GitHub. Raw HTML in a README is escaped; the site ships no JavaScript.
+  project gets a card on the index, and a page only if it names an explainer. Relative
+  links in a README are rewritten to open on GitHub. Raw HTML in a README is escaped;
+  the site ships no JavaScript.
+- A project may name an `explainer:`, a Markdown file in `content/`. It is that project's
+  page until its repository is public, and the README replaces it the day it is, so the
+  two are never shown together. An explainer claims no measured result and its page says
+  the project has none yet. A `<!-- more -->` line splits the first screen from the rest,
+  which the page puts behind a "Learn more" disclosure: a native `<details>` element,
+  because the site ships no JavaScript.
 - Typefaces are Inter and Newsreader, self-hosted from `src/portfolio_site/static/fonts/`
   under the SIL Open Font License, so the page makes no third-party requests and the
   content security policy stays `'self'` only.

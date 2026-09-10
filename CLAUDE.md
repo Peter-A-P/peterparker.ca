@@ -6,17 +6,26 @@ This repository builds https://peterparker.ca, the public portfolio site. Read
 ## What this site is
 
 One page per project, rendered from the project's public repository README, plus an index
-of one-liners from `projects.yaml`. The site carries only what the public repositories
-carry. It is the recruiter-facing front door, so it stays fast, plain and honest: no
+of one-liners from `projects.yaml`. Where a repository is not public yet, the project's
+page may instead be a hand-written explainer that claims no result. Apart from those, the
+site carries only what the public repositories carry. It is the recruiter-facing front door, so it stays fast, plain and honest: no
 JavaScript, no analytics, no claims that a repository does not back with a number.
 
 ## Rules specific to this repository
 
 - **`projects.yaml` is the only hand-written content.** Do not hand-edit anything in
   `dist/`; it is regenerated on every build.
-- **A private repository never appears.** The build takes the GitHub API's word for
-  whether a repository is public and reads nothing it does not mark public. Do not add a
-  token with private-repository access to the workflow.
+- **A private repository is never read and never linked.** The build takes the GitHub
+  API's word for whether a repository is public and reads nothing it does not mark
+  public. Do not add a token with private-repository access to the workflow. A project
+  whose repository is private can still have a page, but only from its explainer, and
+  that page neither links the repository nor quotes it.
+- **An explainer is a stand-in, never a claim.** A project may name an `explainer:` in
+  `content/`: plain-language Markdown that is its page until its repository is public,
+  and that the README replaces the day it is. It states no measured result, and the page
+  says the project has none yet. Keep it in step with that project's own README "How it
+  works": if one changes, change the other in the same change. A `<!-- more -->` line
+  splits the first screen from the part behind "Learn more".
 - **One-liners are the portfolio's own** and match the opening paragraph of the project's
   README. If a README's opening changes, change the one-liner here in the same change.
 - **Status is set by hand** in `projects.yaml` (`live`, `shipped`, `building`, `planned`).

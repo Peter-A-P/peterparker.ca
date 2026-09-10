@@ -14,8 +14,9 @@
     <header>
       <p class="eyebrow">The projects</p>
       <h2>{{ number_word(site.projects | length) | capitalize }} projects, one standard.</h2>
-      <p class="lede">A project gets a link here the day its repository turns public, and a
-      repository turns public only when it has a measured result to show.</p>
+      <p class="lede">A repository turns public only when it has a measured result to show, and
+      its page here carries that result the same day. Until then a project may carry a
+      plain-language page on what it will measure.</p>
       {% if site.themes %}
       <div class="filters" role="radiogroup" aria-label="Filter projects by theme">
         <input type="radio" name="theme" id="f-all" checked>

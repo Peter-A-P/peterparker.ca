@@ -1,4 +1,4 @@
-"""Markdown to HTML for a README, with links that keep pointing at the repository."""
+"""Markdown to HTML: a repository README, or a project's hand-written explainer."""
 
 from __future__ import annotations
 
@@ -9,6 +9,13 @@ from markdown_it import MarkdownIt
 from markdown_it.token import Token
 
 H1_RE = re.compile(r"^# (.+?)\s*$", re.M)
+
+MORE_MARKER = "<!-- more -->"
+"""Separates an explainer's first screen from the part behind "Learn more".
+
+The split happens on the raw text, before rendering, so the marker never reaches the
+renderer, which escapes raw HTML rather than passing it through.
+"""
 
 
 def split_title(markdown: str) -> tuple[str | None, str]:
@@ -22,6 +29,16 @@ def split_title(markdown: str) -> tuple[str | None, str]:
         return None, markdown
     rest = markdown[: match.start()] + markdown[match.end() :]
     return match.group(1).strip(), rest.lstrip("\n")
+
+
+def split_more(markdown: str) -> tuple[str, str]:
+    """Split an explainer on its ``MORE_MARKER`` into a first screen and the rest.
+
+    The rest is empty when the marker is absent, in which case the whole explainer shows
+    at once and the page grows no disclosure.
+    """
+    intro, _, rest = markdown.partition(MORE_MARKER)
+    return intro.strip(), rest.strip()
 
 
 def _is_relative(href: str) -> bool:
@@ -52,15 +69,30 @@ def _walk(tokens: list[Token], repo_html_url: str, branch: str) -> None:
             _walk(token.children, repo_html_url, branch)
 
 
-def render_readme(markdown: str, repo_html_url: str, branch: str) -> str:
-    """Render a README body to HTML.
+def _parser() -> MarkdownIt:
+    """The one Markdown configuration the site uses.
 
-    Raw HTML in the README is escaped rather than passed through: the site serves no
-    scripts and its Content-Security-Policy says so. Tables are enabled because Rule A's
-    results table is the point of the page.
+    Raw HTML is escaped rather than passed through: the site serves no scripts and its
+    Content-Security-Policy says so. Tables are enabled because Rule A's results table is
+    the point of a project page.
     """
     md = MarkdownIt("commonmark", {"html": False, "linkify": False, "typographer": False})
     md.enable(["table", "strikethrough"])
+    return md
+
+
+def render_readme(markdown: str, repo_html_url: str, branch: str) -> str:
+    """Render a README body to HTML, with repository-relative links rewritten to GitHub."""
+    md = _parser()
     tokens = md.parse(markdown)
     _walk(tokens, repo_html_url, branch)
     return str(md.renderer.render(tokens, md.options, {}))
+
+
+def render_markdown(markdown: str) -> str:
+    """Render hand-written site Markdown, such as a project's explainer.
+
+    Nothing is rewritten: there is no repository to rewrite towards, so an explainer's
+    links are absolute or site-relative.
+    """
+    return str(_parser().render(markdown))

@@ -101,3 +101,60 @@ def test_real_log_agrees_with_the_cards() -> None:
         assert e.note.endswith(".")
         for ch in TYPOGRAPHIC:
             assert ch not in e.note, "typographic punctuation in a log note"
+
+
+EXPLAINER = "The first screen.\n\n<!-- more -->\n\n## Deeper\n\nThe rest.\n"
+
+
+def _with_explainer(tmp_path: Path, content: str | None, name: str = "content/x.md") -> Path:
+    """A projects.yaml naming an explainer, with the file beside it unless content is None."""
+    if content is not None:
+        target = tmp_path / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(content, encoding="utf-8")
+    return _write(tmp_path, GOOD + f"    explainer: {name}\n")
+
+
+def test_explainer_is_read_from_beside_projects_yaml(tmp_path: Path) -> None:
+    site = load_site(_with_explainer(tmp_path, EXPLAINER))
+    text = site.projects[0].explainer
+    assert text is not None
+    assert text.startswith("The first screen.") and text.endswith("The rest.")
+
+
+def test_a_project_without_an_explainer_has_none(tmp_path: Path) -> None:
+    assert load_site(_write(tmp_path, GOOD)).projects[0].explainer is None
+
+
+@pytest.mark.parametrize(
+    ("content", "message"),
+    [
+        (None, "is not a file"),
+        ("   \n", "is empty"),
+        ("# A title\n\nBody.\n", "must not open with an H1"),
+        (EXPLAINER + "\n<!-- more -->\n\nAgain.\n", "one at most"),
+    ],
+)
+def test_bad_explainers_fail_with_a_reason(
+    tmp_path: Path, content: str | None, message: str
+) -> None:
+    with pytest.raises(DataError, match=message):
+        load_site(_with_explainer(tmp_path, content))
+
+
+def test_an_explainer_cannot_reach_outside_the_repository(tmp_path: Path) -> None:
+    (tmp_path.parent / "outside.md").write_text("Elsewhere.\n", encoding="utf-8")
+    with pytest.raises(DataError, match="must sit inside the site repository"):
+        load_site(_write(tmp_path, GOOD + "    explainer: ../outside.md\n"))
+
+
+def test_real_explainers_are_plain_and_carry_no_title() -> None:
+    site = load_site(ROOT / "projects.yaml")
+    explained = [p for p in site.projects if p.explainer is not None]
+    assert explained, "at least one project explains itself while its repository is private"
+    for project in explained:
+        text = project.explainer
+        assert text is not None
+        for ch in TYPOGRAPHIC:
+            assert ch not in text, f"{project.slug}: typographic punctuation in the explainer"
+        assert not text.startswith("# "), project.slug

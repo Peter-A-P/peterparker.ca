@@ -3,6 +3,10 @@
 # One-liners are the portfolio's own and match the opening paragraph of each project's
 # public repository README. A project gets a page on the site when its repository is
 # public; the build reads the README from GitHub and never sees private repositories.
+#
+# 'explainer' names a Markdown file in content/. It is the project's page until its
+# repository is public, and the README replaces it the day it is, so an explainer claims
+# no results and says which project has none yet.
 # Status values: live, shipped, building, planned.
 
 site:
@@ -33,6 +37,7 @@ projects:
     name: Intervention Targeting Engine
     status: planned
     repo: Peter-A-P/intervention-targeting-engine
+    explainer: content/01-intervention-targeting.md
     technical_line: >-
       uplift modelling · S/T/X/DR/R meta-learners and causal forests · budget-constrained
       policy optimisation · sensitivity analysis

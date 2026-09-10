@@ -15,7 +15,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from portfolio_site.github import GitHub, PublicRepo
 from portfolio_site.models import STATUS_LABEL, Project, Site, Status, load_site
-from portfolio_site.render import render_readme, split_title
+from portfolio_site.render import render_markdown, render_readme, split_more, split_title
 
 ROOT_FILES = ("staticwebapp.config.json",)
 WORDS = (
@@ -53,7 +53,7 @@ class PageInfo:
     """What the index needs to know about a generated project page."""
 
     project: Project
-    repo: PublicRepo
+    repo: PublicRepo | None  # None when the page is the project's hand-written explainer
     path: str  # site-relative, with leading and trailing slash
 
 
@@ -68,7 +68,10 @@ class BuildReport:
     def summary(self) -> str:
         """One line per fact, for the build log."""
         lines = [f"{len(self.pages)} project page(s) built"]
-        lines += [f"  page     {p.path}  <- {p.repo.full_name}" for p in self.pages]
+        lines += [
+            f"  page     {p.path}  <- {p.repo.full_name if p.repo else 'explainer'}"
+            for p in self.pages
+        ]
         lines += [f"  no page  {s} (repository not public)" for s in self.skipped]
         lines += [f"  WARNING  {w}" for w in self.warnings]
         return "\n".join(lines)
@@ -117,21 +120,38 @@ def build(
 
     pages_by_slug: dict[str, PageInfo] = {}
     for project in site.projects:
-        if project.repo is None:
+        repo = None
+        if project.repo is not None:
+            repo = github.public_repo(project.repo) if github else None
+            if repo is None:
+                report.skipped.append(project.repo)
+            elif project.status in (Status.PLANNED, Status.BUILDING):
+                report.warnings.append(
+                    f"{project.repo} is public but projects.yaml still says '{project.status}'"
+                )
+        if repo is None and project.explainer is None:
             continue
-        repo = github.public_repo(project.repo) if github else None
-        if repo is None:
-            report.skipped.append(project.repo)
-            continue
-        if project.status in (Status.PLANNED, Status.BUILDING):
-            report.warnings.append(
-                f"{project.repo} is public but projects.yaml still says '{project.status}'"
-            )
-        _title, body_md = split_title(repo.readme_markdown)
-        body_html = render_readme(body_md, repo.html_url, repo.default_branch)
+        # A public README is the page. An explainer stands in only until there is one, so a
+        # project never shows both and the two cannot contradict each other here.
+        body_html: str | None = None
+        intro_html: str | None = None
+        more_html: str | None = None
+        if repo is not None:
+            _title, body_md = split_title(repo.readme_markdown)
+            body_html = render_readme(body_md, repo.html_url, repo.default_branch)
+        elif project.explainer is not None:
+            intro_md, more_md = split_more(project.explainer)
+            intro_html = render_markdown(intro_md)
+            more_html = render_markdown(more_md) if more_md else None
         path = f"/projects/{project.slug}/"
         html = env.get_template("project.html").render(
-            **common, project=project, repo=repo, body=body_html, path=path
+            **common,
+            project=project,
+            repo=repo,
+            body=body_html,
+            intro=intro_html,
+            more=more_html,
+            path=path,
         )
         _write(out, f"{path}index.html", html)
         info = PageInfo(project=project, repo=repo, path=path)

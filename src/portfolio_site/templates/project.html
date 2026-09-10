@@ -16,9 +16,11 @@
       </ul>
       <div class="meta">
         <div><span>Status</span><span class="status">{{ status_label(project.status) }}</span></div>
+        {% if repo %}
         <div><span>Repository</span><a href="{{ repo.html_url }}">{{ repo.full_name }}</a></div>
+        {% endif %}
         {% if project.demo %}<div><span>Live demo</span><a href="{{ project.demo }}">{{ project.demo | replace("https://", "") }}</a></div>{% endif %}
-        <div><span>Last updated</span>{{ repo.pushed_on.isoformat() }}</div>
+        {% if repo %}<div><span>Last updated</span>{{ repo.pushed_on.isoformat() }}</div>{% endif %}
       </div>
       {% set history = site.log_for(project.number) %}
       {% if history %}
@@ -37,9 +39,24 @@
     </div>
   </div>
   <div class="wrap narrow readme">
+    {% if body %}
     {{ body | safe }}
     <p class="fine">This page is the repository's README, rendered as of {{ generated }}. Relative
     links open on GitHub.</p>
+    {% else %}
+    {{ intro | safe }}
+    {% if more %}
+    <details class="more">
+      <summary>Learn more: how it works, and how it gets checked</summary>
+      <div class="more-body">
+        {{ more | safe }}
+      </div>
+    </details>
+    {% endif %}
+    <p class="fine">This project has no measured result yet, so this page is a hand-written
+    explanation of what it will measure, as of {{ generated }}. When the repository turns public,
+    this page becomes its README, results table included.</p>
+    {% endif %}
   </div>
 </article>
 {% endblock %}

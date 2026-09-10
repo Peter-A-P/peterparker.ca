@@ -11,6 +11,8 @@ from typing import Any
 
 import yaml
 
+from portfolio_site.render import MORE_MARKER
+
 REPO_RE = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 SLUG_RE = re.compile(r"^[a-z0-9-]+$")
 MAX_THEMES = 8  # the stylesheet carries one filter rule per slot
@@ -47,6 +49,7 @@ class Project:
     demo: str | None = None  # URL of the live demo, when publicly reachable
     note: str | None = None  # one short public sentence shown under the links
     themes: tuple[str, ...] = ()  # slugs from Site.themes; drive the index filters
+    explainer: str | None = None  # Markdown, this project's page until its repository is public
 
     @property
     def repo_url(self) -> str | None:
@@ -119,7 +122,37 @@ def _optional(mapping: dict[str, Any], key: str, where: str) -> str | None:
     return value.strip()
 
 
-def _project(raw: dict[str, Any], index: int) -> Project:
+def _explainer(raw: dict[str, Any], where: str, base: Path) -> str | None:
+    """Read the project's explainer: the page it gets until its repository is public.
+
+    ``projects.yaml`` names a Markdown file beside itself. The text is read here, so the
+    build itself opens no files and a bad path fails validation rather than the build.
+    """
+    name = _optional(raw, "explainer", where)
+    if name is None:
+        return None
+    path = (base / name).resolve()
+    if base not in path.parents:
+        raise DataError(f"{where}: explainer '{name}' must sit inside the site repository")
+    if not path.is_file():
+        raise DataError(f"{where}: explainer '{name}' is not a file")
+    text = path.read_text(encoding="utf-8").strip()
+    if not text:
+        raise DataError(f"{where}: explainer '{name}' is empty")
+    if text.startswith("# "):
+        raise DataError(
+            f"{where}: explainer '{name}' must not open with an H1; the page prints the "
+            "project's name itself"
+        )
+    markers = text.count(MORE_MARKER)
+    if markers > 1:
+        raise DataError(
+            f"{where}: explainer '{name}' has {markers} '{MORE_MARKER}' markers; one at most"
+        )
+    return text
+
+
+def _project(raw: dict[str, Any], index: int, base: Path) -> Project:
     where = f"projects[{index}]"
     number = _require(raw, "number", where)
     slug = _require(raw, "slug", where)
@@ -151,11 +184,13 @@ def _project(raw: dict[str, Any], index: int) -> Project:
         demo=demo,
         note=_optional(raw, "note", where),
         themes=tuple(themes_raw),
+        explainer=_explainer(raw, where, base),
     )
 
 
 def load_site(path: Path) -> Site:
     """Read and validate ``projects.yaml``."""
+    base = path.resolve().parent
     raw = yaml.safe_load(path.read_text(encoding="utf-8"))
     if not isinstance(raw, dict):
         raise DataError(f"{path}: top level must be a mapping")
@@ -169,7 +204,7 @@ def load_site(path: Path) -> Site:
     for i, p in enumerate(projects_raw):
         if not isinstance(p, dict):
             raise DataError(f"projects[{i}] must be a mapping")
-        projects.append(_project(p, i))
+        projects.append(_project(p, i, base))
     _check_unique(projects, "slug")
     _check_unique(projects, "number")
     themes = _themes(site_raw.get("themes"), path)

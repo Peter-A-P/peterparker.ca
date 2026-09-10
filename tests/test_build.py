@@ -1,7 +1,8 @@
-"""A whole build: public repositories get pages, private ones do not."""
+"""A whole build: a public README is a page, an explainer stands in until there is one."""
 
 from __future__ import annotations
 
+from dataclasses import replace
 from pathlib import Path
 
 from portfolio_site.build import build
@@ -88,7 +89,6 @@ def test_offline_build_has_index_but_no_pages(tmp_path: Path) -> None:
 
 def test_log_page_latest_strip_and_project_history(tmp_path: Path, readme: str) -> None:
     import datetime as dt
-    from dataclasses import replace
 
     from portfolio_site.models import LogEntry
 
@@ -123,3 +123,70 @@ def test_log_page_latest_strip_and_project_history(tmp_path: Path, readme: str) 
 
     sitemap = (out / "sitemap.xml").read_text(encoding="utf-8")
     assert "https://example.org/log/</loc>" in sitemap
+
+
+EXPLAINER = "The first screen.\n\n<!-- more -->\n\n## Deeper\n\nThe rest of it.\n"
+
+
+def _explained(*numbers: str) -> Site:
+    """The usual site, with an explainer added to the projects named."""
+    site = _site()
+    projects = tuple(
+        replace(p, explainer=EXPLAINER) if p.number in numbers else p for p in site.projects
+    )
+    return replace(site, projects=projects)
+
+
+def test_an_explainer_is_the_page_until_the_repository_is_public(
+    tmp_path: Path, readme: str
+) -> None:
+    fetch = FakeFetch({"o/open": (False, readme), "o/secret": (True, "# S\n")})
+    out = tmp_path / "dist"
+    # 02 has a private repository, 04 has no repository at all. Both explain themselves.
+    report = build(_explained("02", "04"), out, GitHub(fetch=fetch), today="2026-10-04")
+
+    assert [p.path for p in report.pages] == [
+        "/projects/open/",
+        "/projects/secret/",
+        "/projects/norepo/",
+    ]
+    assert report.skipped == ["o/secret", "o/early"], "a private repository is still skipped"
+    assert "<- explainer" in report.summary()
+
+    page = (out / "projects" / "secret" / "index.html").read_text(encoding="utf-8")
+    assert "<h1>Secret</h1>" in page
+    assert "The first screen." in page
+    assert '<details class="more">' in page and "The rest of it." in page
+    assert "no measured result yet" in page
+    assert "github.com/o/secret" not in page, "a private repository is never linked"
+    assert "Last updated" not in page, "there is no repository to date the page from"
+
+    index = (out / "index.html").read_text(encoding="utf-8")
+    assert 'href="/projects/secret/"' in index and ">How it works<" in index
+    assert ">Results<" in index, "a project with a public README still offers its results"
+    sitemap = (out / "sitemap.xml").read_text(encoding="utf-8")
+    assert "https://example.org/projects/norepo/</loc>" in sitemap
+
+
+def test_a_public_readme_replaces_the_explainer(tmp_path: Path, readme: str) -> None:
+    fetch = FakeFetch({"o/open": (False, readme)})
+    out = tmp_path / "dist"
+    build(_explained("01"), out, GitHub(fetch=fetch), today="2026-10-04")
+
+    page = (out / "projects" / "open" / "index.html").read_text(encoding="utf-8")
+    assert "<td>0.42 (0.39, 0.45)</td>" in page, "the README is the page"
+    assert "The first screen." not in page and "<details" not in page
+    assert "no measured result yet" not in page
+
+
+def test_an_explainer_without_a_marker_shows_all_at_once(tmp_path: Path) -> None:
+    site = _site()
+    projects = tuple(
+        replace(p, explainer="One screen, no more.\n") if p.number == "04" else p
+        for p in site.projects
+    )
+    out = tmp_path / "dist"
+    build(replace(site, projects=projects), out, None, today="2026-10-04")
+    page = (out / "projects" / "norepo" / "index.html").read_text(encoding="utf-8")
+    assert "One screen, no more." in page
+    assert "<details" not in page, "nothing to disclose, so no disclosure"
