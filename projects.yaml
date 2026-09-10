@@ -29,6 +29,7 @@ site:
     grounded: Grounded generation
     compliance: Compliance and privacy
     realtime: Real-time systems
+    platform: Platform and infrastructure
 
 projects:
   - number: "01"
@@ -87,21 +88,28 @@ projects:
     note: Publishes a monthly public record of frontier-model drift.
 
   - number: "04"
-    themes: [compliance, llm-eval]
+    themes: [compliance, platform]
     slug: compliant-ai-gateway
     name: Compliant AI Gateway
     status: building
     repo: Peter-A-P/compliant-ai-gateway
+    explainer: content/04-compliant-ai-gateway.md
     technical_line: >-
-      provider routing by configuration · OpenTelemetry span and cost record per call ·
-      PII detection and reversible redaction · data-residency routing · semantic cache ·
-      hash-chained audit log · per-team budgets
+      raw-HTTP provider adapters with pinned API versions, no vendor SDKs ·
+      byte-identical pass-through mode for measurements · per-call cost ledger from
+      returned usage and dated price files · spend caps and per-team budgets enforced
+      before the call · OpenTelemetry span per call with a content allow list ·
+      OpenAI-compatible proxy (FastAPI, streaming) · reversible PII redaction (Presidio,
+      Canadian recognisers) · data-residency routing that fails closed · hash-chained
+      audit log anchored in public · semantic cache (pgvector) with its false-hit rate
+      measured · layered k6 load test with a published overhead budget · portfolio-wide
+      observability dashboard
     one_liner: >-
       Lets a bank, insurer, hospital or government department use frontier AI models
       without personal data ever leaving the boundary, with a tamper-evident record of
-      every call and a hard cap on every team's spend. This is the single blocker most
-      regulated organisations cite for AI adoption, removed, with the latency overhead
-      measured and published.
+      every call and a hard cap on every team's spend. The blocker most regulated
+      organisations cite for AI adoption, removed, with the latency overhead measured and
+      published rather than promised.
     note: Every model call in this portfolio routes through it.
 
   - number: "05"
@@ -121,7 +129,7 @@ projects:
       documents.
 
   - number: "06"
-    themes: [llm-eval]
+    themes: [llm-eval, platform]
     slug: fraction-of-the-bill
     name: Frontier Quality at a Fraction of the Bill
     status: planned
@@ -170,7 +178,7 @@ projects:
       rolling up to the region.
 
   - number: "09"
-    themes: [decisioning, realtime]
+    themes: [decisioning, realtime, platform]
     slug: realtime-risk-platform
     name: Real-Time Fraud and Risk Decisioning Platform
     status: planned
@@ -186,7 +194,7 @@ projects:
       working one you can watch run.
 
   - number: "10"
-    themes: [agents]
+    themes: [agents, platform]
     slug: self-healing-production-ai
     name: Self-Healing Production AI
     status: planned
