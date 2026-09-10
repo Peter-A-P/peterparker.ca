@@ -58,8 +58,8 @@ projects:
     status: planned
     repo: Peter-A-P/model-selection-tenth-cost
     technical_line: >-
-      item response theory (2PL/3PL) · computerised adaptive testing · benchmark
-      reliability and bias
+      item response theory (2PL/3PL) · computerised adaptive testing · Bayesian item calibration ·
+      vLLM for local model runs · benchmark reliability and bias
     one_liner: >-
       Answers "which AI model should we use, and did the new version get worse?" with
       statistical confidence, using about a tenth of the evaluation calls a full benchmark
@@ -75,10 +75,9 @@ projects:
     repo: Peter-A-P/ai-release-gate
     explainer: content/03-ai-release-gate.md
     technical_line: >-
-      frozen-suite longitudinal drift record · same-day noise floor from five repeats per
-      item · programmatic graders only · bootstrap confidence intervals and McNemar tests ·
-      paired non-inferiority gating in CI · LLM judge calibration (Cohen's kappa,
-      Rogan-Gladen correction) · append-only audit ledger
+      LLM evaluation platform (FastAPI, DuckDB) · judge calibration · confidence intervals and
+      power analysis · CI regression gating in GitHub Actions · OpenTelemetry tracing ·
+      longitudinal drift
     one_liner: >-
       No prompt or model change reaches users unless it is proven not to have regressed:
       the discipline a test suite gives code, applied to AI, with an audit trail a
@@ -95,15 +94,9 @@ projects:
     repo: Peter-A-P/compliant-ai-gateway
     explainer: content/04-compliant-ai-gateway.md
     technical_line: >-
-      raw-HTTP provider adapters with pinned API versions, no vendor SDKs ·
-      byte-identical pass-through mode for measurements · per-call cost ledger from
-      returned usage and dated price files · spend caps and per-team budgets enforced
-      before the call · OpenTelemetry span per call with a content allow list ·
-      OpenAI-compatible proxy (FastAPI, streaming) · reversible PII redaction (Presidio,
-      Canadian recognisers) · data-residency routing that fails closed · hash-chained
-      audit log anchored in public · semantic cache (pgvector) with its false-hit rate
-      measured · layered k6 load test with a published overhead budget · portfolio-wide
-      observability dashboard
+      provider routing by configuration · OpenTelemetry span and cost record per call · PII
+      detection and reversible redaction (Presidio) · data-residency routing · semantic cache on
+      Redis and pgvector · hash-chained audit log · per-team budgets
     one_liner: >-
       Lets a bank, insurer, hospital or government department use frontier AI models
       without personal data ever leaving the boundary, with a tamper-evident record of
@@ -119,8 +112,8 @@ projects:
     status: planned
     repo: Peter-A-P/verified-filings-analyst
     technical_line: >-
-      retrieval over SEC filings · table-aware chunking · hybrid retrieval with reranking ·
-      XBRL fact-level grounding and automatic verification
+      retrieval over SEC filings · table-aware chunking · hybrid retrieval (BM25 plus dense) with
+      reranking · XBRL fact-level grounding and automatic verification · Polars data pipeline
     one_liner: >-
       Answers questions across thousands of financial filings where every figure is traced
       to, and checked against, the number the company actually filed; a wrong number fails
@@ -135,8 +128,8 @@ projects:
     status: planned
     repo: Peter-A-P/fraction-of-the-bill
     technical_line: >-
-      QLoRA fine-tuning · AWQ / GPTQ / GGUF quantisation · vLLM serving · quality, latency
-      and cost frontier
+      QLoRA fine-tuning (PyTorch, PEFT) · AWQ / GPTQ / GGUF quantisation · vLLM and llama.cpp
+      serving · quality, latency and cost frontier
     one_liner: >-
       Proves, with measurements, that a small model an organisation owns and hosts matches
       a frontier API on a high-volume task at a small fraction of the per-call cost, and
@@ -150,9 +143,9 @@ projects:
     status: planned
     repo: Peter-A-P/access-to-information-redaction
     technical_line: >-
-      context-dependent PII redaction · exemption-category decision layer (rules plus LLM)
-      · document layout parsing and OCR · per-category redaction confusion matrix ·
-      reviewer workflow with audit log
+      context-dependent PII redaction (Presidio, spaCy) · exemption-category decision layer (rules
+      plus LLM) · document layout parsing and OCR (PyMuPDF, Tesseract) · per-category redaction
+      confusion matrix · reviewer workflow with audit log on DuckDB
     one_liner: >-
       Turns an access-to-information request from days of staff reading into hours of
       review: every proposed redaction carries the exemption category it rests on, a
@@ -167,8 +160,8 @@ projects:
     status: planned
     repo: Peter-A-P/capacity-planning-forecaster
     technical_line: >-
-      hierarchical probabilistic forecasting · neural forecasters (N-HiTS, PatchTST)
-      against statistical baselines · MinT reconciliation · adaptive conformal intervals ·
+      hierarchical probabilistic forecasting (Nixtla) · neural forecasters (N-HiTS, PatchTST)
+      against statistical baselines · MinT reconciliation · adaptive conformal intervals (MAPIE) ·
       CRPS and pinball loss · decision layer
     one_liner: >-
       Forecasts demand (emergency-department arrivals, call volume, orders) with
@@ -184,8 +177,9 @@ projects:
     status: planned
     repo: Peter-A-P/realtime-risk-platform
     technical_line: >-
-      streaming feature store · point-in-time correctness · online/offline parity tests ·
-      shadow deployment · drift-triggered retraining · expected-loss review queue
+      Kafka-compatible streaming (Redpanda, AWS Kinesis) · Feast feature store with point-in-time
+      correctness · XGBoost and an FT-Transformer (PyTorch) · online/offline parity tests · shadow
+      deployment · drift-triggered retraining (MLflow, Evidently) · expected-loss review queue
     one_liner: >-
       Scores every transaction in under 50 milliseconds, thousands per second, before the
       money moves, and keeps working as fraud patterns shift, without the
@@ -200,8 +194,9 @@ projects:
     status: planned
     repo: Peter-A-P/self-healing-production-ai
     technical_line: >-
-      agentic incident triage · failure clustering · adversarial second-model review ·
-      human-gated patch proposals · confidence routing
+      agentic incident triage (LangGraph) · failure clustering · adversarial second-model review ·
+      human-gated patch proposals through the GitHub API · OpenTelemetry tracing · confidence
+      routing
     one_liner: >-
       When a production system fails, this captures the failure with full context, drafts
       the fix, has a second AI review it adversarially, and hands an engineer a
@@ -237,9 +232,9 @@ projects:
     status: planned
     repo: Peter-A-P/grounded-email-response-drafting
     technical_line: >-
-      grounded response drafting · hybrid retrieval over a policy corpus · LangGraph
-      triage, retrieve, draft, verify, escalate · citation verification · faithfulness
-      measured with a calibrated judge · human approval before anything is sent
+      grounded response drafting · hybrid retrieval over a policy corpus · LangGraph triage,
+      retrieve, draft, verify, escalate · citation verification · faithfulness measured with a
+      calibrated judge · FastAPI reviewer UI · human approval before anything is sent
     one_liner: >-
       For an inbox that receives hundreds of thousands of enquiries a year, a draft reply
       for each one, grounded in the organisation's own documents, with every claim cited
@@ -253,10 +248,9 @@ projects:
     status: planned
     repo: Peter-A-P/department-news-digest
     technical_line: >-
-      multi-source ingestion (RSS, GDELT, Reddit API, Bluesky) · clustering and
-      deduplication · per-audience relevance ranking · cited summarisation with quote
-      verification · LangGraph pipeline on GCP Cloud Run · precision and recall against a
-      labelled week
+      multi-source ingestion (RSS, GDELT, Reddit API, Bluesky) · clustering and deduplication ·
+      per-audience relevance ranking · cited summarisation with quote verification · LangGraph
+      pipeline on GCP Cloud Run · DuckDB storage · precision and recall against a labelled week
     one_liner: >-
       One product, configured per department in a few lines, that reads the day's news,
       public forums and social feeds, removes the duplicates, ranks what matters to that
