@@ -46,6 +46,7 @@ GOOD = (
     "  - number: '01'\n    slug: one\n    name: One\n    one_liner: A.\n"
     "    technical_line: t\n    status: planned\n"
 )
+LOG = "log:\n  - date: 2026-09-07\n    project: '01'\n    status: planned\n    note: Planned.\n"
 
 
 def test_minimal_file_loads_and_strips_trailing_slash(tmp_path: Path) -> None:
@@ -66,8 +67,37 @@ def test_minimal_file_loads_and_strips_trailing_slash(tmp_path: Path) -> None:
         (GOOD + GOOD.replace("slug: one", "slug: two"), "duplicate number"),
         (GOOD + "    themes: [nope]\n", "unknown theme 'nope'"),
         (GOOD + "    themes: nope\n", "must be a list"),
+        (GOOD + LOG.replace("'01'", "'09'"), "project '09' is not in 'projects'"),
+        (GOOD + LOG.replace("2026-09-07", "yesterday"), "must be YYYY-MM-DD"),
+        (GOOD + LOG.replace("status: planned", "status: done"), "status 'done'"),
+        (GOOD + LOG.replace("Planned.", "Planned"), "ending in a full stop"),
+        (GOOD + LOG.replace("status: planned", "status: building"), "change both in the same edit"),
+        (GOOD + "log: nope\n", "'log' must be a list"),
     ],
 )
 def test_bad_files_fail_with_a_reason(tmp_path: Path, bad: str, message: str) -> None:
     with pytest.raises(DataError, match=message):
         load_site(_write(tmp_path, bad))
+
+
+def test_log_is_sorted_newest_first_and_checked_against_the_card(tmp_path: Path) -> None:
+    good = GOOD.replace("status: planned", "status: building")
+    log = (
+        "log:\n"
+        "  - date: 2026-09-01\n    project: '01'\n    status: planned\n    note: Planned.\n"
+        "  - date: 2026-09-10\n    project: '01'\n    status: building\n    note: Started.\n"
+    )
+    site = load_site(_write(tmp_path, good + log))
+    assert [e.status for e in site.log] == [Status.BUILDING, Status.PLANNED]
+    assert site.log[0].date.isoformat() == "2026-09-10" and site.log[0].note == "Started."
+    assert site.log_for("01") == site.log and site.project("01").slug == "one"
+    assert load_site(_write(tmp_path, GOOD)).log == ()
+
+
+def test_real_log_agrees_with_the_cards() -> None:
+    site = load_site(ROOT / "projects.yaml")
+    assert site.log, "the log has at least the entries that opened it"
+    for e in site.log:
+        assert e.note.endswith(".")
+        for ch in TYPOGRAPHIC:
+            assert ch not in e.note, "typographic punctuation in a log note"

@@ -20,6 +20,20 @@
         {% if project.demo %}<div><span>Live demo</span><a href="{{ project.demo }}">{{ project.demo | replace("https://", "") }}</a></div>{% endif %}
         <div><span>Last updated</span>{{ repo.pushed_on.isoformat() }}</div>
       </div>
+      {% set history = site.log_for(project.number) %}
+      {% if history %}
+      <ol class="log compact history">
+        {% for entry in history %}
+        <li class="status-{{ entry.status.value }}">
+          <time datetime="{{ entry.date.isoformat() }}">{{ entry.date.isoformat() }}</time>
+          <div>
+            <p class="log-head"><span class="status">{{ status_label(entry.status) }}</span></p>
+            <p class="log-note">{{ entry.note }}</p>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+      {% endif %}
     </div>
   </div>
   <div class="wrap narrow readme">

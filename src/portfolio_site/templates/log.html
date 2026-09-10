@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% set meta_title = "Log | " ~ site.title %}
+{% set meta_description = "Every change of status across the portfolio's projects, dated, newest first." %}
+{% set canonical_path = "/log/" %}
+{% block main %}
+<section class="block log-page">
+  <div class="wrap narrow">
+    <p class="crumbs"><a href="/#projects">All projects</a></p>
+    <p class="eyebrow">Log</p>
+    <h1>What changed, and when.</h1>
+    <p class="lede">One line for every change of a project's status: planned, in progress,
+    result published, live. Nothing is edited after the fact; a wrong entry gets a later
+    entry that corrects it.</p>
+    <ol class="log">
+      {% for entry in site.log %}
+      {% set project = site.project(entry.number) %}
+      {% set page = pages.get(project.slug) %}
+      <li class="status-{{ entry.status.value }}">
+        <time datetime="{{ entry.date.isoformat() }}">{{ entry.date.isoformat() }}</time>
+        <div>
+          <p class="log-head">
+            <span class="num">{{ project.number }}</span>
+            {% if page %}<a href="{{ page.path }}">{{ project.name }}</a>{% else %}<strong>{{ project.name }}</strong>{% endif %}
+            <span class="status">{{ status_label(entry.status) }}</span>
+          </p>
+          <p class="log-note">{{ entry.note }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{% endblock %}

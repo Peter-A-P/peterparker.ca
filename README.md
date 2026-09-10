@@ -10,7 +10,9 @@ Live at https://peterparker.ca.
 ## How it works
 
 - `projects.yaml` lists the projects: name, one-liner, technical line, status, repository.
-  It is the only hand-written content.
+  It is the only hand-written content. Its `log:` section records every change of a
+  project's status with a date and one sentence; the site renders it at `/log/`, as a
+  "Latest" strip on the index, and as history on each project page.
 - `python -m portfolio_site build` reads each listed repository from the GitHub API. If the
   API marks it public, the README is rendered into `dist/projects/<slug>/`; otherwise the
   project gets a card on the index and no page. Relative links in a README are rewritten

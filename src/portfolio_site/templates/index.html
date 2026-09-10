@@ -35,6 +35,35 @@
   </div>
 </section>
 
+{% if site.log %}
+<section class="block latest" id="log">
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">Latest</p>
+      <h2>What changed recently.</h2>
+    </header>
+    <ol class="log compact">
+      {% for entry in site.log[:5] %}
+      {% set project = site.project(entry.number) %}
+      {% set page = pages.get(project.slug) %}
+      <li class="status-{{ entry.status.value }}">
+        <time datetime="{{ entry.date.isoformat() }}">{{ entry.date.isoformat() }}</time>
+        <div>
+          <p class="log-head">
+            <span class="num">{{ project.number }}</span>
+            {% if page %}<a href="{{ page.path }}">{{ project.name }}</a>{% else %}<strong>{{ project.name }}</strong>{% endif %}
+            <span class="status">{{ status_label(entry.status) }}</span>
+          </p>
+          <p class="log-note">{{ entry.note }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+    {% if site.log | length > 5 %}<p class="links"><a href="/log/">The full log</a></p>{% endif %}
+  </div>
+</section>
+{% endif %}
+
 <section class="about">
   <div class="wrap">
     <p class="eyebrow">How this was built</p>

@@ -63,7 +63,7 @@ projects:
     themes: [llm-eval, compliance]
     slug: ai-release-gate
     name: AI Release Gate
-    status: planned
+    status: building
     repo: Peter-A-P/ai-release-gate
     technical_line: >-
       LLM evaluation platform · judge calibration · confidence intervals and power
@@ -245,3 +245,21 @@ projects:
       audience, and delivers a short digest with every claim cited and every quote verified
       against its source. One system in place of dozens of people each doing this by hand,
       at a few dollars a month per department.
+
+# The status log. One entry for every change of a project's status, in the same edit as
+# the status itself; the build refuses a log whose latest entry disagrees with the card.
+# Entries are never edited after the fact; a wrong entry gets a later entry that corrects
+# it. Rendered at /log/, as the "Latest" strip on the index, and as history on the page.
+log:
+  - date: 2026-09-07
+    project: "04"
+    status: building
+    note: >-
+      Version 0 of the gateway library, the piece every other project's model calls go
+      through, is under construction.
+  - date: 2026-09-10
+    project: "03"
+    status: building
+    note: >-
+      The monthly drift runner is built, ahead of the first official run of the frozen
+      suite targeted for 2026-09-27.

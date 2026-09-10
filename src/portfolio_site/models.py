@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import datetime as dt
 import re
 from dataclasses import dataclass, field
 from enum import StrEnum
@@ -54,6 +55,17 @@ class Project:
 
 
 @dataclass(frozen=True, slots=True)
+class LogEntry:
+    """One dated change of a project's status. Entries are never edited after the fact; a
+    wrong entry gets a later entry that corrects it."""
+
+    date: dt.date
+    number: str  # the project's number in this file
+    status: Status  # the status the project moved to
+    note: str  # one public sentence on what happened
+
+
+@dataclass(frozen=True, slots=True)
 class Site:
     """Everything the templates need that is not a project."""
 
@@ -65,6 +77,18 @@ class Site:
     github: str
     projects: tuple[Project, ...]
     themes: dict[str, str] = field(default_factory=dict)  # slug -> label, in display order
+    log: tuple[LogEntry, ...] = ()  # newest first
+
+    def project(self, number: str) -> Project:
+        """The project with this number."""
+        for p in self.projects:
+            if p.number == number:
+                return p
+        raise KeyError(number)
+
+    def log_for(self, number: str) -> tuple[LogEntry, ...]:
+        """This project's entries, newest first."""
+        return tuple(e for e in self.log if e.number == number)
 
     def theme_slot(self, slug: str) -> int:
         """1-based position of a theme; the stylesheet has one filter rule per slot."""
@@ -162,7 +186,58 @@ def load_site(path: Path) -> Site:
         github=_require(site_raw, "github", "site"),
         projects=tuple(projects),
         themes=themes,
+        log=_log(raw.get("log"), projects),
     )
+
+
+def _log(raw: object, projects: list[Project]) -> tuple[LogEntry, ...]:
+    """The status log: a list of {date, project, status, note}, returned newest first.
+
+    The latest entry for a project must agree with the project's current status, so the
+    log and the cards cannot drift apart.
+    """
+    if raw is None:
+        return ()
+    if not isinstance(raw, list):
+        raise DataError("'log' must be a list of entries")
+    numbers = {p.number: p for p in projects}
+    entries: list[LogEntry] = []
+    for i, e in enumerate(raw):
+        where = f"log[{i}]"
+        if not isinstance(e, dict):
+            raise DataError(f"{where} must be a mapping")
+        date_raw = e.get("date")
+        if isinstance(date_raw, dt.date):
+            date = date_raw
+        else:
+            try:
+                date = dt.date.fromisoformat(str(date_raw))
+            except ValueError as exc:
+                raise DataError(f"{where}: date '{date_raw}' must be YYYY-MM-DD") from exc
+        number = _require(e, "project", where)
+        if number not in numbers:
+            raise DataError(f"{where}: project '{number}' is not in 'projects'")
+        status_raw = _require(e, "status", where)
+        try:
+            status = Status(status_raw)
+        except ValueError as exc:
+            allowed = ", ".join(s.value for s in Status)
+            raise DataError(f"{where}: status '{status_raw}' is not one of {allowed}") from exc
+        note = _require(e, "note", where)
+        if not note.endswith("."):
+            raise DataError(f"{where}: note must be a sentence ending in a full stop")
+        entries.append(LogEntry(date=date, number=number, status=status, note=note))
+    entries.sort(key=lambda e: e.date, reverse=True)
+    latest: dict[str, LogEntry] = {}
+    for e in reversed(entries):  # oldest first, so the last write is the newest
+        latest[e.number] = e
+    for number, e in latest.items():
+        if numbers[number].status is not e.status:
+            raise DataError(
+                f"log: the latest entry for project {number} says '{e.status}' but the project's "
+                f"status is '{numbers[number].status}'; change both in the same edit"
+            )
+    return tuple(entries)
 
 
 def _themes(raw: object, path: Path) -> dict[str, str]:

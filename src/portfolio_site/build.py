@@ -140,8 +140,15 @@ def build(
 
     _write(out, "/index.html", env.get_template("index.html").render(**common, pages=pages_by_slug))
     _write(out, "/404.html", env.get_template("404.html").render(**common))
-    _write(out, "/robots.txt", f"User-agent: *\nAllow: /\nSitemap: {site.base_url}/sitemap.xml\n")
     urls = [f"{site.base_url}/"] + [f"{site.base_url}{p.path}" for p in report.pages]
+    if site.log:
+        _write(
+            out,
+            "/log/index.html",
+            env.get_template("log.html").render(**common, pages=pages_by_slug),
+        )
+        urls.append(f"{site.base_url}/log/")
+    _write(out, "/robots.txt", f"User-agent: *\nAllow: /\nSitemap: {site.base_url}/sitemap.xml\n")
     _write(
         out,
         "/sitemap.xml",

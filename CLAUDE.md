@@ -21,6 +21,12 @@ JavaScript, no analytics, no claims that a repository does not back with a numbe
   README. If a README's opening changes, change the one-liner here in the same change.
 - **Status is set by hand** in `projects.yaml` (`live`, `shipped`, `building`, `planned`).
   The build warns when a public repository is still marked `planned` or `building`.
+- **Every status change is logged** in `log:` at the end of `projects.yaml`, in the same
+  edit as the status: date, project number, the new status, one public sentence ending in
+  a full stop. The build refuses a log whose latest entry for a project disagrees with the
+  project's status. Entries are never edited or removed; a wrong entry gets a later entry
+  that corrects it. The log renders at `/log/`, as the "Latest" strip on the index, and as
+  history on the project's page.
 - **Plain punctuation**: no em-dashes or other typographic dashes, straight quotes only.
 - Engineering standard: Python 3.13, typed throughout, `mypy --strict` and `ruff` clean,
   tests that fail meaningfully, docs in the same commit as the change. Major versions are

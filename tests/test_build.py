@@ -80,3 +80,46 @@ def test_offline_build_has_index_but_no_pages(tmp_path: Path) -> None:
     assert report.pages == []
     assert report.skipped == ["o/open", "o/secret", "o/early"]
     assert (tmp_path / "dist" / "index.html").exists()
+    # No log entries: no log page, no nav link, no "Latest" strip.
+    assert not (tmp_path / "dist" / "log").exists()
+    index = (tmp_path / "dist" / "index.html").read_text(encoding="utf-8")
+    assert 'href="/log/"' not in index and "What changed recently" not in index
+
+
+def test_log_page_latest_strip_and_project_history(tmp_path: Path, readme: str) -> None:
+    import datetime as dt
+    from dataclasses import replace
+
+    from portfolio_site.models import LogEntry
+
+    site = replace(
+        _site(),
+        log=(
+            LogEntry(dt.date(2026, 10, 1), "01", Status.SHIPPED, "Open published its result."),
+            LogEntry(dt.date(2026, 9, 7), "02", Status.PLANNED, "Secret planned."),
+            LogEntry(dt.date(2026, 9, 1), "01", Status.BUILDING, "Open started."),
+        ),
+    )
+    fetch = FakeFetch({"o/open": (False, readme), "o/secret": (True, "# S\n")})
+    out = tmp_path / "dist"
+    build(site, out, GitHub(fetch=fetch), today="2026-10-04")
+
+    log = (out / "log" / "index.html").read_text(encoding="utf-8")
+    assert (
+        log.index("Open published its result.")
+        < log.index("Secret planned.")
+        < log.index("Open started.")
+    ), "newest first"
+    assert 'href="/projects/open/"' in log and 'href="/projects/secret/"' not in log
+    assert "<strong>Secret</strong>" in log, "a project without a page is named, not linked"
+
+    index = (out / "index.html").read_text(encoding="utf-8")
+    assert 'href="/log/"' in index and "What changed recently" in index
+    assert "Open published its result." in index
+
+    page = (out / "projects" / "open" / "index.html").read_text(encoding="utf-8")
+    assert "Open started." in page and "Open published its result." in page
+    assert "Secret planned." not in page, "a page shows only its own history"
+
+    sitemap = (out / "sitemap.xml").read_text(encoding="utf-8")
+    assert "https://example.org/log/</loc>" in sitemap

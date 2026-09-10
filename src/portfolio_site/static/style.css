@@ -215,3 +215,20 @@ footer .fine { font-size: .8rem; }
 .readme blockquote { border-left: 3px solid var(--accent); margin: 1.25rem 0; padding: .2rem 1.1rem; color: var(--ink-2); background: var(--accent-soft); border-radius: 0 8px 8px 0; }
 .readme hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 .fine { font-size: .82rem; color: var(--muted); }
+
+/* Status log: the page at /log/, the "Latest" strip on the index, a project's history */
+.log-page { padding: 3rem 0 4rem; }
+.log-page h1 { margin: .35rem 0 .5rem; }
+.log { list-style: none; margin: 1.5rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+.log li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; align-items: baseline; padding-left: .9rem; border-left: 3px solid var(--status, var(--planned)); }
+@media (max-width: 40rem) { .log li { grid-template-columns: 1fr; gap: .2rem; } }
+.log time { font-family: var(--mono); font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.log-head { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; }
+.log-head .num { font-size: 1rem; }
+.log-head a { color: var(--ink); font-weight: 600; }
+.log-head a:hover { color: var(--accent); }
+.log-note { margin: .2rem 0 0; color: var(--ink-2); font-size: .95rem; max-width: 46rem; }
+.log.compact { gap: .8rem; }
+.history { margin-top: 1.5rem; }
+.history .log-note { font-size: .9rem; }
+section.latest { padding-top: 1rem; }
