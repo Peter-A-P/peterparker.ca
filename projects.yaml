@@ -72,9 +72,12 @@ projects:
     name: AI Release Gate
     status: building
     repo: Peter-A-P/ai-release-gate
+    explainer: content/03-ai-release-gate.md
     technical_line: >-
-      LLM evaluation platform · judge calibration · confidence intervals and power
-      analysis · CI regression gating · longitudinal drift
+      frozen-suite longitudinal drift record · same-day noise floor from five repeats per
+      item · programmatic graders only · bootstrap confidence intervals and McNemar tests ·
+      paired non-inferiority gating in CI · LLM judge calibration (Cohen's kappa,
+      Rogan-Gladen correction) · append-only audit ledger
     one_liner: >-
       No prompt or model change reaches users unless it is proven not to have regressed:
       the discipline a test suite gives code, applied to AI, with an audit trail a
