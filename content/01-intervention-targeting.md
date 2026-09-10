@@ -76,12 +76,12 @@ The field has no single agreed method, so the project implements the main famili
 one shared interface and puts them in one table. Five are meta-learners: recipes that
 build an effect estimate out of ordinary prediction models, differing in how they handle
 the missing half of the data and in how they behave when the treated group is much smaller
-than the untreated one. One is a neural network, included deliberately as a test of
-whether the extra machinery earns its keep on problems this size, with a stated verdict
-either way. A causal forest, which splits on differences in effect rather than differences
-in outcome, is a stretch goal.
+than the untreated one. One is Dragonnet, a neural network written in PyTorch, included
+deliberately as a test of whether the extra machinery earns its keep on problems this
+size, with a stated verdict either way. A causal forest, which splits on differences in
+effect rather than differences in outcome, is a stretch goal.
 
-All of them sit on the same underlying learner, so differences in the table are
+All of them sit on the same LightGBM base learner, so differences in the table are
 differences between the methods rather than differences between their engines. The
 write-up that ships with the repository says where each one breaks, which is usually the
 more useful half of a comparison.
