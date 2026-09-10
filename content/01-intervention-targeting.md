@@ -34,10 +34,11 @@ risk-ranking approach above. A slider on the demo page moves the budget and the
 intervention list re-ranks, because "who do we treat" has a different answer at 10 percent
 of the population than at 30.
 
-**Where this stands in September 2026: planned.** The design is written and the first
-datasets are downloaded. Nothing is measured yet, and the results table in the repository
-is empty until it is. The build window is September and October 2026, and the repository
-becomes public when it has numbers in it.
+**Where this stands: week 1 of 8.** The first of the estimators is benchmarked on two of
+the five datasets, against both baselines, every score carrying a bootstrap interval. Those
+numbers are real and reproducible from one command; they are not placeholders, and the
+table is not finished either. The build window runs to the start of November 2026, and the
+repository turns public with the full table in it.
 
 <!-- more -->
 

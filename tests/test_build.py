@@ -157,7 +157,7 @@ def test_an_explainer_is_the_page_until_the_repository_is_public(
     assert "<h1>Secret</h1>" in page
     assert "The first screen." in page
     assert '<details class="more">' in page and "The rest of it." in page
-    assert "no measured result yet" in page
+    assert "hand-written explanation rather than a results table" in page
     assert "github.com/o/secret" not in page, "a private repository is never linked"
     assert "Last updated" not in page, "there is no repository to date the page from"
 
@@ -176,7 +176,7 @@ def test_a_public_readme_replaces_the_explainer(tmp_path: Path, readme: str) -> 
     page = (out / "projects" / "open" / "index.html").read_text(encoding="utf-8")
     assert "<td>0.42 (0.39, 0.45)</td>" in page, "the README is the page"
     assert "The first screen." not in page and "<details" not in page
-    assert "no measured result yet" not in page
+    assert "hand-written explanation rather than a results table" not in page
 
 
 def test_an_explainer_without_a_marker_shows_all_at_once(tmp_path: Path) -> None:
