@@ -42,19 +42,24 @@ overlap when the budget runs out, the honest report is that these two models are
 distinguishable at that budget, which is a real answer rather than a decimal place nobody
 should be trusting.
 
-This project builds that, and then tries to break it. Calibration happens once, mostly on
-public data that already records which model got which question right. The claim to be
-tested is that about a tenth of the questions, chosen adaptively, reproduce the ranking the
-full benchmark produces. That is either true on a chart with confidence intervals on it or
+This project builds that, and then tries to break it. Calibration happens once, on public
+data that already records which model got which question right. The claim under test is
+that a small fraction of the questions, chosen adaptively, reproduce the ranking the full
+benchmark produces. That is either true on a chart with confidence intervals on it or
 it is not, and the chart is the deliverable either way, drawn next to the two baselines
 that would make it worthless: the same number of questions picked at random, and the same
 number picked by stratified sampling. The by-product is a named, evidenced list of the
 benchmark questions that were never measuring anything.
 
-**Where this stands: planned, and nothing has run.** The build window is the four weeks of
-November 2026, and the full plan is written and published in the repository before any of
-it starts. There is no result on this page because there is no result yet. The repository
-turns public when the table has real numbers in it.
+**Where this stands: the calibration half is built, seven weeks ahead of its November
+slot.** The question bank is assembled from public per-question results, both statistical
+models are fitted to it, the headline simulation has been run against both baselines, and
+the checks for local dependence, dimensionality and contamination are done. None of those
+numbers appear on this page. This site publishes only what a public repository backs, and
+this repository is still private, so the figures stay in it until it opens. The half that
+is not built is the half that costs money: the panel of current models run twice, and the
+three experiments on it, which wait on the gateway library's batch support and on spend
+caps being set. The repository turns public with its table.
 
 <!-- more -->
 
@@ -86,15 +91,18 @@ Fitting those properties needs a large grid: many models by many questions, each
 recording right or wrong. Running that grid from scratch would cost more than the project
 is worth.
 
-It does not have to be run from scratch. Two public sources already publish per-question
-results rather than only totals: the Hugging Face Open LLM Leaderboard detail datasets and
-HELM's per-instance predictions, together covering hundreds of models across
-multiple-choice, mathematics and mixed-format suites. The target grid is at least 100
-models by 3,000 to 5,000 questions, with questions identified by a hash of their text so
-that the same question arriving from two sources collapses into one row, and a question
-kept only where at least 40 models have answered it. Week one of the build is spent
-verifying that those datasets are still where they were and still in a usable shape, with a
-smaller fallback grid written down in advance in case they are not.
+It does not have to be run from scratch. Public sources already publish per-question
+results rather than only totals, and the plan named two: the Hugging Face Open LLM
+Leaderboard detail datasets, and HELM's per-instance predictions. Checking both before
+anything depended on them was the first thing the build did, and it was worth the time.
+The leaderboard datasets are now gated behind a signed-in account, so nothing can fetch
+them unattended. HELM's buckets are open to anyone and carry more than the plan assumed:
+the per-question results, the questions themselves, their stored answer keys, and for each
+model its release date and whether its weights are open. So HELM became the source and the
+leaderboard datasets became a follow-up for the day there is a token to read them with.
+Questions are identified by a hash of their text, so the same question arriving twice
+collapses into one row, and a question is kept only where at least 40 models have answered
+it.
 
 Which means the budget is not spent on calibration at all. It is spent on the part that
 actually tests the claim.

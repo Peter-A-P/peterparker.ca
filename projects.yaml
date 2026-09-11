@@ -55,19 +55,19 @@ projects:
     themes: [llm-eval]
     slug: model-selection
     name: Model Selection at a Tenth of the Cost
-    status: planned
+    status: building
     repo: Peter-A-P/model-selection-tenth-cost
     explainer: content/02-model-selection.md
     technical_line: >-
       adaptive testing, Fisher information · item response theory (2PL/3PL) ·
-      local dependence and dimensionality · calibration in py-irt and PyMC ·
+      local dependence and dimensionality · marginal maximum likelihood by EM ·
       contamination by release-date DIF · test-retest, position bias, framing ·
-      item bank: 100+ models, 3,000+ items · items needed per effect size
+      item bank from public per-question results · items needed per effect size
     one_liner: >-
       Answers "which AI model should we use, and did the new version get worse?" with
-      statistical confidence, using about a tenth of the evaluation calls a full benchmark
+      statistical confidence, using a fraction of the evaluation calls a full benchmark
       needs. For a team re-evaluating models every month, that is a day instead of a week
-      and tens of dollars instead of thousands, and it exposes the benchmark questions that
+      and tens of dollars instead of thousands, and it names the benchmark questions that
       were never measuring anything.
 
   - number: "03"
@@ -302,3 +302,9 @@ log:
     note: >-
       The first estimator is benchmarked on Hillstrom and IHDP, with bootstrap intervals
       and both baselines beside it.
+  - date: 2026-09-11
+    project: "02"
+    status: building
+    note: >-
+      The question bank is calibrated from public per-question results and the adaptive
+      test runs against it, seven weeks ahead of its slot.
