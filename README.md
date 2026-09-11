@@ -44,7 +44,10 @@ python -m http.server -d dist 8080
 ```
 
 Typed, `ruff` and `mypy --strict` clean, tests that fail meaningfully. Plain punctuation
-in everything written here.
+in everything written here. The card copy in `projects.yaml` is laid out as well as
+written: the tags of each project fill four rows and the cards finish the same height,
+which `tests/test_card_layout.py` checks by measuring the real text against the fonts the
+site ships.
 
 ## Deployment
 

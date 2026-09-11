@@ -60,9 +60,9 @@ projects:
     explainer: content/02-model-selection.md
     technical_line: >-
       adaptive testing, Fisher information · item response theory (2PL/3PL) ·
-      local dependence and dimensionality · marginal maximum likelihood by EM ·
-      contamination by release-date DIF · test-retest, position bias, framing ·
-      item bank from public per-question results · items needed per effect size
+      marginal maximum likelihood by EM · items needed per effect size ·
+      item bank, public per-item results · contamination: release-date DIF ·
+      local dependence, dimensionality · test-retest, position bias, framing
     one_liner: >-
       Answers "which AI model should we use, and did the new version get worse?" with
       statistical confidence, using a fraction of the evaluation calls a full benchmark

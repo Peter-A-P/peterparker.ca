@@ -36,6 +36,11 @@ JavaScript, no analytics, no claims that a repository does not back with a numbe
   project's status. Entries are never edited or removed; a wrong entry gets a later entry
   that corrects it. The log renders at `/log/`, as the "Latest" strip on the index, and as
   history on the project's page.
+- **Card copy is laid out, not just written.** A card's tags are chips the browser wraps
+  by pixel width, so every card's tags are written to fill four rows and its one-liner is
+  sized so the cards finish the same height. `tests/test_card_layout.py` measures both
+  with the site's own font files and fails when an edit breaks the shape; it names the
+  chip to shorten. Change a tag or a one-liner and run `pytest` before pushing.
 - **Plain punctuation**: no em-dashes or other typographic dashes, straight quotes only.
 - Engineering standard: Python 3.13, typed throughout, `mypy --strict` and `ruff` clean,
   tests that fail meaningfully, docs in the same commit as the change. Major versions are

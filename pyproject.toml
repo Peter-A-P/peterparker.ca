@@ -17,6 +17,8 @@ dev = [
     "mypy>=1.11",
     "pytest>=8,<9",
     "types-PyYAML>=6,<7",
+    "fonttools>=4,<5",       # reads the fonts the site ships, so the card layout test measures the real page
+    "brotli>=1,<2",          # fontTools needs it to decompress those woff2 files
 ]
 
 [project.scripts]
@@ -45,6 +47,13 @@ ignore = ["S101"]  # assert is how pytest tests are written
 strict = true
 python_version = "3.13"
 files = ["src", "tests"]
+
+# fontTools ships no type information. It is a test-only dependency that reads font
+# metrics, and everything it hands back is converted at the boundary in the card layout
+# test, so nothing untyped travels further than that module.
+[[tool.mypy.overrides]]
+module = "fontTools.*"
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
