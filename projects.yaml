@@ -40,16 +40,16 @@ projects:
     repo: Peter-A-P/intervention-targeting-engine
     explainer: content/01-intervention-targeting.md
     technical_line: >-
-      uplift modelling · five LightGBM meta-learners (S/T/X/DR/R) · Dragonnet
-      neural network (PyTorch) · Polars data pipeline · budget-constrained policy
-      optimisation · Qini and realised policy value with bootstrap intervals ·
-      sensitivity analysis (Rosenbaum bounds, E-values)
+      Rosenbaum bounds and E-values · uplift modelling, not risk ranking ·
+      Dragonnet neural network (PyTorch) · budget-constrained allocation ·
+      LightGBM meta-learners (S/T/X/DR/R) · Qini and realised policy value ·
+      bootstrap interval on every score · Polars pipeline, committed seeds
     one_liner: >-
       Tells an organisation which customers, cases or patients to spend a limited
-      intervention budget on: only the ones whose outcome the intervention actually
-      changes. Retention offers, outreach, fraud review, clinical follow-up: a large share
-      of every such budget goes to people who would have behaved the same way regardless,
-      and this finds them.
+      intervention budget on: only the ones whose outcome the intervention actually changes.
+      Retention offers, outreach, fraud review, clinical follow-up: a large share of every
+      such budget goes to people who would have behaved the same way regardless. Ranking by
+      risk finds a different list, and usually the wrong one.
 
   - number: "02"
     themes: [llm-eval]
@@ -59,12 +59,10 @@ projects:
     repo: Peter-A-P/model-selection-tenth-cost
     explainer: content/02-model-selection.md
     technical_line: >-
-      item response theory (2PL/3PL) · computerised adaptive testing by maximum Fisher
-      information · item calibration in py-irt and PyMC · response matrix of 100+ models by
-      3,000+ items (Polars) · item fit, local dependence (Yen's Q3) and dimensionality ·
-      differential item functioning as a contamination check · test-retest reliability,
-      position bias and framing effects · power analysis: items needed to detect a given
-      regression
+      adaptive testing, Fisher information · item response theory (2PL/3PL) ·
+      local dependence and dimensionality · calibration in py-irt and PyMC ·
+      contamination by release-date DIF · test-retest, position bias, framing ·
+      item bank: 100+ models, 3,000+ items · items needed per effect size
     one_liner: >-
       Answers "which AI model should we use, and did the new version get worse?" with
       statistical confidence, using about a tenth of the evaluation calls a full benchmark
@@ -80,15 +78,15 @@ projects:
     repo: Peter-A-P/ai-release-gate
     explainer: content/03-ai-release-gate.md
     technical_line: >-
-      LLM evaluation platform (FastAPI, DuckDB) · deterministic graders, no model judge ·
-      judge calibration against human labels · paired non-inferiority testing · measured
-      false-block rate · CI regression gating in GitHub Actions · OpenTelemetry tracing
+      LLM eval platform (FastAPI, DuckDB) · five repeats set the noise floor ·
+      judge calibrated on human labels · OpenTelemetry tracing per run ·
+      deterministic graders, no model judge · paired non-inferiority testing ·
+      CI regression gating in GitHub Actions · measured false-block rate
     one_liner: >-
-      No prompt or model change reaches users unless it is proven not to have regressed:
-      the discipline a test suite gives code, applied to AI, with an audit trail a
-      regulator can read. Includes a public month-by-month record of how the major
-      vendors' "frozen" models silently change, which is the evidence most teams wish they
-      had when something breaks.
+      No prompt or model change reaches users unless it is proven not to have regressed: the
+      discipline a test suite gives code, applied to AI, with an audit trail a regulator can
+      read. Includes a public month-by-month record of how the major vendors' "frozen"
+      models silently change, the evidence teams wish they had when something breaks.
     note: Publishes a monthly public record of frontier-model drift.
 
   - number: "04"
@@ -99,9 +97,10 @@ projects:
     repo: Peter-A-P/compliant-ai-gateway
     explainer: content/04-compliant-ai-gateway.md
     technical_line: >-
-      provider routing by configuration · OpenTelemetry span and cost record per call · PII
-      detection and reversible redaction (Presidio) · data-residency routing · semantic cache on
-      Redis and pgvector · hash-chained audit log · per-team budgets
+      data-residency routing per request · provider routing by configuration ·
+      per-team budgets enforced pre-call · span and cost record per call ·
+      hash-chained, tamper-evident log · reversible PII redaction (Presidio) ·
+      semantic cache on Redis and pgvector · latency overhead per control
     one_liner: >-
       Lets a bank, insurer, hospital or government department use frontier AI models
       without personal data ever leaving the boundary, with a tamper-evident record of
@@ -117,14 +116,17 @@ projects:
     status: planned
     repo: Peter-A-P/verified-filings-analyst
     technical_line: >-
-      retrieval over SEC filings · table-aware chunking · hybrid retrieval (BM25 plus dense) with
-      reranking · XBRL fact-level grounding and automatic verification · Polars data pipeline
+      retrieval across thousands of filings · verifier tested by mutation ·
+      abstention on unanswerable questions · cross-encoder reranking ·
+      hybrid retrieval (BM25 plus dense) · XBRL fact-level grounding ·
+      hallucinated-figure rate with CIs · automatic figure verification
     one_liner: >-
       Answers questions across thousands of financial filings where every figure is traced
       to, and checked against, the number the company actually filed; a wrong number fails
-      loudly instead of reaching a decision. Cuts analyst hours, and eliminates by
-      construction the invented figure that stops finance and legal teams trusting AI with
-      documents.
+      loudly instead of reaching a decision. Cuts analyst hours, eliminates by construction
+      the invented figure that stops finance and legal teams trusting AI with documents, and
+      reports how often an unchecked pipeline would have let one through, with what the
+      checking costs in latency and dollars.
 
   - number: "06"
     themes: [llm-eval, platform]
@@ -133,15 +135,17 @@ projects:
     status: planned
     repo: Peter-A-P/fraction-of-the-bill
     technical_line: >-
-      QLoRA fine-tuning (PyTorch, PEFT) · AWQ / GPTQ / GGUF quantisation · vLLM and llama.cpp
-      serving · structured extraction graded against XBRL truth · non-inferiority against the
-      frontier API · throughput at four concurrencies on rented GPUs · Pareto frontier of
-      quality, latency and cost · break-even volume as a utilisation curve
+      QLoRA fine-tuning (PyTorch, PEFT) · vLLM and llama.cpp serving ·
+      AWQ / GPTQ / GGUF quantisation · break-even volume by utilisation ·
+      throughput at four concurrencies · structured extraction, XBRL truth ·
+      Pareto of quality, latency and cost · non-inferiority against the API
     one_liner: >-
-      Proves, with measurements, that a small model an organisation owns and hosts matches
-      a frontier API on a high-volume task at a small fraction of the per-call cost, and
-      shows exactly at what volume the switch pays for itself. For a team spending five
-      figures a month on API calls, this is the project that finds most of it.
+      Proves, with measurements, that a small model an organisation owns and hosts matches a
+      frontier API on a high-volume task at a small fraction of the per-call cost, and shows
+      exactly at what volume the switch pays for itself. For a team spending five figures a
+      month on API calls, this is the project that finds most of it: the quality gap
+      measured on identical items, and the break-even published as a curve you can put your
+      own prices into.
 
   - number: "07"
     themes: [compliance, grounded]
@@ -150,15 +154,17 @@ projects:
     status: planned
     repo: Peter-A-P/access-to-information-redaction
     technical_line: >-
-      context-dependent PII redaction (Presidio, spaCy) · exemption-category decision layer (rules
-      plus LLM) · document layout parsing and OCR (PyMuPDF, Tesseract) · per-category redaction
-      confusion matrix · reviewer workflow with audit log on DuckDB
+      context-dependent PII redaction · leak rate per category, with CIs ·
+      layout parsing and OCR (PyMuPDF) · Presidio and spaCy detection ·
+      exemption categories, rules plus LLM · PDF text-layer leak test ·
+      page-by-page reviewer workflow · over-redaction rate published
     one_liner: >-
       Turns an access-to-information request from days of staff reading into hours of
       review: every proposed redaction carries the exemption category it rests on, a
-      reviewer approves page by page with a full audit log, and the tool publishes how
-      often it withholds what must go and, the number blunt PII tools never show, how
-      often it keeps what must stay.
+      reviewer approves page by page with a full audit log, and the tool publishes how often
+      it withholds what must go and, the number blunt PII tools never show, how often it
+      keeps what must stay. Scanned records as well as native ones, with the OCR error rate
+      printed beside the redaction rates.
 
   - number: "08"
     themes: [decisioning]
@@ -167,15 +173,17 @@ projects:
     status: planned
     repo: Peter-A-P/capacity-planning-forecaster
     technical_line: >-
-      hierarchical probabilistic forecasting (Nixtla) · neural forecasters (N-HiTS, PatchTST)
-      against statistical baselines · MinT reconciliation · adaptive conformal intervals (MAPIE) ·
-      CRPS and pinball loss · decision layer
+      hierarchical probabilistic forecasting · skill against seasonal naive ·
+      adaptive conformal intervals (MAPIE) · Nixtla statistical baselines ·
+      N-HiTS and PatchTST · CRPS and pinball loss · MinT reconciliation ·
+      staffing cost against an oracle · coverage held through a shift
     one_liner: >-
-      Forecasts demand (emergency-department arrivals, call volume, orders) with
-      uncertainty ranges that actually hold when conditions shift, and turns them into a
-      staffing number at a chosen service level. Overstaffing costs money and understaffing
-      costs patients or customers; this puts a defensible number on both, site by site,
-      rolling up to the region.
+      Forecasts demand (emergency-department arrivals, call volume, orders) with uncertainty
+      ranges that actually hold when conditions shift, and turns them into a staffing number
+      at a chosen service level. Overstaffing costs money and understaffing costs patients
+      or customers; this puts a defensible number on both, site by site, rolling up to the
+      region, with the coverage checked through a real distribution shift rather than on a
+      quiet test set.
 
   - number: "09"
     themes: [decisioning, realtime, platform]
@@ -184,15 +192,16 @@ projects:
     status: planned
     repo: Peter-A-P/realtime-risk-platform
     technical_line: >-
-      Kafka-compatible streaming (Redpanda, AWS Kinesis) · Feast feature store with point-in-time
-      correctness · XGBoost and an FT-Transformer (PyTorch) · online/offline parity tests · shadow
-      deployment · drift-triggered retraining (MLflow, Evidently) · expected-loss review queue
+      Kafka-compatible streaming (Redpanda) · point-in-time leakage test ·
+      thousands of events per second · Feast store, online/offline parity ·
+      XGBoost and FT-Transformer (PyTorch) · p99 under fifty milliseconds ·
+      shadow deployment and rollback · expected-loss review queue
     one_liner: >-
       Scores every transaction in under 50 milliseconds, thousands per second, before the
-      money moves, and keeps working as fraud patterns shift, without the
-      training-versus-production mismatch that quietly breaks most deployed models. The
-      platform around the model is what organisations are actually missing, and this is a
-      working one you can watch run.
+      money moves, and keeps working as fraud patterns shift, without the training-versus-
+      production mismatch that quietly breaks most deployed models. The platform around the
+      model is what organisations are actually missing, and this is a working one you can
+      watch run: three months live behind a public dashboard, reproducible from one command.
 
   - number: "10"
     themes: [agents, platform]
@@ -201,14 +210,17 @@ projects:
     status: planned
     repo: Peter-A-P/self-healing-production-ai
     technical_line: >-
-      agentic incident triage (LangGraph) · failure clustering · adversarial second-model review ·
-      human-gated patch proposals through the GitHub API · OpenTelemetry tracing · confidence
-      routing
+      agentic incident triage (LangGraph) · failing test before any fix ·
+      confidently-wrong rate published · failure clustering into one ticket ·
+      adversarial second-vendor review · honest hit rate on hidden tests ·
+      confidence routing with thresholds · human-gated pull requests
     one_liner: >-
-      When a production system fails, this captures the failure with full context, drafts
-      the fix, has a second AI review it adversarially, and hands an engineer a
+      When a production system fails, this captures the failure with its context, groups
+      twenty symptoms of one bug into one ticket, writes a failing test that proves the bug,
+      drafts the fix, has a second AI review it adversarially, and hands an engineer a
       ready-to-approve pull request. Triage in minutes instead of days, engineers back on
-      new work, and nothing changes without a person saying yes.
+      new work, and nothing changes without a person saying yes. The headline number is how
+      often it would have been confidently wrong.
 
   - number: "11"
     themes: [agents, decisioning]
@@ -216,20 +228,18 @@ projects:
     name: 'Overload: AI Coaching Team for Runners'
     status: live
     repo: Peter-A-P/TrainAI
+    explainer: content/11-overload.md
     technical_line: >-
-      LangGraph coaching staff · Claude Opus head coach, Sonnet specialists · human-approved
-      plans · guardrails in code, not prompts · Strava, Garmin and Open-Meteo data · pace
-      corrected for grade, heat, sun and wind · VDOT from training runs · race projection
-      and age grading · per-call cost accounting
+      Opus head coach, Sonnet specialists · VDOT from every training run ·
+      human-approved plans, costed per call · LangGraph coaching staff ·
+      pace corrected for heat, sun, hills · guardrails in code, not prompts ·
+      Strava, Garmin and Open-Meteo · race projection and age grading
     one_liner: >-
       A coaching team for runners: AI specialists in injury prevention, fitness and race
       planning report each week to a head coach that writes next week's plan from what was
-      actually run and talks it through before anything is committed. It works from Strava
-      and Garmin data made better than those platforms leave it: every run corrected for
-      heat, sun, wind and hills, fitness measured precisely with VDOT formulas on every run,
-      and race predictions, individual training paces and more than a dozen conversion and
-      prediction tables. Built by a data scientist and race-winning road runner after years
-      on Garmin, Strava and TrainingPeaks.
+      actually run, and talks it through before anything is committed. Built by a data
+      scientist and race-winning road runner after years on Garmin, Strava and
+      TrainingPeaks.
     note: In private use since 2025; the repository opens with its first measured result.
 
   - number: "13"
@@ -239,14 +249,17 @@ projects:
     status: planned
     repo: Peter-A-P/grounded-email-response-drafting
     technical_line: >-
-      grounded response drafting · hybrid retrieval over a policy corpus · LangGraph triage,
-      retrieve, draft, verify, escalate · citation verification · faithfulness measured with a
-      calibrated judge · FastAPI reviewer UI · human approval before anything is sent
+      grounded response drafting · FastAPI reviewer UI · cents per draft ·
+      hybrid retrieval over a policy corpus · LangGraph triage and drafting ·
+      human approval before sending · citation precision and coverage ·
+      faithfulness with a calibrated judge · escalation when policy is silent
     one_liner: >-
       For an inbox that receives hundreds of thousands of enquiries a year, a draft reply
-      for each one, grounded in the organisation's own documents, with every claim cited
-      to the passage that supports it and a clear escalation when the documents cannot
-      answer. A person reads, edits and sends; the system sends nothing.
+      for each one, grounded in the organisation's own documents, with every claim cited to
+      the passage that supports it and a clear escalation when the documents cannot answer.
+      A person reads, edits and sends; the system sends nothing. Minutes per reply instead
+      of tens of minutes, at cents per draft, with faithfulness measured against the
+      passages rather than hoped for.
 
   - number: "14"
     themes: [grounded, agents]
@@ -255,15 +268,17 @@ projects:
     status: planned
     repo: Peter-A-P/department-news-digest
     technical_line: >-
-      multi-source ingestion (RSS, GDELT, Reddit API, Bluesky) · clustering and deduplication ·
-      per-audience relevance ranking · cited summarisation with quote verification · LangGraph
-      pipeline on GCP Cloud Run · DuckDB storage · precision and recall against a labelled week
+      multi-source ingestion · cited summarisation · DuckDB storage ·
+      RSS, GDELT, Reddit and Bluesky · per-audience relevance ranking ·
+      precision and recall on a labelled week · clustering and deduplication ·
+      quote verification against source · LangGraph on GCP Cloud Run
     one_liner: >-
       One product, configured per department in a few lines, that reads the day's news,
       public forums and social feeds, removes the duplicates, ranks what matters to that
       audience, and delivers a short digest with every claim cited and every quote verified
       against its source. One system in place of dozens of people each doing this by hand,
-      at a few dollars a month per department.
+      at a few dollars a month per department, with precision and recall measured against a
+      hand-labelled week.
 
 # The status log. One entry for every change of a project's status, in the same edit as
 # the status itself; the build refuses a log whose latest entry disagrees with the card.
