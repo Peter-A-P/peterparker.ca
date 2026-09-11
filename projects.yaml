@@ -27,9 +27,9 @@ site:
     llm-eval: LLM evaluation and cost
     agents: AI agents and automation
     grounded: Grounded generation
+    platform: Platform and infrastructure
     compliance: Compliance and privacy
     realtime: Real-time systems
-    platform: Platform and infrastructure
 
 projects:
   - number: "01"
@@ -57,9 +57,14 @@ projects:
     name: Model Selection at a Tenth of the Cost
     status: planned
     repo: Peter-A-P/model-selection-tenth-cost
+    explainer: content/02-model-selection.md
     technical_line: >-
-      item response theory (2PL/3PL) · computerised adaptive testing · Bayesian item calibration ·
-      vLLM for local model runs · benchmark reliability and bias
+      item response theory (2PL/3PL) · computerised adaptive testing by maximum Fisher
+      information · item calibration in py-irt and PyMC · response matrix of 100+ models by
+      3,000+ items (Polars) · item fit, local dependence (Yen's Q3) and dimensionality ·
+      differential item functioning as a contamination check · test-retest reliability,
+      position bias and framing effects · power analysis: items needed to detect a given
+      regression
     one_liner: >-
       Answers "which AI model should we use, and did the new version get worse?" with
       statistical confidence, using about a tenth of the evaluation calls a full benchmark
@@ -75,9 +80,9 @@ projects:
     repo: Peter-A-P/ai-release-gate
     explainer: content/03-ai-release-gate.md
     technical_line: >-
-      LLM evaluation platform (FastAPI, DuckDB) · judge calibration · confidence intervals and
-      power analysis · CI regression gating in GitHub Actions · OpenTelemetry tracing ·
-      longitudinal drift
+      LLM evaluation platform (FastAPI, DuckDB) · deterministic graders, no model judge ·
+      judge calibration against human labels · paired non-inferiority testing · measured
+      false-block rate · CI regression gating in GitHub Actions · OpenTelemetry tracing
     one_liner: >-
       No prompt or model change reaches users unless it is proven not to have regressed:
       the discipline a test suite gives code, applied to AI, with an audit trail a
@@ -129,7 +134,9 @@ projects:
     repo: Peter-A-P/fraction-of-the-bill
     technical_line: >-
       QLoRA fine-tuning (PyTorch, PEFT) · AWQ / GPTQ / GGUF quantisation · vLLM and llama.cpp
-      serving · quality, latency and cost frontier
+      serving · structured extraction graded against XBRL truth · non-inferiority against the
+      frontier API · throughput at four concurrencies on rented GPUs · Pareto frontier of
+      quality, latency and cost · break-even volume as a utilisation curve
     one_liner: >-
       Proves, with measurements, that a small model an organisation owns and hosts matches
       a frontier API on a high-volume task at a small fraction of the per-call cost, and
