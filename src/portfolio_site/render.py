@@ -41,6 +41,42 @@ def split_more(markdown: str) -> tuple[str, str]:
     return intro.strip(), rest.strip()
 
 
+COMMENT_RE = re.compile(r"<!--.*?-->", re.S)
+FENCES = ("```", "~~~")
+
+
+def _segments(markdown: str) -> list[tuple[bool, str]]:
+    """Split Markdown into (is_fenced_code, text) runs, so a rule can skip code."""
+    segments: list[tuple[bool, str]] = []
+    buffer: list[str] = []
+    fence: str | None = None
+    for line in markdown.splitlines(keepends=True):
+        opener = line.lstrip()[:3]
+        if fence is None and opener in FENCES:
+            segments.append((False, "".join(buffer)))
+            buffer = [line]
+            fence = opener
+        elif fence is not None and opener == fence:
+            buffer.append(line)
+            segments.append((True, "".join(buffer)))
+            buffer, fence = [], None
+        else:
+            buffer.append(line)
+    segments.append((fence is not None, "".join(buffer)))
+    return segments
+
+
+def strip_html_comments(markdown: str) -> str:
+    """Remove HTML comments, except inside fenced code where they are the content.
+
+    The renderer escapes raw HTML instead of passing it through, so a comment that
+    reaches it is printed on the page as text. READMEs use comments as machine markers:
+    project 02 writes its results table between `<!-- mselect:results:start -->` and its
+    end marker, and a reader should see neither the marker nor an escaped version of it.
+    """
+    return "".join(text if code else COMMENT_RE.sub("", text) for code, text in _segments(markdown))
+
+
 def _is_relative(href: str) -> bool:
     if not href or href.startswith(("#", "//", "mailto:")):
         return False
@@ -84,7 +120,7 @@ def _parser() -> MarkdownIt:
 def render_readme(markdown: str, repo_html_url: str, branch: str) -> str:
     """Render a README body to HTML, with repository-relative links rewritten to GitHub."""
     md = _parser()
-    tokens = md.parse(markdown)
+    tokens = md.parse(strip_html_comments(markdown))
     _walk(tokens, repo_html_url, branch)
     return str(md.renderer.render(tokens, md.options, {}))
 
@@ -95,4 +131,4 @@ def render_markdown(markdown: str) -> str:
     Nothing is rewritten: there is no repository to rewrite towards, so an explainer's
     links are absolute or site-relative.
     """
-    return str(_parser().render(markdown))
+    return str(_parser().render(strip_html_comments(markdown)))

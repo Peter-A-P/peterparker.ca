@@ -68,3 +68,33 @@ def test_render_markdown_keeps_tables_and_still_escapes_raw_html() -> None:
 def test_render_markdown_leaves_links_alone() -> None:
     html = render_markdown("[a](https://example.org/x) and [b](/log/)\n")
     assert 'href="https://example.org/x"' in html and 'href="/log/"' in html
+
+
+def test_a_readmes_machine_markers_never_reach_the_page() -> None:
+    """The bug this fixes: project 02 writes its results table between a pair of HTML
+    comments, the parser escapes raw HTML rather than passing it through, and the marker
+    was printed on the page as text directly under the heading it belongs to."""
+    readme = (
+        "## Result\n\n"
+        "<!-- mselect:results:start -->\n"
+        "| Measure | Result |\n|---|---|\n| tau | 0.778 (0.716 to 0.832) |\n"
+        "<!-- mselect:results:end -->\n\n"
+        "After the table.\n"
+    )
+    html = render_readme(readme, REPO, "main")
+    assert "mselect:results" not in html
+    assert "&lt;!--" not in html and "<!--" not in html
+    assert "<td>0.778 (0.716 to 0.832)</td>" in html
+    assert "After the table." in html
+
+
+def test_a_comment_inside_a_fence_is_content_and_survives() -> None:
+    readme = "```html\n<!-- keep me: this is the example -->\n```\n\n<!-- drop me -->\n\nText.\n"
+    html = render_readme(readme, REPO, "main")
+    assert "keep me" in html
+    assert "drop me" not in html
+
+
+def test_stripping_comments_does_not_stop_raw_html_being_escaped() -> None:
+    html = render_readme("<!-- x -->\n\n<script>alert(1)</script>\n", REPO, "main")
+    assert "<script>" not in html and "&lt;script&gt;" in html
