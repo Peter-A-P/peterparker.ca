@@ -262,7 +262,11 @@ def _log(raw: object, projects: list[Project]) -> tuple[LogEntry, ...]:
         if not note.endswith("."):
             raise DataError(f"{where}: note must be a sentence ending in a full stop")
         entries.append(LogEntry(date=date, number=number, status=status, note=note))
-    entries.sort(key=lambda e: e.date, reverse=True)
+    # Newest first, and within one date the entry written last comes first: two changes to
+    # one project on one day are ordered by the file, which is the only record of which
+    # happened first. `written` is the position in the file, assigned before this sort.
+    written = {id(e): i for i, e in enumerate(entries)}
+    entries.sort(key=lambda e: (e.date, written[id(e)]), reverse=True)
     latest: dict[str, LogEntry] = {}
     for e in reversed(entries):  # oldest first, so the last write is the newest
         latest[e.number] = e

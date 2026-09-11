@@ -55,7 +55,7 @@ projects:
     themes: [llm-eval]
     slug: model-selection
     name: Model Selection at a Tenth of the Cost
-    status: building
+    status: shipped
     repo: Peter-A-P/model-selection-tenth-cost
     explainer: content/02-model-selection.md
     technical_line: >-
@@ -308,3 +308,10 @@ log:
     note: >-
       The question bank is calibrated from public per-question results and the adaptive
       test runs against it, seven weeks ahead of its slot.
+  - date: 2026-09-11
+    project: "02"
+    status: shipped
+    note: >-
+      The repository is public with its numbers: ten adaptive questions rank a panel of
+      150 models as well as 127 randomly chosen ones, and the whole method replicates on
+      a second bank of 400 models built from a different source.

@@ -158,3 +158,15 @@ def test_real_explainers_are_plain_and_carry_no_title() -> None:
         for ch in TYPOGRAPHIC:
             assert ch not in text, f"{project.slug}: typographic punctuation in the explainer"
         assert not text.startswith("# "), project.slug
+
+
+def test_two_entries_on_one_day_order_by_the_file(tmp_path: Path) -> None:
+    """A project can change status twice in a day. The file's order decides which is later."""
+    good = GOOD.replace("status: planned", "status: shipped")
+    log = (
+        "log:\n"
+        "  - date: 2026-09-11\n    project: '01'\n    status: building\n    note: Started.\n"
+        "  - date: 2026-09-11\n    project: '01'\n    status: shipped\n    note: Public.\n"
+    )
+    site = load_site(_write(tmp_path, good + log))
+    assert [e.note for e in site.log] == ["Public.", "Started."], "later write reads as newer"

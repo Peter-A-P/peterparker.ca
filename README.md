@@ -26,8 +26,10 @@ Live at https://peterparker.ca.
   which the page puts behind a "Learn more" disclosure: a native `<details>` element,
   because the site ships no JavaScript.
 - Typefaces are Inter and Newsreader, self-hosted from `src/portfolio_site/static/fonts/`
-  under the SIL Open Font License, so the page makes no third-party requests and the
-  content security policy stays `'self'` only.
+  under the SIL Open Font License, so no font, style or script is fetched from anywhere but
+  this site. The content security policy is `'self'` for all of those and forbids scripts
+  outright. Images are the one exception it allows, because a project's README points at the
+  charts in that project's repository and those are the numbers the page exists to show.
 - GitHub Actions rebuilds on every push, once a day, and on demand, and deploys `dist/` to
   Azure Static Web Apps. The daily run is what publishes a newly public repository within
   a day without anyone touching this repository.
