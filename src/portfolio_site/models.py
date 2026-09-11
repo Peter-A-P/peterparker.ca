@@ -47,7 +47,7 @@ class Project:
     status: Status
     repo: str | None = None  # "owner/name" on GitHub
     demo: str | None = None  # URL of the live demo, when publicly reachable
-    note: str | None = None  # one short public sentence shown under the links
+    note: str | None = None  # one short public sentence, on its own line above the links
     themes: tuple[str, ...] = ()  # slugs from Site.themes; drive the index filters
     explainer: str | None = None  # Markdown, this project's page until its repository is public
 

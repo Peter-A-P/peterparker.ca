@@ -102,11 +102,10 @@ projects:
       hash-chained, tamper-evident log · reversible PII redaction (Presidio) ·
       semantic cache on Redis and pgvector · latency overhead per control
     one_liner: >-
-      Lets a bank, insurer, hospital or government department use frontier AI models
-      without personal data ever leaving the boundary, with a tamper-evident record of
-      every call and a hard cap on every team's spend. The blocker most regulated
-      organisations cite for AI adoption, removed, with the latency overhead measured and
-      published rather than promised.
+      Lets a bank, insurer, hospital or government department use frontier AI models without
+      personal data ever leaving the boundary, with a tamper-evident record of every call
+      and a hard cap on every team's spend. The blocker most regulated organisations cite
+      for AI adoption, removed, with the latency overhead measured rather than promised.
     note: Every model call in this portfolio routes through it.
 
   - number: "05"
@@ -240,7 +239,7 @@ projects:
       actually run, and talks it through before anything is committed. Built by a data
       scientist and race-winning road runner after years on Garmin, Strava and
       TrainingPeaks.
-    note: In private use since 2025; the repository opens with its first measured result.
+    note: In private use since 2025; opens with its first measured result.
 
   - number: "13"
     themes: [grounded, agents]

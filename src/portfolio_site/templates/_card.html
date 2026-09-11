@@ -11,12 +11,12 @@
     <li>{{ tag }}</li>
     {% endfor %}
   </ul>
-  {% if page or project.demo or project.note %}
+  {% if project.note %}<p class="note">{{ project.note }}</p>{% endif %}
+  {% if page or project.demo %}
   <p class="links">
     {% if page %}<a href="{{ page.path }}">{% if page.repo %}Results{% else %}How it works{% endif %}</a>{% endif %}
     {% if page and page.repo %}<a href="{{ page.repo.html_url }}">Repository</a>{% endif %}
     {% if project.demo %}<a href="{{ project.demo }}">Live demo</a>{% endif %}
-    {% if project.note %}<span class="note">{{ project.note }}</span>{% endif %}
   </p>
   {% endif %}
 </article>
