@@ -41,9 +41,9 @@ projects:
     explainer: content/01-intervention-targeting.md
     technical_line: >-
       uplift modelling · five LightGBM meta-learners (S/T/X/DR/R) · Dragonnet
-      neural network (PyTorch) · budget-constrained policy optimisation · Qini and
-      realised policy value with bootstrap intervals · sensitivity analysis (Rosenbaum
-      bounds, E-values) · Polars data pipeline
+      neural network (PyTorch) · Polars data pipeline · budget-constrained policy
+      optimisation · Qini and realised policy value with bootstrap intervals ·
+      sensitivity analysis (Rosenbaum bounds, E-values)
     one_liner: >-
       Tells an organisation which customers, cases or patients to spend a limited
       intervention budget on: only the ones whose outcome the intervention actually
