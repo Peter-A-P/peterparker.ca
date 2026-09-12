@@ -188,7 +188,7 @@ projects:
     themes: [decisioning, realtime, platform]
     slug: realtime-risk-platform
     name: Real-Time Fraud and Risk Decisioning Platform
-    status: planned
+    status: building
     repo: Peter-A-P/realtime-risk-platform
     technical_line: >-
       Kafka-compatible streaming (Redpanda) · point-in-time leakage test ·
@@ -355,3 +355,11 @@ log:
       Twenty-one years of New York City emergency medical dispatches are loaded and
       checked, thirty million incidents aggregated to a daily panel of thirty-one dispatch
       areas that sums exactly to its boroughs and to the city.
+  - date: 2026-09-12
+    project: "09"
+    status: building
+    note: >-
+      The transaction generator is running: an entity graph of cards, devices and
+      merchants, three fraud patterns that act on the graph rather than on a single row,
+      and a schedule of shifts whose live version is sealed by a hash now and published in
+      July 2027, so the drift monitors cannot be tuned to it.
