@@ -173,7 +173,7 @@ projects:
     repo: Peter-A-P/capacity-planning-forecaster
     technical_line: >-
       hierarchical probabilistic forecasting · skill against seasonal naive ·
-      adaptive conformal intervals (MAPIE) · Nixtla statistical baselines ·
+      adaptive conformal intervals · Nixtla statistical baselines ·
       N-HiTS and PatchTST · CRPS and pinball loss · MinT reconciliation ·
       staffing cost against an oracle · coverage held through a shift
     one_liner: >-
