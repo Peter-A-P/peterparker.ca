@@ -169,7 +169,7 @@ projects:
     themes: [decisioning]
     slug: capacity-planning-forecaster
     name: Capacity Planning Forecaster
-    status: planned
+    status: building
     repo: Peter-A-P/capacity-planning-forecaster
     technical_line: >-
       hierarchical probabilistic forecasting · skill against seasonal naive ·
@@ -348,3 +348,10 @@ log:
       Planned: a finish time and placing for every registered runner in a Newfoundland road
       race, predicted from public results alone and published before the gun, with the
       first live race on 2026-10-18.
+  - date: 2026-09-12
+    project: "08"
+    status: building
+    note: >-
+      Twenty-one years of New York City emergency medical dispatches are loaded and
+      checked, thirty million incidents aggregated to a daily panel of thirty-one dispatch
+      areas that sums exactly to its boroughs and to the city.
