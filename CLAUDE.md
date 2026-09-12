@@ -36,6 +36,10 @@ JavaScript, no analytics, no claims that a repository does not back with a numbe
   project's status. Entries are never edited or removed; a wrong entry gets a later entry
   that corrects it. The log renders at `/log/`, as the "Latest" strip on the index, and as
   history on the project's page.
+- **A card's title is its page link.** The row at the foot of a card carries only links
+  that leave the site, the repository and a live demo, and never repeats the title's own
+  link. The line above the grid is what tells the reader the title is clickable; if the
+  cards' linking changes, change that line in the same edit.
 - **Card copy is laid out, not just written.** A card's tags are chips the browser wraps
   by pixel width, so every card's tags are written to fill four rows and its one-liner is
   sized so the cards finish the same height. `tests/test_card_layout.py` measures both

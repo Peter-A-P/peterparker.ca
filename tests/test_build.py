@@ -162,8 +162,12 @@ def test_an_explainer_is_the_page_until_the_repository_is_public(
     assert "Last updated" not in page, "there is no repository to date the page from"
 
     index = (out / "index.html").read_text(encoding="utf-8")
-    assert 'href="/projects/secret/"' in index and ">How it works<" in index
-    assert ">Results<" in index, "a project with a public README still offers its results"
+    assert 'href="/projects/secret/"' in index, "the card's title opens the explainer"
+    assert index.count('href="/projects/secret/"') == 1, (
+        "the title is the only link to the page; the links row does not repeat it"
+    )
+    assert "Every project name below is a link" in index, "and the index says so once"
+    assert 'href="https://github.com/o/open">Repository<' in index
     sitemap = (out / "sitemap.xml").read_text(encoding="utf-8")
     assert "https://example.org/projects/norepo/</loc>" in sitemap
 

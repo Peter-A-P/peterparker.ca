@@ -12,9 +12,9 @@
     {% endfor %}
   </ul>
   {% if project.note %}<p class="note">{{ project.note }}</p>{% endif %}
-  {% if page or project.demo %}
+  {# The title is the link to the page, so the row below carries only what leaves the site. #}
+  {% if (page and page.repo) or project.demo %}
   <p class="links">
-    {% if page %}<a href="{{ page.path }}">{% if page.repo %}Results{% else %}How it works{% endif %}</a>{% endif %}
     {% if page and page.repo %}<a href="{{ page.repo.html_url }}">Repository</a>{% endif %}
     {% if project.demo %}<a href="{{ project.demo }}">Live demo</a>{% endif %}
   </p>

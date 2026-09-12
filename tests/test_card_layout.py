@@ -135,13 +135,15 @@ def spare(row: list[str]) -> float:
 def card_height(project: Project) -> float:
     """How tall this card comes out.
 
-    A card carrying a page link ends in a links row, and one carrying a note has that on
-    its own line above it. Which projects have a page is read from the explainers here,
-    since a repository turning public is not visible offline; such a project gains a page
-    with a links row of its own, and this test then asks for the card to be levelled
-    again, which is the intention.
+    A card ends in a links row when it has something off-site to point at, the repository
+    or a live demo, and one carrying a note has that on its own line above it. The page
+    itself is reached from the card's title, so it adds no row. Whether a repository is
+    public is not visible offline, so a card is measured as it comes out once it is, which
+    is the state every card ends in. Until a repository turns public its card renders one
+    line shorter than this, about ``LINK_LINE`` px, and the levelling below is measured on
+    the end state rather than on that passing mixture.
     """
-    has_links = project.explainer is not None or project.demo is not None
+    has_links = project.repo is not None or project.demo is not None
     note_lines = lines_taken(project.note, LINK_SIZE, INTER) if project.note else 0
     rows = [
         TOP_ROW,
