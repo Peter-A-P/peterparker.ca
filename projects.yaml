@@ -264,8 +264,9 @@ projects:
     themes: [grounded, agents]
     slug: department-news-digest
     name: Department News Digest
-    status: planned
+    status: building
     repo: Peter-A-P/department-news-digest
+    explainer: content/14-department-news-digest.md
     technical_line: >-
       multi-source ingestion · cited summarisation · DuckDB storage ·
       RSS, GDELT, Reddit and Bluesky · per-audience relevance ranking ·
@@ -315,3 +316,10 @@ log:
       The repository is public with its numbers: ten adaptive questions rank a panel of
       150 models as well as 127 randomly chosen ones, and the whole method replicates on
       a second bank of 400 models built from a different source.
+  - date: 2026-09-12
+    project: "14"
+    status: building
+    note: >-
+      Reading the sources, collapsing the duplicates and grouping the day's stories are
+      built, and no source is fetched until its terms have been read and recorded with the
+      date.
