@@ -135,15 +135,14 @@ def spare(row: list[str]) -> float:
 def card_height(project: Project) -> float:
     """How tall this card comes out.
 
-    A card ends in a links row when it has something off-site to point at, the repository
-    or a live demo, and one carrying a note has that on its own line above it. The page
-    itself is reached from the card's title, so it adds no row. Whether a repository is
-    public is not visible offline, so a card is measured as it comes out once it is, which
-    is the state every card ends in. Until a repository turns public its card renders one
-    line shorter than this, about ``LINK_LINE`` px, and the levelling below is measured on
-    the end state rather than on that passing mixture.
+    A card ends in a links row only when the project has a live demo, the one link a card
+    still carries, because a demo is something to use rather than read. Everything else is
+    reached through the title: the page, and the repository the page links. A card
+    carrying a note has that on its own line above it. So a card with a demo runs one line
+    taller than its neighbours, about ``LINK_LINE`` px, and the tolerance below is what
+    says that is still level enough.
     """
-    has_links = project.repo is not None or project.demo is not None
+    has_links = project.demo is not None
     note_lines = lines_taken(project.note, LINK_SIZE, INTER) if project.note else 0
     rows = [
         TOP_ROW,

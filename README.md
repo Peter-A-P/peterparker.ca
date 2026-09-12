@@ -20,9 +20,9 @@ Live at https://peterparker.ca.
   links in a README are rewritten to open on GitHub. Raw HTML in a README is escaped;
   the site ships no JavaScript.
 - On the index, a project's name is the link to its page, and a line above the grid says
-  so, because not every reader tries clicking a heading. The row at the foot of a card
-  carries only links that leave the site: the repository, and a live demo where there is
-  one. Nothing there repeats the title's link.
+  so, because not every reader tries clicking a heading. A card repeats nothing that page
+  already holds, so it carries no link of its own except a live demo where there is one:
+  the repository is linked from the page, beside the status and the date it last moved.
 - A project may name an `explainer:`, a Markdown file in `content/`. It is that project's
   page until its repository is public, and the README replaces it the day it is, so the
   two are never shown together. An explainer claims no measured result and its page says

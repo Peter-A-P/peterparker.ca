@@ -166,8 +166,12 @@ def test_an_explainer_is_the_page_until_the_repository_is_public(
     assert index.count('href="/projects/secret/"') == 1, (
         "the title is the only link to the page; the links row does not repeat it"
     )
-    assert "Every project name below is a link" in index, "and the index says so once"
-    assert 'href="https://github.com/o/open">Repository<' in index
+    assert "Click a project's name to open its page" in index, "and the index says so once"
+    assert ">Repository<" not in index, (
+        "a card repeats nothing the page already carries; the repository is on the page"
+    )
+    page = (out / "projects" / "open" / "index.html").read_text(encoding="utf-8")
+    assert 'href="https://github.com/o/open">o/open<' in page, "which is where it is"
     sitemap = (out / "sitemap.xml").read_text(encoding="utf-8")
     assert "https://example.org/projects/norepo/</loc>" in sitemap
 
