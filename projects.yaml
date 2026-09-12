@@ -371,3 +371,11 @@ log:
       sixty races over forty-five courses, with every race the reader leaves out named
       alongside the reason. Nothing has been fetched yet, because the crawler refuses to
       run until the two organisations whose pages it reads have been told.
+  - date: 2026-09-12
+    project: "12"
+    status: building
+    note: >-
+      The results are in and read: ten years of them, forty-four thousand finishes, fifteen
+      thousand runners picked out of pages that carry no runner identifier at all. The first
+      measurement says a third of the people in any given race have never run one here
+      before, which is the part of the problem worth solving.
