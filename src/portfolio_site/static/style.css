@@ -108,6 +108,9 @@ h3 { font-size: 1.42rem; line-height: 1.22; }
 
 /* Hero */
 .hero { padding: 4.5rem 0 2rem; }
+/* The hero runs straight into the projects, so the two paddings do not both apply in
+   full: 2rem under the intro and 1rem over the eyebrow, not 2rem and 3rem. */
+.hero + section.block { padding-top: 1rem; }
 .hero .tagline {
   font-family: var(--serif); font-style: italic; font-weight: 400;
   font-size: clamp(1.35rem, 2.2vw, 1.7rem); line-height: 1.3;
