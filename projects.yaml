@@ -245,7 +245,7 @@ projects:
     themes: [decisioning]
     slug: finish-line-forecast
     name: Finish Line Forecast
-    status: planned
+    status: building
     repo: Peter-A-P/finish-line-forecast
     technical_line: >-
       pre-registered predictions · hierarchical model, sparse histories ·
@@ -363,3 +363,11 @@ log:
       merchants, three fraud patterns that act on the graph rather than on a single row,
       and a schedule of shifts whose live version is sealed by a hash now and published in
       July 2027, so the drift monitors cannot be tuned to it.
+  - date: 2026-09-12
+    project: "12"
+    status: building
+    note: >-
+      The archive reader is built: ten years of Newfoundland road results, one hundred and
+      sixty races over forty-five courses, with every race the reader leaves out named
+      alongside the reason. Nothing has been fetched yet, because the crawler refuses to
+      run until the two organisations whose pages it reads have been told.
