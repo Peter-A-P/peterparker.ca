@@ -241,6 +241,24 @@ projects:
       TrainingPeaks.
     note: In private use since 2025; opens with its first measured result.
 
+  - number: "12"
+    themes: [decisioning]
+    slug: finish-line-forecast
+    name: Finish Line Forecast
+    status: planned
+    repo: Peter-A-P/finish-line-forecast
+    technical_line: >-
+      pre-registered predictions · hierarchical model, sparse histories ·
+      conformal intervals by history depth · placing simulated from the field ·
+      course, heat and wind normalisation · public race results only ·
+      predictions tagged before the gun · error published after the race
+    one_liner: >-
+      Before the gun, a predicted finish time and placing for every registered runner in a
+      field of thousands, from their public race history, published in advance, with the
+      error published once the results are in. For a race director that is pacing, corral
+      and medical staffing planned from expected finish times rather than guesses; for a
+      runner it is a goal time with an honest interval instead of a hunch.
+
   - number: "13"
     themes: [grounded, agents]
     slug: grounded-email-response-drafting
@@ -323,3 +341,10 @@ log:
       Reading the sources, collapsing the duplicates and grouping the day's stories are
       built, and no source is fetched until its terms have been read and recorded with the
       date.
+  - date: 2026-09-12
+    project: "12"
+    status: planned
+    note: >-
+      Planned: a finish time and placing for every registered runner in a Newfoundland road
+      race, predicted from public results alone and published before the gun, with the
+      first live race on 2026-10-18.
