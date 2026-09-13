@@ -379,3 +379,15 @@ log:
       thousand runners picked out of pages that carry no runner identifier at all. The first
       measurement says a third of the people in any given race have never run one here
       before, which is the part of the problem worth solving.
+  - date: 2026-09-12
+    project: "12"
+    status: building
+    note: >-
+      The archive turned out to be twice the size it looked. A start list showed sixty-seven
+      runners whose first ever race was the exact year the reader began, which is the shape
+      a history makes when it has been cut off rather than when it began; the cause was that
+      the older index pages call their road section by a different name, so eight years read
+      as empty without an error. Eighteen years now: two hundred and eighty-seven races,
+      seventy-four thousand finishes, and the flagship course goes from nine editions to
+      sixteen. It did not fix the real problem. The third of every field with no history at
+      all barely moved, so those are people who have genuinely never raced here.
