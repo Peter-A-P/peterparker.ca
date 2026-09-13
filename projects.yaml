@@ -391,3 +391,17 @@ log:
       seventy-four thousand finishes, and the flagship course goes from nine editions to
       sixteen. It did not fix the real problem. The third of every field with no history at
       all barely moved, so those are people who have genuinely never raced here.
+  - date: 2026-09-13
+    project: "12"
+    status: building
+    note: >-
+      Two layers went in: how hard each course is, and what the weather on the day costs.
+      Both were meant to come from maps and physics, and both turned out to be measurable
+      from the results themselves, far more precisely. The flagship hill course is pinned to
+      a tenth of a percentage point from five thousand finishes, and the elevation figures
+      the race publishes agree with it when put through the physics, which is a better claim
+      than either on its own. The weather took two wrong answers first, one of them a null
+      that was really an artefact of counting a thirty-runner race and a four-thousand-runner
+      race equally. And the wind needed local knowledge before the data would give it up: the
+      prevailing westerly pushes one race along and holds the other back, so a single
+      wind-speed number for the whole province was measuring nothing at all.
