@@ -110,12 +110,15 @@ and the write-up says so rather than quietly comparing it anyway: the gap betwee
 meta-learner confounds the architecture with the function class underneath it.
 
 **The verdict it was included for.** Competitive, not a breakthrough. It has the best
-ranking score on two of the five datasets and is mid-table on the rest. It is also the only
-method whose realised gain on one dataset fails to separate from zero where others manage
-it. Two caveats hold that back from being a win: the comparison is not clean for the reason
-above, and it runs at its published defaults where the others get a tuning search, which
-sounds like a handicap until you notice the project also measured that the tuning search
-buys nothing. The write-up that ships with the repository says where every method breaks,
+ranking score on three of the five datasets, sits fourth of seven on another, and is last of
+seven on the fifth, where its realised gain is the weakest of the modelled rankings and its
+interval covers zero while the five meta-learners' just exclude it. On the one dataset where
+individual truth exists and it ranks best, it is also among the worse estimators of the effect
+itself, which is the ordinary reminder that ranking well and estimating well are different
+jobs. Two caveats hold the wins back, and they pull opposite ways: the comparison is not clean,
+for the reason above, but the handicap is smaller than it looks, because it runs at published
+defaults where the others get a tuning search and the project separately measured that the
+tuning search buys nothing. The write-up that ships with the repository says where every method breaks,
 which is usually the more useful half of a comparison.
 
 ## The trap the project is built around
