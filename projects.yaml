@@ -74,7 +74,7 @@ projects:
     themes: [llm-eval, compliance]
     slug: ai-release-gate
     name: AI Release Gate
-    status: building
+    status: shipped
     repo: Peter-A-P/ai-release-gate
     explainer: content/03-ai-release-gate.md
     technical_line: >-
@@ -93,7 +93,7 @@ projects:
     themes: [compliance, platform]
     slug: compliant-ai-gateway
     name: Compliant AI Gateway
-    status: building
+    status: shipped
     repo: Peter-A-P/compliant-ai-gateway
     explainer: content/04-compliant-ai-gateway.md
     technical_line: >-
@@ -465,3 +465,28 @@ log:
       cannot be put down to learning across series or to the calendar. One number had to be
       taken back along the way. The cost of a fit was first measured while other work shared
       the machine, and came out at four times its real figure of about seven seconds.
+  - date: 2026-09-14
+    project: "04"
+    status: shipped
+    note: >-
+      The library every other project's model calls go through is public and measured. Its
+      own cost per call is two and a half milliseconds at the median and under five at the
+      ninety-fifth, over a thousand calls with intervals on both. Six hundred calls were put
+      through faults deliberately, including killing the process part-way through one, and
+      every one of them still left a row in the ledger. Seventeen calls were aimed past a
+      spend cap and none of them reached a vendor. Five hundred pass-through calls came back
+      byte for byte identical. The number that matters most for the cost claim is the one
+      still missing: the ledger checked against the actual vendor invoices, which has to wait
+      for October because the invoices do. Three hyperscaler adapters are still to come, and
+      the redaction, residency and audit half of this project is May 2027.
+  - date: 2026-09-14
+    project: "03"
+    status: shipped
+    note: >-
+      The repository is public with its first month of the record in it, and every raw
+      response committed alongside, so any figure in it can be regenerated from disk without
+      calling a vendor or spending anything. Opening it up also turned the lights on: three
+      commits had been failing continuous integration unnoticed, because the check being run
+      by hand covered the library and the one in the pipeline covered the tests as well. The
+      twelve months of drift measurement start from here, so this is a beginning rather than
+      an ending, but the thing a stranger can now check exists.
