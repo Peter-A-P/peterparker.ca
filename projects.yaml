@@ -543,15 +543,19 @@ log:
     status: shipped
     note: >-
       One more turn of the same screw, and this one is about procurement rather than
-      engineering. The two ways to run these models differ exactly where compliance cares:
-      one runs on the cloud provider's own infrastructure and keeps the request inside it, the
-      other runs on the model vendor's infrastructure and does not. The first is the stronger
-      position and a new account cannot have it, because the capacity is rationed per customer
-      and a new one is allotted none; asking for more is a form and a wait. The second deploys
-      in a minute. So the default available to anyone starting today is the weaker one, and a
-      proof of concept that takes the default and then describes itself as keeping data inside
-      the cloud provider would be wrong without anyone lying. That is the failure this project
-      exists to make visible, found in its own setup rather than in someone else's.
+      engineering. Nothing would deploy at all: every attempt came back saying there was
+      insufficient capacity. The reason is not capacity. Read the provider's own quota table
+      rather than its error message and the rule is that a trial or credit-funded account is
+      allotted exactly zero of these models, of every size and every configuration, while an
+      account with a payment method on file is given a working allowance and has to ask
+      nobody. The message says the deployment is too big for the region. The truth is that the
+      platform has declined the customer, and it is invariant to every knob the message invites
+      you to turn: region, model, size, configuration. An evaluation that stops at the error
+      concludes the wrong thing about why, which is worth knowing before a pilot is scheduled
+      around it. Correcting an entry published here a few hours earlier, which had read the
+      same error message and reached a tidier and wrong conclusion. Inferring from an error
+      instead of reading the published table is the exact failure this project keeps finding in
+      other people's cost claims, and it is recorded rather than quietly edited out.
   - date: 2026-09-14
     project: "03"
     status: shipped
