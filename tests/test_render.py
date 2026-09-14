@@ -98,3 +98,35 @@ def test_a_comment_inside_a_fence_is_content_and_survives() -> None:
 def test_stripping_comments_does_not_stop_raw_html_being_escaped() -> None:
     html = render_readme("<!-- x -->\n\n<script>alert(1)</script>\n", REPO, "main")
     assert "<script>" not in html and "&lt;script&gt;" in html
+
+
+def test_markers_between_the_separator_and_the_rows_do_not_split_the_table() -> None:
+    """Where the markers actually sit in 02's and 03's READMEs, which is not where the test
+    above put them.
+
+    The monthly job rewrites only the rows, so the markers go between the header separator
+    and the first row rather than around the whole table. Stripping a marker used to leave
+    its line behind as a blank line, and a blank line closes a table, so the page showed a
+    header with no body followed by the rows as a paragraph of pipes. Every results table on
+    the site was broken this way, and GitHub rendered the same files correctly, so the source
+    looked fine.
+    """
+    readme = (
+        "## Result\n\n"
+        "| Run | Arm | Accuracy |\n"
+        "|---|---|---|\n"
+        "<!-- drift:start -->\n"
+        "| 2026-09 | anthropic-alias | 95.0% (92.9% to 96.9%, n = 420) |\n"
+        "| 2026-09 | openai-snapshot | 94.8% (92.6% to 96.9%, n = 420) |\n"
+        "<!-- drift:end -->\n\n"
+        "After the table.\n"
+    )
+    html = render_readme(readme, REPO, "main")
+    assert "drift:start" not in html and "drift:end" not in html
+    # Both rows are table cells, not a stray paragraph of pipes.
+    assert "<td>anthropic-alias</td>" in html
+    assert "<td>openai-snapshot</td>" in html
+    assert "<tbody>" in html
+    assert "<p>| 2026-09" not in html
+    assert html.count("<table>") == 1
+    assert "After the table." in html
