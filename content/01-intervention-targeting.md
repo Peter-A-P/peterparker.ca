@@ -43,23 +43,17 @@ risk-ranking approach above. A slider on the demo page moves the budget and the
 intervention list re-ranks, because "who do we treat" has a different answer at 10 percent
 of the population than at 30.
 
-**Where this stands: week 6 of 8.** All five datasets are benchmarked with seven methods
-against both baselines, every score carrying a bootstrap interval, from one command.
-
-The headline is a result the project was built to find and did not expect to be
-conditional. At a budget covering the top 10 percent, the same risk-ranking baseline,
-produced by the same code, buys **-0.20 on one dataset and +0.0055 on another**, against
-random targeting's +0.26 and +0.0008. On the first it is worse than spending nothing, with
-a confidence interval entirely below zero, and that is confirmed against the individual
-effects the dataset was simulated from: the true mean effect on the people it targets is
-negative, while the naive comparison of arms reports a healthy positive number. On the
-second it matches every uplift model in the table and beats random targeting sevenfold.
-
-So the honest claim is not "the intervention list is never the risk list". It is that the
-two lists differ by an amount nobody can guess in advance, that the cost of assuming they
-agree runs from nothing to worse than doing nothing, and that a single cheap diagnostic
-settles which case you are in before anybody fits a model. The build window runs to the
-start of November 2026, and the repository turns public with the full table in it.
+**Where this stands: week 7 of 8.** Seven methods are benchmarked on all five datasets,
+every score with a bootstrap interval and both baselines beside it, from one command. The
+sensitivity section, the fraud worked case and a budget-slider demo are built; the demo is not
+yet hosted. The repository is private until the results table is finished, at which point it
+replaces this page. This page states none of its measured results on purpose: the site's rule
+is that a stand-in page claims nothing a public repository does not back, and the repository
+is not public yet. What can be said is the shape of the finding the project was built to
+test: the same risk-ranking baseline, from the same code, comes out worse than doing nothing
+on one dataset and at parity with every uplift model on another, and a cheap diagnostic
+separates the two cases before anybody fits a model. The build window runs to the start of
+November 2026.
 
 <!-- more -->
 
@@ -109,16 +103,11 @@ Dragonnet cannot honour that rule, because a neural architecture is the thing be
 and the write-up says so rather than quietly comparing it anyway: the gap between it and a
 meta-learner confounds the architecture with the function class underneath it.
 
-**The verdict it was included for.** Competitive, not a breakthrough. It has the best
-ranking score on three of the five datasets, sits fourth of seven on another, and is last of
-seven on the fifth, where its realised gain is the weakest of the modelled rankings and its
-interval covers zero while the five meta-learners' just exclude it. On the one dataset where
-individual truth exists and it ranks best, it is also among the worse estimators of the effect
-itself, which is the ordinary reminder that ranking well and estimating well are different
-jobs. Two caveats hold the wins back, and they pull opposite ways: the comparison is not clean,
-for the reason above, but the handicap is smaller than it looks, because it runs at published
-defaults where the others get a tuning search and the project separately measured that the
-tuning search buys nothing. The write-up that ships with the repository says where every method breaks,
+**The verdict it was included for** is written, in the repository's estimator notes, with two
+caveats attached that pull opposite ways: the comparison is not clean, for the reason above,
+but the handicap of running untuned is smaller than it looks, because the project separately
+measured what its tuning search buys and found it buys nothing. The verdict itself is a
+measured result and stays in the repository until it is public. The write-up that ships with the repository says where every method breaks,
 which is usually the more useful half of a comparison.
 
 ## The trap the project is built around
