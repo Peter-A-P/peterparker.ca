@@ -45,8 +45,8 @@ of the population than at 30.
 
 **Where this stands: week 7 of 8.** Seven methods are benchmarked on all five datasets,
 every score with a bootstrap interval and both baselines beside it, from one command. The
-sensitivity section, the fraud worked case and a budget-slider demo are built; the demo is not
-yet hosted. The repository is private until the results table is finished, at which point it
+sensitivity section and a budget-slider demo are built, and the fraud worked case is built and
+measured; the demo is not yet hosted. The repository is private until the results table is finished, at which point it
 replaces this page. This page states none of its measured results on purpose: the site's rule
 is that a stand-in page claims nothing a public repository does not back, and the repository
 is not public yet. What can be said is the shape of the finding the project was built to
