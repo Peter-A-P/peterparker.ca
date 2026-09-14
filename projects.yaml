@@ -173,8 +173,8 @@ projects:
     repo: Peter-A-P/capacity-planning-forecaster
     technical_line: >-
       hierarchical probabilistic forecasting · skill against seasonal naive ·
-      adaptive conformal intervals · Nixtla statistical baselines ·
-      N-HiTS and PatchTST · CRPS and pinball loss · MinT reconciliation ·
+      adaptive conformal intervals · LightGBM, N-HiTS and TimesFM ·
+      statistical baselines · CRPS and pinball loss · MinT reconciliation ·
       staffing cost against an oracle · coverage held through a shift
     one_liner: >-
       Forecasts demand (emergency-department arrivals, call volume, orders) with uncertainty
@@ -405,3 +405,16 @@ log:
       race equally. And the wind needed local knowledge before the data would give it up: the
       prevailing westerly pushes one race along and holds the other back, so a single
       wind-speed number for the whole province was measuring nothing at all.
+  - date: 2026-09-13
+    project: "08"
+    status: building
+    note: >-
+      The statistical models are measured over nine hundred and sixty-four weekly forecasts
+      spanning eighteen years. The best of them, ETS, beats the seasonal naive baseline by
+      eighteen percent at the city and a quarter at the dispatch areas, and beats Theta by a
+      margin so small that only comparing the two forecast by forecast showed it was real.
+      MSTL was the surprise: its ranges held seventy to seventy-eight percent of outcomes
+      where they promised ninety, and the cause is in the library, which adds the seasonal
+      pattern to every quantile as a fixed amount and so never counts the uncertainty in it.
+      A global LightGBM model is built next to them, to tell how much of any later gain comes
+      from learning across series rather than from deep learning.
