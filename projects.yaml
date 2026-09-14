@@ -481,6 +481,49 @@ log:
       for October because the invoices do. Three hyperscaler adapters are still to come, and
       the redaction, residency and audit half of this project is May 2027.
   - date: 2026-09-14
+    project: "04"
+    status: shipped
+    note: >-
+      The cost record has now been checked, for the first time, against something other than
+      itself. Seventy thousand calls from three projects were merged into one ledger and came
+      to sixty-one US dollars, and for the thirty-five thousand of them belonging to the
+      release-gate project that total agrees with that project's own separate accounting to
+      within a ten-thousandth of a cent. That is not the vendor invoices, which still have to
+      wait for October because the invoices do, but it is the step most likely to go wrong
+      quietly and it did not. Nine calls in the month are recorded as uncosted, because the
+      price of that model was not known at the moment they were made and the rule is that an
+      unknown price is left blank rather than guessed. Checking the work also turned up a
+      small bug in it: gathering the ledgers by hand can silently drop rows that the database
+      has committed but not yet written to its main file, which would have looked like a
+      vendor overcharging rather than a mistake in the method.
+  - date: 2026-09-14
+    project: "04"
+    status: shipped
+    note: >-
+      A second thing that did not work is published, with the evidence. The idea was to price
+      a call from a token count worked out on your own machine, instead of waiting for the
+      number the vendor sends back, which would let a spend limit be exact rather than
+      cautious. Measured over sixteen thousand real calls it fails in the way that is hardest
+      to notice: the monthly total comes out almost exactly right while the typical single
+      call is wrong by a third, because over-estimates and under-estimates cancel out. A
+      spend limit is checked one call at a time, so a method that is right on average and
+      wrong on every row is no use for the thing the number is actually for. Even the vendor's
+      own tokenizer, run against that vendor, is consistently short.
+  - date: 2026-09-14
+    project: "04"
+    status: shipped
+    note: >-
+      Bulk work now costs about half what it did on three more vendors. Sending many requests
+      together at a discount previously worked for one vendor only, so a sister project sent
+      nine thousand of its calls the cheap way and eighteen thousand at full price for want of
+      the plumbing. Two more model platforms, Microsoft's and Google's, also have adapters
+      written against their published interfaces, though neither has been called yet because
+      neither account exists. Writing them settled a question the compliance half of this
+      project rests on, and the honest answer is narrower than the phrase "data residency"
+      suggests: you can have a model deployed in Canada, but guaranteed Canadian processing is
+      usually not on offer at any price. The record says where a request was sent, which is
+      the part a gateway controls, and it is careful not to imply the other thing.
+  - date: 2026-09-14
     project: "03"
     status: shipped
     note: >-
