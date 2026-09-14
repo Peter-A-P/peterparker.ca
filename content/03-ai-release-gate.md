@@ -47,12 +47,14 @@ regressed cannot be merged. Not "the score went down", which is noise most of th
 but a one-sided statistical test against a tolerance the team sets, with an audit trail of
 every decision that a regulator could read.
 
-**Where this stands in September 2026: in progress.** The runner, the graders, the
-statistics and the monthly job are built and tested. The frozen question set is being
-written now, and the first official run is targeted for 27 September 2026. Nothing is
-measured yet, and the results table in the repository is empty until it is. The gate itself
-is built between December 2026 and January 2027, and the repository becomes public when it
-has numbers in it.
+**Where this stands in September 2026: the record has started.** The question set is frozen
+and the first official run completed on 13 September 2026, two weeks ahead of its slot:
+16,800 calls to eight model configurations across four vendors, for US$19.53. The noise
+floor that the rest of this depends on is now measured rather than assumed, and it runs from
+0.2% to 5.0% depending on the model, which is the bar every later claim of drift has to
+clear. A second run a few days later gives the between-run baseline, and the twelve months
+begin from there. The gate itself is built between December 2026 and January 2027, and the
+repository opens to the public once its first record has been checked over.
 
 <!-- more -->
 
@@ -78,8 +80,8 @@ checkpoint hash: a file whose contents cannot change. Anything that moves in tha
 infrastructure, not intelligence. A vendor's model has to clear both floors before the
 record says it drifted.
 
-A third check is built into the calendar. The first two full runs are four days apart, at
-the end of September and the start of October 2026. Four days is not enough time for a
+A third check is built into the calendar. The first two full runs are a few days apart, in
+mid-September 2026. A few days is not enough time for a
 vendor to change anything, so whatever gap appears between those two runs is a between-run
 noise estimate, measured before the record properly begins. It anchors every drift call in
 the twelve months that follow.
@@ -144,11 +146,19 @@ question is not an edit; it creates a new version of the set, which is run along
 one for a bridging month. When a result looks wrong, the rule is that the question set does
 not move: a wrong-looking result is a finding.
 
-The record is append-only. Nothing in it is ever rewritten or deleted, and a bad run is
-marked as bad rather than removed. Because every raw response is stored, one command
-re-grades a whole month from disk without calling any vendor, which does two jobs at once. A
-stranger can verify every published figure for free, and a grader bug discovered in month
-eight can be corrected across all eight months instead of invalidating them.
+The record is append-only as it is written: nothing is deleted, and a bad run is marked as
+bad rather than removed. Because every raw response is stored, one command re-grades a whole
+month from disk without calling any vendor, which does two jobs at once. A stranger can
+verify every published figure for free, and a grader bug discovered in month eight can be
+corrected across all eight months instead of invalidating them.
+
+Correcting a grader is the one thing that does change a stored grade, and it is the reason a
+report has to say which grader produced it. Every record carries a hash of the grading code
+behind its verdict; a report names that generation, and says so loudly rather than quietly
+averaging if a month somehow holds more than one. Otherwise a grader improvement in March
+would silently move the numbers published in September, and a drift record that cannot
+separate a change in the model from a change in the ruler is not measuring anything. Nothing
+is lost to a correction either way, because every earlier state stays in version control.
 
 ## From a record to a gate
 

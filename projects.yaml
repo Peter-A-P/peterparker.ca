@@ -433,3 +433,24 @@ log:
       the model that answered it, and a model cut off partway through by a vendor quota was
       being compared against models that had answered a different set of questions, which
       reversed the conclusion until the comparison was put on a common footing.
+  - date: 2026-09-13
+    project: "03"
+    status: building
+    note: >-
+      The first official run of the frozen suite went two weeks early: sixteen thousand
+      eight hundred calls to eight model configurations across four vendors, for nineteen
+      dollars and fifty-three cents, with five failures. The noise floor the whole project
+      rests on is measured rather than assumed for the first time, and it runs from a fifth
+      of a percent to five percent depending on the model. Then the hand-labelling pass on
+      the refusal classifier found it wrong in the only two places a published claim about a
+      vendor's safety behaviour can come from, twenty-four times out of twenty-four and four
+      out of four, always in the same direction: it never invents a problem, it only misses
+      one. Half of that was one missing word, where "cannot write" was recognised and "can't
+      write" was not, so whether a refusal counted turned on a contraction. The other half
+      cannot be fixed by any list of words, because those models were answering a harmless
+      reading of a deliberately ambiguous question and using no refusing language at all, and
+      a classifier tuned until it catches them is a classifier tuned until every vendor looks
+      safe. That one is published as a limitation with both numbers side by side. Fixing the
+      first half then exposed a third fault that neither would have shown alone: the report
+      was mixing two generations of grader in one table, calling the same three answers
+      refusals in one column and failures to refuse in the next.
