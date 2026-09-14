@@ -75,6 +75,11 @@ not a rule broken in a code review. It is a run that fetches nothing and says wh
 Article text is kept thirty days and never republished. A digest shows a summary, a link,
 and quotes of at most twenty-five words.
 
+The rule earned its keep on the first day it was switched on. Until the terms for a source
+were read and dated, the software refused to fetch it, so the first live run made eleven
+refusals and sent zero requests. That is not a delay in the project; it is the only version
+of that promise worth making.
+
 ## Nothing is sent
 
 The system publishes a page and writes a draft file. There is no email path, no chat
@@ -85,13 +90,17 @@ of whether a piece of writing goes to a person stays with a person.
 
 **Where this stands in September 2026: in progress, with nothing measured.** The first
 week's work is built and tested: reading the sources, storing them, collapsing the
-duplicates and grouping the day's stories. The ranking, the cited summaries, the quote
-verifier and the daily hosted job follow, and then a week of items is labelled by hand to
-produce the accuracy numbers. No digest has been produced yet and no number has been
-measured, so there is nothing here to check and no results table pretending otherwise.
-There is one small consequence of the terms rule worth reporting: on the day the first
-week's code was finished, not one source had been fetched, because not one set of terms
-had been read and recorded yet. That is the software working.
+duplicates and grouping the day's stories, across four example audiences. The ranking, the
+cited summaries, the quote verifier and the daily hosted job follow, and then a week of
+items is labelled by hand to produce the accuracy numbers. No digest has been produced yet
+and no number has been measured, so there is nothing here to check and no results table
+pretending otherwise.
+
+The fourth audience is regional: Newfoundland and Labrador, added because the other three
+are national or big-city and the claim being tested is that a small regional team gets the
+same system from the same code. It is also the harder ranking problem, with fewer sources,
+less duplication to collapse, and a pool where almost everything is local and little of it
+matters.
 
 <!-- more -->
 
@@ -120,6 +129,29 @@ One audience is labelled twice, by two different people, and the level of agreem
 them is published too. That figure is uncomfortable and it belongs in public. "Relevant" is
 a judgement, not a fact, and a reader is entitled to know how much two reasonable people
 disagreed about it before reading how well a machine matched them.
+
+## What happened when the sources were finally switched on
+
+Of the thirteen feeds originally configured, six did not work. Four returned a plain 404.
+Two returned a perfectly healthy 200 containing an ordinary web page, which a feed parser
+reads as a feed with no entries, and which a daily job counts as a source in good standing
+while the digest quietly gets shorter. That second failure is the one worth building
+against, so the project grew a command that fetches every configured feed once and refuses
+to call a 200 with no entries a success.
+
+The more interesting failure was a public broadcaster whose feeds timed out every time. It
+was written off as unreachable. That was wrong. Holding everything else constant and
+changing only the line that says who is asking, the feeds returned in a third of a second
+for a plain name and version, and the connection was reset whenever the name included a web
+address. The `Name/Version (+https://...)` form is the convention crawlers use to say who
+they are and how to be contacted, and on that site it is the one thing that gets the request
+dropped, while a client that volunteers nothing about itself is served without complaint.
+
+The project now sends its name, version and purpose and no address, which is still true and
+still identifies it, and a publisher who wants it to stop still says so in the ordinary way,
+in the file where such things are said, and it is obeyed. The episode is recorded because it
+is a small, exact example of something general: a rule of thumb aimed at badly behaved
+automation, applied bluntly, falls hardest on the automation that was trying to behave.
 
 ## Grouping stories is two different problems wearing one coat
 
