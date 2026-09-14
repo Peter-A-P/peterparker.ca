@@ -41,7 +41,20 @@ def split_more(markdown: str) -> tuple[str, str]:
     return intro.strip(), rest.strip()
 
 
+LINE_COMMENT_RE = re.compile(r"^[ \t]*<!--.*?-->[ \t]*(?:\r?\n|\Z)", re.S | re.M)
+"""A comment occupying a whole line, taken together with its line break.
+
+Removing the comment but leaving the line behind turns it into a blank line, and a blank
+line ends a Markdown table exactly as surely as a comment does. That broke the results
+table on every project page: a README writes its rows between markers, the markers sit
+between the header separator and the first row, and the page showed a two-row table with no
+body followed by the rows as a paragraph of pipes. GitHub renders the same file correctly,
+so there was nothing wrong to see at the source.
+"""
+
 COMMENT_RE = re.compile(r"<!--.*?-->", re.S)
+"""Any comment left over, such as one sharing its line with real text."""
+
 FENCES = ("```", "~~~")
 
 
@@ -73,8 +86,14 @@ def strip_html_comments(markdown: str) -> str:
     reaches it is printed on the page as text. READMEs use comments as machine markers:
     project 02 writes its results table between `<!-- mselect:results:start -->` and its
     end marker, and a reader should see neither the marker nor an escaped version of it.
+
+    A marker on a line of its own takes the line with it, or the blank line left behind ends
+    the very table it was marking. See ``LINE_COMMENT_RE``.
     """
-    return "".join(text if code else COMMENT_RE.sub("", text) for code, text in _segments(markdown))
+    return "".join(
+        text if code else COMMENT_RE.sub("", LINE_COMMENT_RE.sub("", text))
+        for code, text in _segments(markdown)
+    )
 
 
 def _is_relative(href: str) -> bool:
