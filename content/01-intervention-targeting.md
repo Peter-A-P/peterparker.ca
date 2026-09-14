@@ -43,11 +43,23 @@ risk-ranking approach above. A slider on the demo page moves the budget and the
 intervention list re-ranks, because "who do we treat" has a different answer at 10 percent
 of the population than at 30.
 
-**Where this stands: week 1 of 8.** The first of the estimators is benchmarked on two of
-the five datasets, against both baselines, every score carrying a bootstrap interval. Those
-numbers are real and reproducible from one command; they are not placeholders, and the
-table is not finished either. The build window runs to the start of November 2026, and the
-repository turns public with the full table in it.
+**Where this stands: week 6 of 8.** All five datasets are benchmarked with seven methods
+against both baselines, every score carrying a bootstrap interval, from one command.
+
+The headline is a result the project was built to find and did not expect to be
+conditional. At a budget covering the top 10 percent, the same risk-ranking baseline,
+produced by the same code, buys **-0.20 on one dataset and +0.0055 on another**, against
+random targeting's +0.26 and +0.0008. On the first it is worse than spending nothing, with
+a confidence interval entirely below zero, and that is confirmed against the individual
+effects the dataset was simulated from: the true mean effect on the people it targets is
+negative, while the naive comparison of arms reports a healthy positive number. On the
+second it matches every uplift model in the table and beats random targeting sevenfold.
+
+So the honest claim is not "the intervention list is never the risk list". It is that the
+two lists differ by an amount nobody can guess in advance, that the cost of assuming they
+agree runs from nothing to worse than doing nothing, and that a single cheap diagnostic
+settles which case you are in before anybody fits a model. The build window runs to the
+start of November 2026, and the repository turns public with the full table in it.
 
 <!-- more -->
 
@@ -88,13 +100,23 @@ build an effect estimate out of ordinary prediction models, differing in how the
 the missing half of the data and in how they behave when the treated group is much smaller
 than the untreated one. One is Dragonnet, a neural network written in PyTorch, included
 deliberately as a test of whether the extra machinery earns its keep on problems this
-size, with a stated verdict either way. A causal forest, which splits on differences in
-effect rather than differences in outcome, is a stretch goal.
+size. A causal forest, which splits on differences in effect rather than differences in
+outcome, is a stretch goal.
 
-All of them sit on the same LightGBM base learner, so differences in the table are
-differences between the methods rather than differences between their engines. The
-write-up that ships with the repository says where each one breaks, which is usually the
-more useful half of a comparison.
+The five meta-learners sit on the same LightGBM base learner, so differences between those
+columns are differences between the methods rather than differences between their engines.
+Dragonnet cannot honour that rule, because a neural architecture is the thing being tested,
+and the write-up says so rather than quietly comparing it anyway: the gap between it and a
+meta-learner confounds the architecture with the function class underneath it.
+
+**The verdict it was included for.** Competitive, not a breakthrough. It has the best
+ranking score on two of the five datasets and is mid-table on the rest. It is also the only
+method whose realised gain on one dataset fails to separate from zero where others manage
+it. Two caveats hold that back from being a win: the comparison is not clean for the reason
+above, and it runs at its published defaults where the others get a tuning search, which
+sounds like a handicap until you notice the project also measured that the tuning search
+buys nothing. The write-up that ships with the repository says where every method breaks,
+which is usually the more useful half of a comparison.
 
 ## The trap the project is built around
 
@@ -125,11 +147,23 @@ analyst an hour and an automated message costs a fraction of a cent.
 
 On data that was not randomised, targeting rests on an assumption that everything relevant
 was measured. That assumption is never quite true, and it cannot be tested from the data
-itself. Rather than assume it away, the project quantifies its fragility: how strong a
-hidden factor would have to be before the targeting decision changes. The number reported
-is the point at which the decision flips, not the point at which statistical significance
-flips, because the decision is what the budget holder is actually buying. This does not
-remove the assumption, and the repository says so plainly in its limitations.
+itself. Rather than assume it away, the project quantifies its fragility with three
+devices, and is careful about what each one answers. One asks how strongly a hidden factor
+would have to be associated with both the treatment and the outcome to move the measured
+effect to zero, which is the point at which the decision flips. One asks how far it would
+have to shift the odds of being treated before the result stops being statistically
+distinguishable from nothing, which is a weaker question and is reported as such rather
+than conflated with the first. The third runs the whole pipeline on a quantity the
+treatment cannot possibly have changed, where the right answer is zero and anything else is
+the machinery inventing an effect.
+
+Only the third can fail, and on these five datasets none of them do, which the write-up
+reports as a limitation rather than as reassurance: two of the datasets were randomised, so
+there is nothing hidden to find, and the confounding in the others runs entirely through
+variables that were recorded. A device that cannot fail on the data you have is not
+evidence that it works. The only evidence offered is a test that plants a hidden confounder
+on purpose and requires the check to catch it. None of this removes the assumption, and the
+repository says so plainly in its limitations.
 
 ## Why one command matters
 
