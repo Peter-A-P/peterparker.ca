@@ -524,6 +524,35 @@ log:
       usually not on offer at any price. The record says where a request was sent, which is
       the part a gateway controls, and it is careful not to imply the other thing.
   - date: 2026-09-14
+    project: "04"
+    status: shipped
+    note: >-
+      Then the account was actually opened, and the residency answer got narrower again. On
+      Microsoft's platform there is no Canadian option for these models at all: a resource
+      created in Canada Central offers none of them to deploy, and the vendor's own region
+      table agrees, with every row blank against both Canadian regions. The narrower setting
+      that keeps processing inside one country exists only for the United States. Microsoft's
+      deployment screen states the underlying distinction more plainly than any policy
+      document does, and it is worth quoting: data might be processed globally, outside the
+      resource's geography, but data storage remains within it. Processing is global; storage
+      is regional. A rule written about where data is stored can be satisfied. The same rule
+      written about where it is processed cannot, and the two are routinely written as if they
+      were one obligation.
+  - date: 2026-09-14
+    project: "04"
+    status: shipped
+    note: >-
+      One more turn of the same screw, and this one is about procurement rather than
+      engineering. The two ways to run these models differ exactly where compliance cares:
+      one runs on the cloud provider's own infrastructure and keeps the request inside it, the
+      other runs on the model vendor's infrastructure and does not. The first is the stronger
+      position and a new account cannot have it, because the capacity is rationed per customer
+      and a new one is allotted none; asking for more is a form and a wait. The second deploys
+      in a minute. So the default available to anyone starting today is the weaker one, and a
+      proof of concept that takes the default and then describes itself as keeping data inside
+      the cloud provider would be wrong without anyone lying. That is the failure this project
+      exists to make visible, found in its own setup rather than in someone else's.
+  - date: 2026-09-14
     project: "03"
     status: shipped
     note: >-
