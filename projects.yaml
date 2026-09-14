@@ -544,18 +544,21 @@ log:
     note: >-
       One more turn of the same screw, and this one is about procurement rather than
       engineering. Nothing would deploy at all: every attempt came back saying there was
-      insufficient capacity. The reason is not capacity. Read the provider's own quota table
-      rather than its error message and the rule is that a trial or credit-funded account is
-      allotted exactly zero of these models, of every size and every configuration, while an
-      account with a payment method on file is given a working allowance and has to ask
-      nobody. The message says the deployment is too big for the region. The truth is that the
-      platform has declined the customer, and it is invariant to every knob the message invites
-      you to turn: region, model, size, configuration. An evaluation that stops at the error
-      concludes the wrong thing about why, which is worth knowing before a pilot is scheduled
-      around it. Correcting an entry published here a few hours earlier, which had read the
-      same error message and reached a tidier and wrong conclusion. Inferring from an error
-      instead of reading the published table is the exact failure this project keeps finding in
-      other people's cost claims, and it is recorded rather than quietly edited out.
+      insufficient capacity. Asking the platform's own interface for the actual numbers, rather
+      than reading its error message, gave the answer in one command. The account has nineteen
+      separate allowances for this vendor's models in that region and every one of them is
+      zero, while a hundred and fifty-nine allowances for other models in the same region and
+      the same account are perfectly healthy. The published documentation says an account of
+      this type is granted a working allowance by default. It is not. The number it describes
+      is a ceiling that may be requested, not an allowance that arrives, and the request is
+      reviewed case by case with no stated wait and no guarantee. So there is a gate before the
+      first call that is neither technical nor priced, which is the sort of thing that belongs
+      in a go-live plan rather than a troubleshooting note. Three earlier readings of this
+      failure, two of them published here, were wrong: the error invites you to change the
+      region, the configuration or the account, and none of those is the cause. Inferring from
+      an error message instead of looking up the number is the exact failure this project
+      exists to catch in other people's claims, and it happened three times here in a day,
+      which is why the command that settles it is now written down beside the answer.
   - date: 2026-09-14
     project: "03"
     status: shipped
