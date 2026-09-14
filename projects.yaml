@@ -588,3 +588,20 @@ log:
       Static Web App beside this site's, published from the laptop with no workflow or
       credential in the repository. The repository itself stays private until the results
       table is finished.
+  - date: 2026-09-14
+    project: "09"
+    status: building
+    note: >-
+      The real fraud data now runs through the same pipeline as the synthetic stream, and
+      getting it there took more than a loader. The file has no merchant, and on measurement no
+      device either: the columns that looked like one describe a browser and screen shared by
+      thousands of shoppers, so a device feature built on them would have counted how popular a
+      browser is. No column is a card, so a card is pieced together from its issuer, billing
+      region and the day the account opened. Six of the sixteen features survive on real data,
+      and the point-in-time test passes on all of them across 590,540 transactions. The leak it
+      caught last week, remeasured with a card that is actually a card, would have corrupted 65
+      rows, where grouping by the obvious but wrong card column had put the exposure at 312, and
+      the first attempt at that remeasurement overcounted too, by comparing every transaction in
+      a burst with the last one. The local
+      streaming stack ran for the first time and failed twice before it worked: once on a
+      start-up setting the broker rejects, and once on every restart after the first.
