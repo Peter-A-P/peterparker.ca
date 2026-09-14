@@ -490,3 +490,38 @@ log:
       by hand covered the library and the one in the pipeline covered the tests as well. The
       twelve months of drift measurement start from here, so this is a beginning rather than
       an ending, but the thing a stranger can now check exists.
+  - date: 2026-09-11
+    project: "01"
+    status: building
+    note: >-
+      All five meta-learners are built and benchmarked against both baselines, and the two
+      largest datasets are loaded at full size, fourteen million randomised ad impressions
+      among them. The first thing they showed is that the risk-ranking trap the project is
+      built around is conditional: it springs on one dataset and not on another, and a test
+      now asserts the difference.
+  - date: 2026-09-12
+    project: "01"
+    status: building
+    note: >-
+      Every ranking is now priced at a budget rather than only scored on a curve, by two
+      independent estimators of what following it would actually have bought, and the
+      benchmark checkpoints its work so an interruption costs one fit rather than a night.
+      A cheap diagnostic, one outcome model, says in advance whether a problem is the kind
+      where ranking by risk is a trap or the kind where it is fine.
+  - date: 2026-09-13
+    project: "01"
+    status: building
+    note: >-
+      The sensitivity section is built, with three devices that answer different questions
+      about unmeasured confounding and a stated limitation that none of them can fail on the
+      data at hand. Dragonnet, the neural estimator, is in every table after a bug that had
+      it reporting random targeting as a result on the one dataset with missing values, which
+      is written up as the more useful finding of the two.
+  - date: 2026-09-14
+    project: "01"
+    status: building
+    note: >-
+      The budget-slider demo is built from precomputed rankings and does no modelling in the
+      browser, and the fraud worked case is built on real transaction features with an
+      invented review effect that it declares in its first sentence. Hosting the demo is what
+      remains before the repository goes public.
