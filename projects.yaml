@@ -454,3 +454,14 @@ log:
       first half then exposed a third fault that neither would have shown alone: the report
       was mixing two generations of grader in one table, calling the same three answers
       refusals in one column and failures to refuse in the next.
+  - date: 2026-09-14
+    project: "08"
+    status: building
+    note: >-
+      A global LightGBM model, learning from every series at once and the only model allowed
+      to see public holidays, tied ETS at the city, the boroughs and the dispatch areas:
+      every difference between the two was smaller than the uncertainty around it. That
+      makes the next comparison sharper, because if a neural model now beats ETS, the gain
+      cannot be put down to learning across series or to the calendar. One number had to be
+      taken back along the way. The cost of a fit was first measured while other work shared
+      the machine, and came out at four times its real figure of about seven seconds.
