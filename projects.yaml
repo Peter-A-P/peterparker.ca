@@ -418,3 +418,18 @@ log:
       pattern to every quantile as a fixed amount and so never counts the uncertainty in it.
       A global LightGBM model is built next to them, to tell how much of any later gain comes
       from learning across series rather than from deep learning.
+  - date: 2026-09-13
+    project: "02"
+    status: shipped
+    note: >-
+      The panel of current models is run, which is the half of this project that costs money
+      and the only half that tests the claim on models the question properties were never
+      fitted to. Eleven models from four vendors and two more on a laptop answered the same
+      three thousand questions, for eighteen dollars. The properties came from a hundred and
+      fifty other people's models and nothing was refitted, and they rank these eleven at a
+      rank agreement of 0.855. A hundred adaptively chosen questions reach that same figure
+      for seventy-two cents against sixteen dollars to ask all of them. Two faults had to be
+      found first and neither announced itself: a question the bank could not place erased
+      the model that answered it, and a model cut off partway through by a vendor quota was
+      being compared against models that had answered a different set of questions, which
+      reversed the conclusion until the comparison was put on a common footing.
