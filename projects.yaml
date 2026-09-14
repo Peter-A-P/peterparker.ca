@@ -525,3 +525,14 @@ log:
       browser, and the fraud worked case is built on real transaction features with an
       invented review effect that it declares in its first sentence. Hosting the demo is what
       remains before the repository goes public.
+  - date: 2026-09-14
+    project: "01"
+    status: building
+    note: >-
+      The fraud worked case is measured, and the result inverts the case's own design: the
+      risk queue a fraud team already runs beats every fitted uplift model at every budget
+      tried, because finding fraud is worth far more than ordering within it, while a perfect
+      ranking would be worth nearly twice as much again. A sign convention that had the
+      benchmark and the cheap diagnostic reporting the opposite was caught by running the
+      diagnostic against the allocation, fixed with a declaration on the dataset, and kept as
+      a test.
