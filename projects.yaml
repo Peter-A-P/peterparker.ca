@@ -38,6 +38,7 @@ projects:
     name: Intervention Targeting Engine
     status: building
     repo: Peter-A-P/intervention-targeting-engine
+    demo: https://targeting.peterparker.ca
     explainer: content/01-intervention-targeting.md
     technical_line: >-
       Rosenbaum bounds and E-values · uplift modelling, not risk ranking ·
@@ -536,3 +537,11 @@ log:
       benchmark and the cheap diagnostic reporting the opposite was caught by running the
       diagnostic against the allocation, fixed with a declaration on the dataset, and kept as
       a test.
+  - date: 2026-09-14
+    project: "01"
+    status: building
+    note: >-
+      The budget-slider demo is live at targeting.peterparker.ca, on a second free-tier
+      Static Web App beside this site's, published from the laptop with no workflow or
+      credential in the repository. The repository itself stays private until the results
+      table is finished.

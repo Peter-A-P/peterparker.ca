@@ -39,14 +39,15 @@ acting change this person's outcome", and for the part that usually gets skipped
 that the ranking is real rather than plausible. It ends in one results table, regenerated
 by one command, that reports for every method how much outcome a fixed budget actually
 buys, with a confidence interval, against two baselines: random targeting, and the
-risk-ranking approach above. A slider on the demo page moves the budget and the
+risk-ranking approach above. A slider on [the demo page](https://targeting.peterparker.ca) moves the budget and the
 intervention list re-ranks, because "who do we treat" has a different answer at 10 percent
 of the population than at 30.
 
 **Where this stands: week 7 of 8.** Seven methods are benchmarked on all five datasets,
 every score with a bootstrap interval and both baselines beside it, from one command. The
-sensitivity section and a budget-slider demo are built, and the fraud worked case is built and
-measured; the demo is not yet hosted. The repository is private until the results table is finished, at which point it
+sensitivity section is built, the fraud worked case is built and measured, and the
+budget-slider demo is live at [targeting.peterparker.ca](https://targeting.peterparker.ca). The
+repository is private until the results table is finished, at which point it
 replaces this page. This page states none of its measured results on purpose: the site's rule
 is that a stand-in page claims nothing a public repository does not back, and the repository
 is not public yet. What can be said is the shape of the finding the project was built to
