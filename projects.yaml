@@ -132,7 +132,7 @@ projects:
     themes: [llm-eval, platform]
     slug: fraction-of-the-bill
     name: Frontier Quality at a Fraction of the Bill
-    status: planned
+    status: building
     repo: Peter-A-P/fraction-of-the-bill
     technical_line: >-
       QLoRA fine-tuning (PyTorch, PEFT) · vLLM and llama.cpp serving ·
@@ -641,3 +641,20 @@ log:
       a burst with the last one. The local
       streaming stack ran for the first time and failed twice before it worked: once on a
       start-up setting the broker rejects, and once on every restart after the first.
+  - date: 2026-09-14
+    project: "06"
+    status: building
+    note: >-
+      Week one is built, seven months ahead of its slot, and none of it is a measurement yet:
+      the fifteen-field extraction schema, a grader that names how a reading went wrong rather
+      than only counting that it did, the SEC fair-access client, the rule for choosing which
+      of the several correctly tagged numbers on one line of a statement is the answer, and
+      the company-level splits. Nothing has been fetched, trained, quantised, served or spent.
+      The fetcher refuses to start without a declared contact address, which is what the SEC
+      asks of anyone reading its archive in bulk, and that refusal is why the corpus is still
+      empty. Building it sent two things back to the plan. The held-out rule is now stated over
+      companies rather than over filings, so that the contamination gap is measured within the
+      same filers instead of across two different sets of them, where it would have mixed
+      contamination with whichever set held the easier companies. And where three of the
+      fifteen fields get their truth is recorded as an open question to settle against the live
+      API before any filing is labelled, rather than assumed and discovered later.
