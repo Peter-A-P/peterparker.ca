@@ -466,6 +466,21 @@ log:
       cannot be put down to learning across series or to the calendar. One number had to be
       taken back along the way. The cost of a fit was first measured while other work shared
       the machine, and came out at four times its real figure of about seven seconds.
+  - date: 2026-09-15
+    project: "08"
+    status: building
+    note: >-
+      The first neural model lost, and lost everywhere. N-HiTS, refitted monthly over the
+      same nine hundred and eleven weekly forecasts, came out a fifth worse than ETS at the
+      city and a quarter worse at the dispatch areas, did not beat the seasonal baseline at
+      the city, and its ninety percent ranges held under two thirds of outcomes. It took ten
+      times the compute to do it. Three ways it might have been treated unfairly were checked
+      and ruled out: forecasts from a fresh fit are as far behind as those from weights a
+      month old, its middle forecast is worse as well as its ranges, and given properly
+      calibrated ranges it is still behind. Around it, reconciliation now makes the city,
+      borough and area forecasts add up at every forecast and improves the city by five
+      percent, and the staffing layer shows ETS staffing costs almost a quarter less than
+      staffing from the seasonal baseline, on illustrative costs stated in a table.
   - date: 2026-09-14
     project: "04"
     status: shipped
