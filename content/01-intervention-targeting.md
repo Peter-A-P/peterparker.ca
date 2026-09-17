@@ -43,18 +43,32 @@ risk-ranking approach above. A slider on [the demo page](https://targeting.peter
 intervention list re-ranks, because "who do we treat" has a different answer at 10 percent
 of the population than at 30.
 
-**Where this stands: week 7 of 8.** Seven methods are benchmarked on all five datasets,
-every score with a bootstrap interval and both baselines beside it, from one command. The
-sensitivity section is built, the fraud worked case is built and measured, and the
-budget-slider demo is live at [targeting.peterparker.ca](https://targeting.peterparker.ca). The
-repository is private until the results table is finished, at which point it
-replaces this page. This page states none of its measured results on purpose: the site's rule
-is that a stand-in page claims nothing a public repository does not back, and the repository
+**Where this stands: the build is finished, six weeks inside its window.** Seven methods
+are benchmarked on six datasets, every score with a bootstrap interval and both baselines
+beside it, from one command. The sensitivity section is built, the fraud worked case is
+built and measured, the account of what was tried and rejected is written, and the
+budget-slider demo is live at [targeting.peterparker.ca](https://targeting.peterparker.ca).
+
+The last thing on the list was the check that the whole standard rests on: a stranger
+clones the repository and gets the same table. So every dataset was rebuilt from a fresh
+clone, in a fresh environment installed from the lockfile, and compared against the
+committed numbers with nothing allowed to differ. That check is the reason to run it rather
+than assume it. It found a defect in how one dataset's text columns were turned into
+numbers, which had been producing different numbers in different runs of the same program,
+and part of that dataset's committed table could not have been reproduced by anybody,
+including the machine that produced it. It was fixed, remeasured, and then it reproduced.
+The write-up of that sits in the repository beside the result, because a project whose
+claim is that its numbers can be checked owes the reader the occasion when the check caught
+something.
+
+The repository is private until a separate decision opens it, at which point it replaces
+this page. This page states none of its measured results on purpose: the site's rule is
+that a stand-in page claims nothing a public repository does not back, and the repository
 is not public yet. What can be said is the shape of the finding the project was built to
 test: the same risk-ranking baseline, from the same code, comes out worse than doing nothing
 on one dataset and at parity with every uplift model on another, and a cheap diagnostic
-separates the two cases before anybody fits a model. The build window runs to the start of
-November 2026.
+separates the two cases before anybody fits a model. The fraud case ends the same way from
+the other direction: it was built to make risk ranking lose, and risk ranking won.
 
 <!-- more -->
 
