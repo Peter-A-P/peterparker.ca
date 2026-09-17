@@ -673,3 +673,15 @@ log:
       contamination with whichever set held the easier companies. And where three of the
       fifteen fields get their truth is recorded as an open question to settle against the live
       API before any filing is labelled, rather than assumed and discovered later.
+  - date: 2026-09-17
+    project: "01"
+    status: building
+    note: >-
+      The build is finished, and the last step was the one the whole standard rests on:
+      every dataset rebuilt from a fresh clone in a fresh environment and compared against
+      the committed numbers, with nothing allowed to differ. That check earned its place. It
+      found a defect in how one dataset's text columns were turned into numbers, which had
+      been producing different numbers in different runs of the same program, so part of a
+      committed table could not have been reproduced by anyone, including the machine that
+      produced it. It was fixed, remeasured, and then it reproduced, and the account of it
+      ships beside the result. Whether the repository opens is a separate decision.
