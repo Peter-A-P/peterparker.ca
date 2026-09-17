@@ -685,3 +685,14 @@ log:
       committed table could not have been reproduced by anyone, including the machine that
       produced it. It was fixed, remeasured, and then it reproduced, and the account of it
       ships beside the result. Whether the repository opens is a separate decision.
+  - date: 2026-09-17
+    project: "08"
+    status: building
+    note: >-
+      The second neural model came close enough to be interesting: PatchTST matched ETS at the
+      city and the boroughs, produced the lowest city error of anything built here, and still
+      cannot claim it, because the gap is smaller than the uncertainty around it. It loses
+      where the ranking is actually decided, across the thirty-one dispatch areas, and it costs
+      about seventeen times as much to fit as the statistical model it failed to beat. Before
+      it, AutoARIMA spent fifteen hours confirming that ETS was already the best of the four
+      statistical baselines.
