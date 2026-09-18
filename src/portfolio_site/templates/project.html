@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set wrap_class = "wrap narrow" %}
 {% macro log_item(entry) -%}
         <li class="status-{{ entry.status.value }}">
           <time datetime="{{ entry.date.isoformat() }}">{{ entry.date.isoformat() }}</time>
@@ -14,7 +15,10 @@
 {% block main %}
 <article class="project status-{{ project.status.value }}">
   <div class="project-hero">
-    <div class="wrap">
+    {# The hero reads at the same width as the page under it. At a plain .wrap the title,
+       the tags and the demo button ran to 66rem while every paragraph below them stopped at
+       46rem, so the two halves of one page disagreed about where the column is. #}
+    <div class="wrap narrow">
       <p class="crumbs"><a href="/#projects">All projects</a></p>
       <p class="eyebrow">Project {{ project.number }}</p>
       <h1>{{ project.name }}</h1>

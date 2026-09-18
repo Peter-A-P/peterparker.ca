@@ -18,8 +18,12 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+  {# A reading page sets wrap_class to "wrap narrow", and the bar and the footer follow it,
+     so everything on that page lines up on one column: the bar's rule still runs edge to
+     edge, but what sits in it starts where the text starts. The index keeps the wide wrap
+     its card grid needs. #}
   <header class="top">
-    <div class="wrap">
+    <div class="{{ wrap_class | default('wrap') }}">
       <a class="brand" href="/"><span class="mono-mark" aria-hidden="true">P</span>{{ site.title }}</a>
       <nav>
         <a href="/#projects">Projects</a>
@@ -32,7 +36,7 @@
     {% block main %}{% endblock %}
   </main>
   <footer>
-    <div class="wrap">
+    <div class="{{ wrap_class | default('wrap') }}">
       <div>
         <p>Every number on this site comes from a public repository and is reproducible from it
         with one command. Project pages are generated from each repository's README. A project

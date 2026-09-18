@@ -115,6 +115,36 @@ def test_a_project_without_a_demo_gets_no_button(tmp_path: Path, readme: str) ->
     assert "demo-cta" not in page
 
 
+def test_nothing_on_a_wrap_cancels_its_gutter() -> None:
+    """A class sharing an element with .wrap must not zero the side padding .wrap sets.
+
+    `.readme` did, so a project page's body text sat one gutter left of its own hero. The
+    two agreed on the column and disagreed on where it starts, which reads as a page built
+    out of two templates rather than one.
+    """
+    import re
+
+    root = Path("src/portfolio_site")
+    stylesheet = (root / "static" / "style.css").read_text(encoding="utf-8")
+
+    sharing: set[str] = set()
+    for template in (root / "templates").glob("*.html"):
+        for attr in re.findall(
+            r'class="([^"]*\bwrap\b[^"]*)"', template.read_text(encoding="utf-8")
+        ):
+            sharing.update(name for name in attr.split() if name not in {"wrap", "narrow"})
+
+    for name in sorted(sharing):
+        for body in re.findall(rf"\.{re.escape(name)}\s*{{([^}}]*)}}", stylesheet):
+            for value in re.findall(r"(?<![-\w])padding\s*:\s*([^;]+)", body):
+                parts = value.split()
+                sides = parts[1] if len(parts) > 1 else parts[0]
+                assert sides.strip() not in {"0", "0px", "0rem"}, (
+                    f".{name} sets 'padding: {value.strip()}', which cancels the gutter "
+                    f"the wrap it sits on provides"
+                )
+
+
 def test_offline_build_has_index_but_no_pages(tmp_path: Path) -> None:
     report = build(_site(), tmp_path / "dist", None, today="2026-10-04")
     assert report.pages == []
