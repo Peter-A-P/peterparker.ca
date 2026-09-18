@@ -36,7 +36,7 @@ projects:
     themes: [decisioning]
     slug: intervention-targeting
     name: Intervention Targeting Engine
-    status: building
+    status: shipped
     repo: Peter-A-P/intervention-targeting-engine
     demo: https://targeting.peterparker.ca
     demo_note: >-
@@ -614,3 +614,11 @@ log:
       statistical one. The write-up leads with the catch rather than burying it. Across the
       forty weeks nothing could have leaked into it is about one percent behind instead, and
       forty weeks cannot settle whether that is leakage or a frozen model going stale.
+  - date: 2026-09-18
+    project: "01"
+    status: shipped
+    note: >-
+      The repository is public and tagged v0.1.0, so this page is now its README: seven
+      estimators on six datasets, every score with a bootstrap interval and both baselines
+      beside it, and a limitations section that says what is unfinished rather than leaving
+      it out.
