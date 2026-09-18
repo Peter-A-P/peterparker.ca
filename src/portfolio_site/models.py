@@ -47,6 +47,7 @@ class Project:
     status: Status
     repo: str | None = None  # "owner/name" on GitHub
     demo: str | None = None  # URL of the live demo, when publicly reachable
+    demo_note: str | None = None  # one sentence on what the demo shows, beside the button
     note: str | None = None  # one short public sentence, on its own line above the links
     themes: tuple[str, ...] = ()  # slugs from Site.themes; drive the index filters
     explainer: str | None = None  # Markdown, this project's page until its repository is public
@@ -173,6 +174,9 @@ def _project(raw: dict[str, Any], index: int, base: Path) -> Project:
     demo = _optional(raw, "demo", where)
     if demo is not None and not demo.startswith("https://"):
         raise DataError(f"{where}: demo '{demo}' must be an https URL")
+    demo_note = _optional(raw, "demo_note", where)
+    if demo_note is not None and demo is None:
+        raise DataError(f"{where}: 'demo_note' without a 'demo' to put it beside")
     themes_raw = raw.get("themes", [])
     if not isinstance(themes_raw, list) or not all(isinstance(t, str) for t in themes_raw):
         raise DataError(f"{where}: 'themes' must be a list of theme slugs")
@@ -185,6 +189,7 @@ def _project(raw: dict[str, Any], index: int, base: Path) -> Project:
         status=status,
         repo=repo,
         demo=demo,
+        demo_note=demo_note,
         note=_optional(raw, "note", where),
         themes=tuple(themes_raw),
         explainer=_explainer(raw, where, base),

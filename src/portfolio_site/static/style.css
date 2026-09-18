@@ -210,6 +210,29 @@ footer .fine { font-size: .8rem; }
 .crumbs a { color: var(--muted); }
 .crumbs a::before { content: "\2190  "; }
 .project-hero h1 { margin: .35rem 0 1rem; }
+/* The live demo, above the fold. The accent fill is used nowhere else on a project page,
+   so the one thing on the page that can be used does not look like the things to read. */
+.demo-cta {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem .9rem;
+  margin: 1.5rem 0 0;
+}
+.demo-button {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .6rem 1.15rem; border-radius: 8px;
+  background: var(--accent); color: #fdfcf9; font-weight: 600; font-size: .98rem;
+  border: 1px solid var(--accent);
+  transition: background .12s ease, transform .12s ease;
+}
+.demo-button::after { content: "\2197"; font-size: .9em; }
+.demo-button:hover, .demo-button:focus-visible {
+  background: var(--accent-ink); border-color: var(--accent-ink);
+  text-decoration: none; transform: translateY(-1px);
+}
+@media (prefers-color-scheme: dark) { .demo-button { color: #0e1013; } }
+@media (prefers-reduced-motion: reduce) { .demo-button, .demo-button:hover { transition: none; transform: none; } }
+.demo-where { font-family: var(--mono); font-size: .82rem; color: var(--muted); }
+.demo-note { flex-basis: 100%; color: var(--ink-2); font-size: .95rem; max-width: 40rem; }
+
 .meta { display: flex; flex-wrap: wrap; gap: .75rem 2rem; margin: 1.5rem 0 0; font-size: .92rem; }
 .meta div span { display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .readme { padding: 2.5rem 0 3rem; }

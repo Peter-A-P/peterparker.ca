@@ -23,12 +23,22 @@
         <li>{{ tag }}</li>
         {% endfor %}
       </ul>
+      {# The demo is the only thing on this page a visitor can use rather than read, so it
+         is a button above the fold rather than a line of small print in the metadata row,
+         where it was and where nobody found it. It stays out of that row entirely: the same
+         link twice on one screen reads as two different things. #}
+      {% if project.demo %}
+      <p class="demo-cta">
+        <a class="demo-button" href="{{ project.demo }}">Open the live demo</a>
+        <span class="demo-where">{{ project.demo | replace("https://", "") }}</span>
+        {% if project.demo_note %}<span class="demo-note">{{ project.demo_note }}</span>{% endif %}
+      </p>
+      {% endif %}
       <div class="meta">
         <div><span>Status</span><span class="status">{{ status_label(project.status) }}</span></div>
         {% if repo %}
         <div><span>Repository</span><a href="{{ repo.html_url }}">{{ repo.full_name }}</a></div>
         {% endif %}
-        {% if project.demo %}<div><span>Live demo</span><a href="{{ project.demo }}">{{ project.demo | replace("https://", "") }}</a></div>{% endif %}
         {% if repo %}<div><span>Last updated</span>{{ repo.pushed_on.isoformat() }}</div>{% endif %}
       </div>
       {% set history = site.log_for(project.number) %}

@@ -23,6 +23,10 @@ Live at https://peterparker.ca.
   so, because not every reader tries clicking a heading. A card repeats nothing that page
   already holds, so it carries no link of its own except a live demo where there is one:
   the repository is linked from the page, beside the status and the date it last moved.
+- A `demo:` is the one thing on a project's page a visitor can use rather than read, so
+  the page opens on it: a button under the title, with `demo_note:` beside it saying in a
+  sentence what opening it gets you. It appears there and nowhere else on the page, since
+  the same link twice on one screen reads as two different things.
 - A project may name an `explainer:`, a Markdown file in `content/`. It is that project's
   page until its repository is public, and the README replaces it the day it is, so the
   two are never shown together. An explainer claims no measured result and its page says

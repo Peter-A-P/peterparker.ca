@@ -39,6 +39,11 @@ projects:
     status: building
     repo: Peter-A-P/intervention-targeting-engine
     demo: https://targeting.peterparker.ca
+    demo_note: >-
+      Six datasets, eight ways of choosing who to treat, and a budget slider. It shows where
+      ranking people by risk beats every uplift model and where it is worse than picking names
+      out of a hat, with a confidence range on every number and a calculator for whether your
+      own data could answer the question at all.
     explainer: content/01-intervention-targeting.md
     technical_line: >-
       Rosenbaum bounds and E-values · uplift modelling, not risk ranking ·
@@ -591,3 +596,12 @@ log:
       published claims narrowed rather than grew, and the noise figure handed to the
       release-gate project was found to be understating by half. A first duplicate check
       found 36 questions appearing twice among 19,000, reported rather than quietly removed.
+  - date: 2026-09-17
+    project: "01"
+    status: building
+    note: >-
+      The live demo is rebuilt for a reader who is not a specialist: every dataset and method
+      explained in plain words, every figure in units rather than bare decimals, and a
+      calculator for whether a given dataset is large enough to answer the question at all.
+      Serving it under its own security policy for the first time found the chart legend's
+      colours had been blocked on the live site since it went up.
