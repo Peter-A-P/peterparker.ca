@@ -44,7 +44,6 @@ projects:
       ranking people by risk beats every uplift model and where it is worse than picking names
       out of a hat, with a confidence range on every number and a calculator for whether your
       own data could answer the question at all.
-    explainer: content/01-intervention-targeting.md
     technical_line: >-
       Rosenbaum bounds and E-values · uplift modelling, not risk ranking ·
       Dragonnet neural network (PyTorch) · budget-constrained allocation ·
