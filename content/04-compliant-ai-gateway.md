@@ -45,13 +45,16 @@ on a toy workload. The library is the piece the rest of this portfolio already d
 so it is load-bearing before it is presentable: if it is wrong, other projects break, and
 the record it keeps is the record their own results are checked against.
 
-**Where this stands in September 2026: in progress.** The library is built, tested and
-released internally, with its programming interface deliberately frozen early so that
-another project in the portfolio could be written against it before it was finished. It is
-already carrying real calls to four vendors. The full gateway, with redaction, residency
-enforcement, the audit chain, the cache, team budgets and the published latency budget, comes
-next. Nothing here is measured in public yet, and the results tables in the
-repository are empty until it is. The repository becomes public when it has numbers in it.
+**Where this stands: the library is public, with its numbers in it.** It is built, tested
+and released, with its programming interface deliberately frozen early so that another
+project in the portfolio could be written against it before it was finished. It carries real
+calls to eight providers, including all three of the big clouds' model platforms, and it has
+been the measuring instrument for tens of thousands of real calls made by other projects
+here. The full gateway, with redaction, residency enforcement, the audit chain, the cache,
+team budgets and the published latency budget, comes next.
+
+This page is a stand-in kept for the record. The repository is public, so the project's page
+on this site is that repository's own README, which carries the measured tables.
 
 <!-- more -->
 
