@@ -76,6 +76,45 @@ def test_build_pages_index_and_sitemap(tmp_path: Path, readme: str) -> None:
     assert (out / "robots.txt").read_text(encoding="utf-8").endswith("sitemap.xml\n")
 
 
+def test_a_live_demo_is_a_button_at_the_top_of_its_page(tmp_path: Path, readme: str) -> None:
+    # The demo is the only thing on a project page a visitor can use rather than read, and
+    # it spent a week as small print in the metadata row where nobody found it. It belongs
+    # above the fold, and it belongs there once: the same link twice on one screen reads as
+    # two different things.
+    site = _site()
+    with_demo = replace(
+        site.projects[0],
+        demo="https://demo.example",
+        demo_note="A slider and six datasets.",
+    )
+    site = replace(site, projects=(with_demo, *site.projects[1:]))
+    fetch = FakeFetch(
+        {"o/open": (False, readme), "o/secret": (True, "# S\n"), "o/early": (False, "# E\n")}
+    )
+    out = tmp_path / "dist"
+    build(site, out, GitHub(fetch=fetch), today="2026-10-04")
+
+    page = (out / "projects" / "open" / "index.html").read_text(encoding="utf-8")
+    hero = page.split('</div>\n  <div class="wrap narrow readme">', 1)[0]
+    assert 'class="demo-button" href="https://demo.example"' in hero
+    assert "Open the live demo" in hero
+    assert "A slider and six datasets." in hero
+    assert hero.count("https://demo.example") == 1, "the demo is linked once, not twice"
+    assert "Live demo</span>" not in page, "the metadata row no longer repeats it"
+
+
+def test_a_project_without_a_demo_gets_no_button(tmp_path: Path, readme: str) -> None:
+    fetch = FakeFetch(
+        {"o/open": (False, readme), "o/secret": (True, "# S\n"), "o/early": (False, "# E\n")}
+    )
+    out = tmp_path / "dist"
+    build(_site(), out, GitHub(fetch=fetch), today="2026-10-04")
+
+    page = (out / "projects" / "open" / "index.html").read_text(encoding="utf-8")
+    assert "demo-button" not in page
+    assert "demo-cta" not in page
+
+
 def test_offline_build_has_index_but_no_pages(tmp_path: Path) -> None:
     report = build(_site(), tmp_path / "dist", None, today="2026-10-04")
     assert report.pages == []

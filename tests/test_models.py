@@ -63,6 +63,7 @@ def test_minimal_file_loads_and_strips_trailing_slash(tmp_path: Path) -> None:
         (GOOD.replace("slug: one", "slug: One"), "slug 'One'"),
         (GOOD + "    repo: not-a-repo\n", "repo 'not-a-repo'"),
         (GOOD + "    demo: http://insecure.example\n", "must be an https URL"),
+        (GOOD + "    demo_note: A sentence.\n", "without a 'demo'"),
         (GOOD + GOOD.replace("'01'", "'02'"), "duplicate slug"),
         (GOOD + GOOD.replace("slug: one", "slug: two"), "duplicate number"),
         (GOOD + "    themes: [nope]\n", "unknown theme 'nope'"),
@@ -78,6 +79,18 @@ def test_minimal_file_loads_and_strips_trailing_slash(tmp_path: Path) -> None:
 def test_bad_files_fail_with_a_reason(tmp_path: Path, bad: str, message: str) -> None:
     with pytest.raises(DataError, match=message):
         load_site(_write(tmp_path, bad))
+
+
+def test_a_demo_note_is_optional_and_rides_with_its_demo(tmp_path: Path) -> None:
+    # A note beside a button nobody can press is a note about nothing, which is why the
+    # loader refuses it. With the demo present it is carried through unchanged.
+    with_demo = GOOD + "    demo: https://demo.example\n    demo_note: What it shows.\n"
+    project = load_site(_write(tmp_path, with_demo)).projects[0]
+    assert project.demo == "https://demo.example"
+    assert project.demo_note == "What it shows."
+
+    without = load_site(_write(tmp_path, GOOD + "    demo: https://demo.example\n")).projects[0]
+    assert without.demo_note is None
 
 
 def test_log_is_sorted_newest_first_and_checked_against_the_card(tmp_path: Path) -> None:

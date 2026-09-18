@@ -45,6 +45,10 @@ JavaScript, no analytics, no claims that a repository does not back with a numbe
   name. The only exception is a live demo, which is something to use rather than read.
   The line above the grid is what tells the reader the title is clickable and what the
   page holds; if the cards' linking changes, change that line in the same edit.
+- **A live demo is a button at the top of its project's page**, not a line in the
+  metadata row, where it was until 2026-09-17 and where nobody found it. `demo_note:` is
+  the sentence beside it. The page links a demo once: the metadata row carries the status,
+  the repository and the date, and not a second copy of the same link.
 - **Card copy is laid out, not just written.** A card's tags are chips the browser wraps
   by pixel width, so every card's tags are written to fill four rows and its one-liner is
   sized so the cards finish the same height. `tests/test_card_layout.py` measures both
