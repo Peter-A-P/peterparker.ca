@@ -72,6 +72,9 @@ def test_minimal_file_loads_and_strips_trailing_slash(tmp_path: Path) -> None:
         (GOOD + LOG.replace("2026-09-07", "yesterday"), "must be YYYY-MM-DD"),
         (GOOD + LOG.replace("status: planned", "status: done"), "status 'done'"),
         (GOOD + LOG.replace("Planned.", "Planned"), "ending in a full stop"),
+        # The log drifted to 254-word notes once, was cut back, and was over the limit
+        # again the next day, so the length is enforced rather than asked for.
+        (GOOD + LOG.replace("Planned.", ("word " * 71) + "end."), "the limit is 70"),
         (GOOD + LOG.replace("status: planned", "status: building"), "change both in the same edit"),
         (GOOD + "log: nope\n", "'log' must be a list"),
     ],

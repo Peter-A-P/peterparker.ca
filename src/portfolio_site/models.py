@@ -58,6 +58,12 @@ class Project:
         return f"https://github.com/{self.repo}" if self.repo else None
 
 
+# A log note is a summary, three or four sentences at most. Enforced rather than asked for,
+# because asking did not hold: the notes drifted to 254 words, were cut back on 2026-09-18,
+# and two had already gone past 70 again the next day.
+NOTE_MAX_WORDS = 70
+
+
 @dataclass(frozen=True, slots=True)
 class LogEntry:
     """One dated change of a project's status.
@@ -269,6 +275,14 @@ def _log(raw: object, projects: list[Project]) -> tuple[LogEntry, ...]:
         note = _require(e, "note", where)
         if not note.endswith("."):
             raise DataError(f"{where}: note must be a sentence ending in a full stop")
+        words = len(note.split())
+        if words > NOTE_MAX_WORDS:
+            raise DataError(
+                f"{where}: note is {words} words; the limit is {NOTE_MAX_WORDS}. This is a "
+                "changelog, not the place to explain the work: the project's own page and its "
+                "repository carry the detail. Notes reached 254 words once before the limit "
+                "existed, and two were back over it within a day of being cut."
+            )
         entries.append(LogEntry(date=date, number=number, status=status, note=note))
     # Newest first, and within one date the entry written last comes first: two changes to
     # one project on one day are ordered by the file, which is the only record of which
