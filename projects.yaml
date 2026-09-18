@@ -77,10 +77,9 @@ projects:
     name: AI Release Gate
     status: shipped
     repo: Peter-A-P/ai-release-gate
-    explainer: content/03-ai-release-gate.md
     technical_line: >-
-      LLM eval platform (FastAPI, DuckDB) · five repeats set the noise floor ·
-      judge calibrated on human labels · OpenTelemetry tracing per run ·
+      LLM eval platform (Python, SQLite) · five repeats set the noise floor ·
+      judge calibrated on human labels · noise floor measured 0.2% to 5.0% ·
       deterministic graders, no model judge · paired non-inferiority testing ·
       CI regression gating in GitHub Actions · measured false-block rate
     one_liner: >-
