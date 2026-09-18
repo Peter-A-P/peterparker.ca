@@ -43,7 +43,7 @@ risk-ranking approach above. A slider on [the demo page](https://targeting.peter
 intervention list re-ranks, because "who do we treat" has a different answer at 10 percent
 of the population than at 30.
 
-**Where this stands: the build is finished, six weeks inside its window.** Six uplift
+**Where this stands: the build is finished.** Six uplift
 methods are benchmarked on six datasets against both baselines, every score with a
 bootstrap interval beside it, from one command. The sensitivity section is built, the fraud worked case is
 built and measured, the account of what was tried and rejected is written, and the

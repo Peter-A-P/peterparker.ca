@@ -89,7 +89,7 @@ the tool offers, and fails the build if anything capable of sending appears. The
 of whether a piece of writing goes to a person stays with a person.
 
 **Where this stands in September 2026: in progress, with nothing measured.** The first
-week's work is built and tested: reading the sources, storing them, collapsing the
+stage is built and tested: reading the sources, storing them, collapsing the
 duplicates and grouping the day's stories, across four example audiences. The ranking, the
 cited summaries, the quote verifier and the daily hosted job follow, and then a week of
 items is labelled by hand to produce the accuracy numbers. No digest has been produced yet

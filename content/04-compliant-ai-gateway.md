@@ -49,8 +49,8 @@ the record it keeps is the record their own results are checked against.
 released internally, with its programming interface deliberately frozen early so that
 another project in the portfolio could be written against it before it was finished. It is
 already carrying real calls to four vendors. The full gateway, with redaction, residency
-enforcement, the audit chain, the cache, team budgets and the published latency budget, is
-built in May 2027. Nothing here is measured in public yet, and the results tables in the
+enforcement, the audit chain, the cache, team budgets and the published latency budget, comes
+next. Nothing here is measured in public yet, and the results tables in the
 repository are empty until it is. The repository becomes public when it has numbers in it.
 
 <!-- more -->
@@ -128,7 +128,7 @@ Everyday calls retry when a vendor returns a transient error, back off politely,
 in sensible defaults for anything not specified. That is what you want almost always.
 
 It is exactly what you do not want when the call is a measurement. Another project in this
-portfolio spends twelve months asking whether vendors change their pinned models behind a
+portfolio asks, month after month, whether vendors change their pinned models behind a
 fixed name. If the client library retried, or served an answer from a cache, or filled in a
 value the caller did not set, the finding would be about the library and not the vendor.
 
@@ -161,7 +161,7 @@ the monitoring record is not a lapse of judgement in code review, it is a progra
 stops working. A test plants a fictional patient's name in a prompt and checks it appears
 nowhere in the output.
 
-## What the gateway adds in 2027
+## What the gateway adds next
 
 **It speaks the vendors' own protocol**, so an existing tool moves onto it by changing a
 base address and a key. Adoption cost is close to zero, which is the only version of this
