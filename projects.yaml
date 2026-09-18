@@ -13,9 +13,9 @@ site:
   title: Peter Parker
   tagline: Production machine learning and applied AI, with the numbers to check.
   intro: >-
-    Eight years of production machine learning in health and government, most of it behind
-    a wall. These projects put the work where it can be inspected: each one ends with a
-    measured result in a table, reproducible from its public repository with one command.
+    Built in health and government, and most of it stays behind a wall. These projects put
+    the work where it can be inspected: each one ends with a measured result in a table,
+    reproducible from its public repository with one command.
   description: >-
     Production-grade machine learning and AI projects, each ending in a measured result a
     stranger can check.
