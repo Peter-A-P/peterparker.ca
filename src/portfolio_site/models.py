@@ -59,13 +59,16 @@ class Project:
 
 @dataclass(frozen=True, slots=True)
 class LogEntry:
-    """One dated change of a project's status. Entries are never edited after the fact; a
-    wrong entry gets a later entry that corrects it."""
+    """One dated change of a project's status.
+
+    An entry is never removed, and a wrong claim is corrected by a later entry rather than by
+    quietly changing the old one. Wording may be tightened where no fact, date or status moves.
+    """
 
     date: dt.date
     number: str  # the project's number in this file
     status: Status  # the status the project moved to
-    note: str  # one public sentence on what happened
+    note: str  # a short public summary, three or four sentences at most
 
 
 @dataclass(frozen=True, slots=True)

@@ -198,3 +198,64 @@ def test_an_explainer_without_a_marker_shows_all_at_once(tmp_path: Path) -> None
     page = (out / "projects" / "norepo" / "index.html").read_text(encoding="utf-8")
     assert "One screen, no more." in page
     assert "<details" not in page, "nothing to disclose, so no disclosure"
+
+
+def test_a_project_page_shows_two_updates_and_folds_the_rest_away(tmp_path: Path) -> None:
+    """A project accumulates updates for a year; its page still has one job, the result.
+
+    Project 01 had eight entries and project 04 seven, all printed above the README, so the
+    thing a reader came for started below the fold. The two newest stay, the rest go behind a
+    disclosure. No script is involved: it is the <details> element the explainer already uses.
+    """
+    import datetime as dt
+
+    from portfolio_site.models import LogEntry
+
+    site = replace(
+        _site(),
+        log=(
+            LogEntry(dt.date(2026, 10, 5), "01", Status.SHIPPED, "Newest thing."),
+            LogEntry(dt.date(2026, 10, 4), "01", Status.BUILDING, "Second thing."),
+            LogEntry(dt.date(2026, 10, 3), "01", Status.BUILDING, "Third thing."),
+            LogEntry(dt.date(2026, 10, 2), "01", Status.BUILDING, "Fourth thing."),
+        ),
+    )
+    out = tmp_path / "dist"
+    build(
+        site,
+        out,
+        GitHub(fetch=FakeFetch({"o/open": (False, "# Open\n\nBody.\n")})),
+        today="2026-10-06",
+    )
+    page = (out / "projects" / "open" / "index.html").read_text(encoding="utf-8")
+
+    before, _, behind = page.partition('<details class="history-more">')
+    assert "Newest thing." in before and "Second thing." in before
+    assert "Third thing." not in before and "Fourth thing." not in before
+    assert "Third thing." in behind and "Fourth thing." in behind
+    assert "<summary>2 earlier updates</summary>" in behind
+
+
+def test_a_short_history_gets_no_disclosure_and_one_earlier_update_is_singular(
+    tmp_path: Path,
+) -> None:
+    """Two entries is the whole history, so there is nothing to fold and no control to show.
+    Three entries leaves exactly one behind the disclosure, where "1 earlier updates" would
+    be the giveaway that the count was never looked at."""
+    import datetime as dt
+
+    from portfolio_site.models import LogEntry
+
+    readme = GitHub(fetch=FakeFetch({"o/open": (False, "# Open\n\nBody.\n")}))
+    two = (
+        LogEntry(dt.date(2026, 10, 5), "01", Status.SHIPPED, "Newest thing."),
+        LogEntry(dt.date(2026, 10, 4), "01", Status.BUILDING, "Second thing."),
+    )
+    build(replace(_site(), log=two), tmp_path / "a", readme, today="2026-10-06")
+    page = (tmp_path / "a" / "projects" / "open" / "index.html").read_text(encoding="utf-8")
+    assert "history-more" not in page and "Second thing." in page
+
+    third = (*two, LogEntry(dt.date(2026, 10, 3), "01", Status.BUILDING, "Third thing."))
+    build(replace(_site(), log=third), tmp_path / "b", readme, today="2026-10-06")
+    page = (tmp_path / "b" / "projects" / "open" / "index.html").read_text(encoding="utf-8")
+    assert "<summary>1 earlier update</summary>" in page
