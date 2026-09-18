@@ -51,8 +51,7 @@ that would make it worthless: the same number of questions picked at random, and
 number picked by stratified sampling. The by-product is a named, evidenced list of the
 benchmark questions that were never measuring anything.
 
-**Where this stands: the calibration half is built, seven weeks ahead of its November
-slot.** The question bank is assembled from public per-question results, both statistical
+**Where this stands: the calibration half is built.** The question bank is assembled from public per-question results, both statistical
 models are fitted to it, the headline simulation has been run against both baselines, and
 the checks for local dependence, dimensionality and contamination are done. None of those
 numbers appear on this page. This site publishes only what a public repository backs, and

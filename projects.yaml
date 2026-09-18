@@ -205,7 +205,7 @@ projects:
       money moves, and keeps working as fraud patterns shift, without the training-versus-
       production mismatch that quietly breaks most deployed models. The platform around the
       model is what organisations are actually missing, and this is a working one you can
-      watch run: three months live behind a public dashboard, reproducible from one command.
+      watch run: live behind a public dashboard, reproducible from one command.
 
   - number: "10"
     themes: [agents, platform]
@@ -331,7 +331,7 @@ log:
     status: building
     note: >-
       The question bank is calibrated from public per-question results and the adaptive test
-      runs against it, seven weeks ahead of its slot.
+      runs against it.
   - date: 2026-09-11
     project: "02"
     status: shipped
@@ -419,7 +419,7 @@ log:
     project: "03"
     status: building
     note: >-
-      The first official run of the frozen suite went two weeks early: 16,800 calls across
+      The first official run of the frozen suite is in: 16,800 calls across
       four vendors for US$19.53. The noise floor the whole project rests on is measured
       rather than assumed for the first time, at 0.2% to 5.0% by model. Hand-labelling then
       caught the refusal classifier missing refusals, always in that one direction.
@@ -500,7 +500,7 @@ log:
       The repository is public with its first month of the record in it and every raw
       response committed, so any figure can be regenerated from disk without calling a
       vendor or spending anything. Opening it up also showed three commits that had been
-      failing continuous integration unnoticed. The twelve months of drift measurement start
+      failing continuous integration unnoticed. The month-by-month record of drift starts
       here.
   - date: 2026-09-11
     project: "01"
@@ -564,7 +564,7 @@ log:
     project: "06"
     status: building
     note: >-
-      Week one is built seven months ahead of its slot, and none of it is a measurement yet:
+      The first pieces are built, and none of it is a measurement yet:
       the extraction schema, a grader that names how a reading went wrong, the SEC client
       and the company-level splits. Nothing has been fetched, trained or spent, because the
       fetcher refuses to start without a declared contact address. The held-out rule now
