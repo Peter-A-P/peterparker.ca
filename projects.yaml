@@ -113,23 +113,22 @@ projects:
     note: Every model call in this portfolio routes through it.
 
   - number: "05"
-    themes: [grounded]
-    slug: verified-filings-analyst
-    name: Verified Filings Analyst
-    status: planned
-    repo: Peter-A-P/verified-filings-analyst
+    themes: [compliance, grounded]
+    slug: credit-agreement-covenant-monitor
+    name: Every Promise in the Loan Agreement, Checked
+    status: building
+    repo: Peter-A-P/credit-agreement-covenant-monitor
     technical_line: >-
-      retrieval across thousands of filings · verifier tested by mutation ·
-      abstention on unanswerable questions · cross-encoder reranking ·
-      hybrid retrieval (BM25 plus dense) · XBRL fact-level grounding ·
-      hallucinated-figure rate with CIs · automatic figure verification
+      multi-hop retrieval over credit agreements · defined-term resolution ·
+      table-aware chunking · hybrid retrieval (BM25 plus dense) ·
+      cross-encoder reranking · covenant arithmetic checked against filings ·
+      verifier tested by mutation
     one_liner: >-
-      Answers questions across thousands of financial filings where every figure is traced
-      to, and checked against, the number the company actually filed; a wrong number fails
-      loudly instead of reaching a decision. Cuts analyst hours, eliminates by construction
-      the invented figure that stops finance and legal teams trusting AI with documents, and
-      reports how often an unchecked pipeline would have let one through, with what the
-      checking costs in latency and dollars.
+      Reads a three-hundred-page credit agreement, resolves the private dictionary of
+      defined terms behind each covenant, and computes every promise the borrower's own
+      filed accounts can support. The ones they cannot are cited and handed to a person
+      rather than guessed at. A lender doing this by hand across hundreds of positions
+      finds out about a breach a quarter late; this finds out the quarter it happens.
 
   - number: "06"
     themes: [llm-eval, platform]
@@ -639,3 +638,11 @@ log:
       deployed in Canada and processed anywhere, the strongest honest claim on offer, because
       no vendor reports where a request really went. Every call now records how far it was
       allowed to travel, and a run can fail for exceeding it.
+  - date: 2026-09-18
+    project: "05"
+    status: building
+    note: >-
+      Started, and re-based onto credit agreements. It reads the contract behind a corporate
+      loan, resolves the defined terms each covenant depends on, and checks the ones public
+      filings can support against the borrower's own reported figures. The ones they cannot
+      support are cited and handed to a person rather than guessed at.
