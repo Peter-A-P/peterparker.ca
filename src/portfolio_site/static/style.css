@@ -235,7 +235,10 @@ footer .fine { font-size: .8rem; }
 
 .meta { display: flex; flex-wrap: wrap; gap: .75rem 2rem; margin: 1.5rem 0 0; font-size: .92rem; }
 .meta div span { display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-.readme { padding: 2.5rem 0 3rem; }
+/* .readme sits on the .wrap itself, so its padding has to keep the wrap's 1.5rem gutter
+   rather than zero it. With zero, the body text started 1.5rem to the left of the hero
+   above it: two columns on one page, off by exactly one gutter. */
+.readme { padding: 2.5rem 1.5rem 3rem; }
 .readme > p:first-child { font-size: 1.12rem; color: var(--ink-2); }
 .readme h2 { font-size: 1.55rem; margin: 2.4rem 0 .8rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
 .readme h3 { font-size: 1.15rem; margin: 1.6rem 0 .5rem; }
