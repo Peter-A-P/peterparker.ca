@@ -31,11 +31,15 @@ JavaScript, no analytics, no claims that a repository does not back with a numbe
 - **Status is set by hand** in `projects.yaml` (`live`, `shipped`, `building`, `planned`).
   The build warns when a public repository is still marked `planned` or `building`.
 - **Every status change is logged** in `log:` at the end of `projects.yaml`, in the same
-  edit as the status: date, project number, the new status, one public sentence ending in
-  a full stop. The build refuses a log whose latest entry for a project disagrees with the
-  project's status. Entries are never edited or removed; a wrong entry gets a later entry
-  that corrects it. The log renders at `/log/`, as the "Latest" strip on the index, and as
-  history on the project's page.
+  edit as the status: date, project number, the new status, and a short public summary.
+  **At most three or four sentences, and shorter is better.** This is a changelog, not the
+  place to explain the work: the project's own page and its repository carry the detail, and
+  a note that runs past a screen is not read by anyone. Notes drifted to 250 words and ten
+  sentences once, and were cut back on 2026-09-18. The build refuses a log whose latest entry
+  for a project disagrees with the project's status. An entry is never removed, and a wrong
+  claim is corrected by a later entry rather than by quietly changing the old one; wording may
+  be tightened where no fact, date or status changes. The log renders at `/log/`, as the
+  "Latest" strip on the index, and as history on the project's page.
 - **A card's title is its page link, and a card carries nothing else.** Not the
   repository, which the page links beside the status, and not the page under a second
   name. The only exception is a live demo, which is something to use rather than read.

@@ -313,27 +313,27 @@ log:
     project: "03"
     status: building
     note: >-
-      The monthly drift runner is built, ahead of the first official run of the frozen
-      suite targeted for 2026-09-27.
+      The monthly drift runner is built, ahead of the first official run of the frozen suite
+      targeted for 2026-09-27.
   - date: 2026-09-10
     project: "01"
     status: building
     note: >-
-      The first estimator is benchmarked on Hillstrom and IHDP, with bootstrap intervals
-      and both baselines beside it.
+      The first estimator is benchmarked on Hillstrom and IHDP, with bootstrap intervals and
+      both baselines beside it.
   - date: 2026-09-11
     project: "02"
     status: building
     note: >-
-      The question bank is calibrated from public per-question results and the adaptive
-      test runs against it, seven weeks ahead of its slot.
+      The question bank is calibrated from public per-question results and the adaptive test
+      runs against it, seven weeks ahead of its slot.
   - date: 2026-09-11
     project: "02"
     status: shipped
     note: >-
-      The repository is public with its numbers: ten adaptive questions rank a panel of
-      150 models as well as 127 randomly chosen ones, and the whole method replicates on
-      a second bank of 400 models built from a different source.
+      The repository is public with its numbers: ten adaptive questions rank a panel of 150
+      models as well as 127 randomly chosen ones, and the whole method replicates on a
+      second bank of 400 models built from a different source.
   - date: 2026-09-12
     project: "14"
     status: building
@@ -346,289 +346,197 @@ log:
     status: planned
     note: >-
       Planned: a finish time and placing for every registered runner in a Newfoundland road
-      race, predicted from public results alone and published before the gun, with the
-      first live race on 2026-10-18.
+      race, predicted from public results alone and published before the gun, with the first
+      live race on 2026-10-18.
   - date: 2026-09-12
     project: "08"
     status: building
     note: >-
-      Twenty-one years of New York City emergency medical dispatches are loaded and
-      checked, thirty million incidents aggregated to a daily panel of thirty-one dispatch
-      areas that sums exactly to its boroughs and to the city.
+      Twenty-one years of New York City emergency medical dispatches are loaded and checked,
+      thirty million incidents aggregated to a daily panel of thirty-one dispatch areas that
+      sums exactly to its boroughs and to the city.
   - date: 2026-09-12
     project: "09"
     status: building
     note: >-
-      The transaction generator is running: an entity graph of cards, devices and
-      merchants, three fraud patterns that act on the graph rather than on a single row,
-      and a schedule of shifts whose live version is sealed by a hash now and published in
-      July 2027, so the drift monitors cannot be tuned to it.
+      The transaction generator is running: an entity graph of cards, devices and merchants,
+      with three fraud patterns that act on the graph rather than on a single row. The live
+      shift schedule is sealed by a hash now, so the drift monitors cannot be tuned to it.
   - date: 2026-09-12
     project: "12"
     status: building
     note: >-
-      The archive reader is built: ten years of Newfoundland road results, one hundred and
-      sixty races over forty-five courses, with every race the reader leaves out named
-      alongside the reason. Nothing has been fetched yet, because the crawler refuses to
-      run until the two organisations whose pages it reads have been told.
+      The archive reader is built: ten years of Newfoundland road results, 160 races over 45
+      courses, with every race it leaves out named and explained. Nothing has been fetched
+      yet, because the crawler refuses to run until both organisations whose pages it reads
+      have been told.
   - date: 2026-09-12
     project: "12"
     status: building
     note: >-
-      The results are in and read: ten years of them, forty-four thousand finishes, fifteen
-      thousand runners picked out of pages that carry no runner identifier at all. The first
-      measurement says a third of the people in any given race have never run one here
-      before, which is the part of the problem worth solving.
+      Ten years of results are read: 44,000 finishes and 15,000 runners picked out of pages
+      that carry no runner identifier at all. A third of any given field has never raced
+      here before, which is the part of the problem worth solving.
   - date: 2026-09-12
     project: "12"
     status: building
     note: >-
-      The archive turned out to be twice the size it looked. A start list showed sixty-seven
-      runners whose first ever race was the exact year the reader began, which is the shape
-      a history makes when it has been cut off rather than when it began; the cause was that
-      the older index pages call their road section by a different name, so eight years read
-      as empty without an error. Eighteen years now: two hundred and eighty-seven races,
-      seventy-four thousand finishes, and the flagship course goes from nine editions to
-      sixteen. It did not fix the real problem. The third of every field with no history at
-      all barely moved, so those are people who have genuinely never raced here.
+      The archive was twice the size it looked: older index pages name the road section
+      differently, so eight years read as empty without an error. Eighteen years now, 287
+      races and 74,000 finishes. It did not fix the real problem, because the third of every
+      field with no history barely moved.
   - date: 2026-09-13
     project: "12"
     status: building
     note: >-
-      Two layers went in: how hard each course is, and what the weather on the day costs.
-      Both were meant to come from maps and physics, and both turned out to be measurable
-      from the results themselves, far more precisely. The flagship hill course is pinned to
-      a tenth of a percentage point from five thousand finishes, and the elevation figures
-      the race publishes agree with it when put through the physics, which is a better claim
-      than either on its own. The weather took two wrong answers first, one of them a null
-      that was really an artefact of counting a thirty-runner race and a four-thousand-runner
-      race equally. And the wind needed local knowledge before the data would give it up: the
-      prevailing westerly pushes one race along and holds the other back, so a single
-      wind-speed number for the whole province was measuring nothing at all.
+      Course difficulty and weather both turned out to be measurable from the results
+      themselves rather than from maps and physics. The flagship hill is pinned to a tenth
+      of a percentage point from 5,000 finishes, and the elevation the race publishes agrees
+      with it. A single wind figure for the whole province was measuring nothing at all.
   - date: 2026-09-13
     project: "08"
     status: building
     note: >-
-      The statistical models are measured over nine hundred and sixty-four weekly forecasts
-      spanning eighteen years. The best of them, ETS, beats the seasonal naive baseline by
-      eighteen percent at the city and a quarter at the dispatch areas, and beats Theta by a
-      margin so small that only comparing the two forecast by forecast showed it was real.
-      MSTL was the surprise: its ranges held seventy to seventy-eight percent of outcomes
-      where they promised ninety, and the cause is in the library, which adds the seasonal
-      pattern to every quantile as a fixed amount and so never counts the uncertainty in it.
-      A global LightGBM model is built next to them, to tell how much of any later gain comes
-      from learning across series rather than from deep learning.
+      The statistical models are measured over 964 weekly forecasts spanning eighteen years.
+      ETS beats the seasonal naive baseline by 18% at the city and a quarter at the dispatch
+      areas. MSTL's 90% ranges held only 70 to 78% of outcomes, a fault traced to the
+      library rather than to the method.
   - date: 2026-09-13
     project: "02"
     status: shipped
     note: >-
-      The panel of current models is run, which is the half of this project that costs money
-      and the only half that tests the claim on models the question properties were never
-      fitted to. Eleven models from four vendors and two more on a laptop answered the same
-      three thousand questions, for eighteen dollars. The properties came from a hundred and
-      fifty other people's models and nothing was refitted, and they rank these eleven at a
-      rank agreement of 0.855. A hundred adaptively chosen questions reach that same figure
-      for seventy-two cents against sixteen dollars to ask all of them. Two faults had to be
-      found first and neither announced itself: a question the bank could not place erased
-      the model that answered it, and a model cut off partway through by a vendor quota was
-      being compared against models that had answered a different set of questions, which
-      reversed the conclusion until the comparison was put on a common footing.
+      The panel of current models is run, the half that costs money and the only half that
+      tests the claim on models the question properties were never fitted to. Eleven models
+      from four vendors and two more on a laptop answered the same 3,000 questions for
+      eighteen dollars, and nothing was refitted. A hundred adaptively chosen questions
+      reach the same 0.855 rank agreement for 72 cents against sixteen dollars.
   - date: 2026-09-13
     project: "03"
     status: building
     note: >-
-      The first official run of the frozen suite went two weeks early: sixteen thousand
-      eight hundred calls to eight model configurations across four vendors, for nineteen
-      dollars and fifty-three cents, with five failures. The noise floor the whole project
-      rests on is measured rather than assumed for the first time, and it runs from a fifth
-      of a percent to five percent depending on the model. Then the hand-labelling pass on
-      the refusal classifier found it wrong in the only two places a published claim about a
-      vendor's safety behaviour can come from, twenty-four times out of twenty-four and four
-      out of four, always in the same direction: it never invents a problem, it only misses
-      one. Half of that was one missing word, where "cannot write" was recognised and "can't
-      write" was not, so whether a refusal counted turned on a contraction. The other half
-      cannot be fixed by any list of words, because those models were answering a harmless
-      reading of a deliberately ambiguous question and using no refusing language at all, and
-      a classifier tuned until it catches them is a classifier tuned until every vendor looks
-      safe. That one is published as a limitation with both numbers side by side. Fixing the
-      first half then exposed a third fault that neither would have shown alone: the report
-      was mixing two generations of grader in one table, calling the same three answers
-      refusals in one column and failures to refuse in the next.
+      The first official run of the frozen suite went two weeks early: 16,800 calls across
+      four vendors for US$19.53. The noise floor the whole project rests on is measured
+      rather than assumed for the first time, at 0.2% to 5.0% by model. Hand-labelling then
+      caught the refusal classifier missing refusals, always in that one direction.
   - date: 2026-09-14
     project: "08"
     status: building
     note: >-
-      A global LightGBM model, learning from every series at once and the only model allowed
-      to see public holidays, tied ETS at the city, the boroughs and the dispatch areas:
-      every difference between the two was smaller than the uncertainty around it. That
-      makes the next comparison sharper, because if a neural model now beats ETS, the gain
-      cannot be put down to learning across series or to the calendar. One number had to be
-      taken back along the way. The cost of a fit was first measured while other work shared
-      the machine, and came out at four times its real figure of about seven seconds.
+      A global LightGBM model, learning from every series at once and the only one allowed
+      to see public holidays, tied ETS at the city, the boroughs and the dispatch areas,
+      with every difference smaller than its own uncertainty. That sharpens the next
+      comparison: a neural win now cannot be put down to learning across series or to the
+      calendar.
   - date: 2026-09-15
     project: "08"
     status: building
     note: >-
-      The first neural model lost, and lost everywhere. N-HiTS, refitted monthly over the
-      same nine hundred and eleven weekly forecasts, came out a fifth worse than ETS at the
-      city and a quarter worse at the dispatch areas, did not beat the seasonal baseline at
-      the city, and its ninety percent ranges held under two thirds of outcomes. It took ten
-      times the compute to do it. Three ways it might have been treated unfairly were checked
-      and ruled out: forecasts from a fresh fit are as far behind as those from weights a
-      month old, its middle forecast is worse as well as its ranges, and given properly
-      calibrated ranges it is still behind. Around it, reconciliation now makes the city,
-      borough and area forecasts add up at every forecast and improves the city by five
-      percent, and the staffing layer shows ETS staffing costs almost a quarter less than
-      staffing from the seasonal baseline, on illustrative costs stated in a table.
+      The first neural model lost, and lost everywhere. N-HiTS came out a fifth worse than
+      ETS at the city and a quarter worse at the dispatch areas, did not beat the seasonal
+      baseline, and took ten times the compute. Three ways it might have been treated
+      unfairly were checked and ruled out.
   - date: 2026-09-14
     project: "04"
     status: shipped
     note: >-
-      The library every other project's model calls go through is public and measured. Its
-      own cost per call is two and a half milliseconds at the median and under five at the
-      ninety-fifth, over a thousand calls with intervals on both. Six hundred calls were put
-      through faults deliberately, including killing the process part-way through one, and
-      every one of them still left a row in the ledger. Seventeen calls were aimed past a
-      spend cap and none of them reached a vendor. Five hundred pass-through calls came back
-      byte for byte identical. The number that matters most for the cost claim is the one
-      still missing: the ledger checked against the actual vendor invoices, which has to wait
-      for October because the invoices do. Three hyperscaler adapters are still to come, and
-      the redaction, residency and audit half of this project is May 2027.
+      The library every other project's model calls go through is public and measured: 2.5ms
+      per call at the median and under 5ms at the 95th, with intervals on both. Six hundred
+      calls were faulted deliberately, including killing the process part-way through one,
+      and every one still left a row in the ledger. The ledger checked against actual vendor
+      invoices waits for October.
   - date: 2026-09-14
     project: "04"
     status: shipped
     note: >-
-      The cost record has now been checked, for the first time, against something other than
-      itself. Seventy thousand calls from three projects were merged into one ledger and came
-      to sixty-one US dollars, and for the thirty-five thousand of them belonging to the
-      release-gate project that total agrees with that project's own separate accounting to
-      within a ten-thousandth of a cent. That is not the vendor invoices, which still have to
-      wait for October because the invoices do, but it is the step most likely to go wrong
-      quietly and it did not. Nine calls in the month are recorded as uncosted, because the
-      price of that model was not known at the moment they were made and the rule is that an
-      unknown price is left blank rather than guessed. Checking the work also turned up a
-      small bug in it: gathering the ledgers by hand can silently drop rows that the database
-      has committed but not yet written to its main file, which would have looked like a
-      vendor overcharging rather than a mistake in the method.
+      The cost record is checked against something other than itself for the first time:
+      70,000 calls from three projects merged to US$61, agreeing with the release-gate
+      project's own separate accounting to within a ten-thousandth of a cent. Vendor
+      invoices still have to wait for October. Checking it also turned up a bug that could
+      silently drop committed ledger rows.
   - date: 2026-09-14
     project: "04"
     status: shipped
     note: >-
-      A second thing that did not work is published, with the evidence. The idea was to price
-      a call from a token count worked out on your own machine, instead of waiting for the
-      number the vendor sends back, which would let a spend limit be exact rather than
-      cautious. Measured over sixteen thousand real calls it fails in the way that is hardest
-      to notice: the monthly total comes out almost exactly right while the typical single
-      call is wrong by a third, because over-estimates and under-estimates cancel out. A
-      spend limit is checked one call at a time, so a method that is right on average and
-      wrong on every row is no use for the thing the number is actually for. Even the vendor's
-      own tokenizer, run against that vendor, is consistently short.
+      A second thing that did not work is published with the evidence: pricing a call from a
+      token count worked out on your own machine. Over 16,000 real calls the monthly total
+      is almost exactly right while the typical single call is wrong by a third, because the
+      errors cancel. A spend limit is checked one call at a time, so that is no use.
   - date: 2026-09-14
     project: "04"
     status: shipped
     note: >-
-      Bulk work now costs about half what it did on three more vendors. Sending many requests
-      together at a discount previously worked for one vendor only, so a sister project sent
-      nine thousand of its calls the cheap way and eighteen thousand at full price for want of
-      the plumbing. Two more model platforms, Microsoft's and Google's, also have adapters
-      written against their published interfaces, though neither has been called yet because
-      neither account exists. Writing them settled a question the compliance half of this
-      project rests on, and the honest answer is narrower than the phrase "data residency"
-      suggests: you can have a model deployed in Canada, but guaranteed Canadian processing is
-      usually not on offer at any price. The record says where a request was sent, which is
-      the part a gateway controls, and it is careful not to imply the other thing.
+      Bulk work now costs about half what it did on three more vendors, where batching had
+      worked for one. Adapters for Microsoft's and Google's platforms are written against
+      their published interfaces but not yet called. Writing them settled the residency
+      question: a model deployed in Canada is available, guaranteed Canadian processing
+      usually is not.
   - date: 2026-09-14
     project: "04"
     status: shipped
     note: >-
-      Then the account was actually opened, and the residency answer got narrower again. On
-      Microsoft's platform there is no Canadian option for these models at all: a resource
-      created in Canada Central offers none of them to deploy, and the vendor's own region
-      table agrees, with every row blank against both Canadian regions. The narrower setting
-      that keeps processing inside one country exists only for the United States. Microsoft's
-      deployment screen states the underlying distinction more plainly than any policy
-      document does, and it is worth quoting: data might be processed globally, outside the
-      resource's geography, but data storage remains within it. Processing is global; storage
-      is regional. A rule written about where data is stored can be satisfied. The same rule
-      written about where it is processed cannot, and the two are routinely written as if they
-      were one obligation.
+      The account was opened and the residency answer narrowed again: Microsoft offers no
+      Canadian option for these models at all, and the vendor's own region table agrees. Its
+      deployment screen states the distinction more plainly than any policy document, that
+      processing may be global while storage stays regional. A rule written about storage
+      can be satisfied; the same rule about processing cannot.
   - date: 2026-09-14
     project: "04"
     status: shipped
     note: >-
-      One more turn of the same screw, and this one is about procurement rather than
-      engineering. Nothing would deploy at all: every attempt came back saying there was
-      insufficient capacity. Asking the platform's own interface for the actual numbers, rather
-      than reading its error message, gave the answer in one command. The account has nineteen
-      separate allowances for this vendor's models in that region and every one of them is
-      zero, while a hundred and fifty-nine allowances for other models in the same region and
-      the same account are perfectly healthy. The published documentation says an account of
-      this type is granted a working allowance by default. It is not. The number it describes
-      is a ceiling that may be requested, not an allowance that arrives, and the request is
-      reviewed case by case with no stated wait and no guarantee. So there is a gate before the
-      first call that is neither technical nor priced, which is the sort of thing that belongs
-      in a go-live plan rather than a troubleshooting note. Three earlier readings of this
-      failure, two of them published here, were wrong: the error invites you to change the
-      region, the configuration or the account, and none of those is the cause. Inferring from
-      an error message instead of looking up the number is the exact failure this project
-      exists to catch in other people's claims, and it happened three times here in a day,
-      which is why the command that settles it is now written down beside the answer.
+      Nothing would deploy, and the cause was procurement rather than engineering: the
+      account holds nineteen allowances for this vendor's models in that region and every
+      one is zero, against 159 healthy ones for other models. The documentation describes a
+      ceiling that may be requested, not an allowance that arrives. Three earlier readings
+      of the error message were wrong.
   - date: 2026-09-14
     project: "03"
     status: shipped
     note: >-
-      The repository is public with its first month of the record in it, and every raw
-      response committed alongside, so any figure in it can be regenerated from disk without
-      calling a vendor or spending anything. Opening it up also turned the lights on: three
-      commits had been failing continuous integration unnoticed, because the check being run
-      by hand covered the library and the one in the pipeline covered the tests as well. The
-      twelve months of drift measurement start from here, so this is a beginning rather than
-      an ending, but the thing a stranger can now check exists.
+      The repository is public with its first month of the record in it and every raw
+      response committed, so any figure can be regenerated from disk without calling a
+      vendor or spending anything. Opening it up also showed three commits that had been
+      failing continuous integration unnoticed. The twelve months of drift measurement start
+      here.
   - date: 2026-09-11
     project: "01"
     status: building
     note: >-
-      All five meta-learners are built and benchmarked against both baselines, and the two
-      largest datasets are loaded at full size, fourteen million randomised ad impressions
-      among them. The first thing they showed is that the risk-ranking trap the project is
-      built around is conditional: it springs on one dataset and not on another, and a test
-      now asserts the difference.
+      All five meta-learners are built and benchmarked against both baselines, with the two
+      largest datasets loaded at full size, fourteen million randomised ad impressions among
+      them. The risk-ranking trap the project is built around turns out to be conditional:
+      it springs on one dataset and not on another, and a test now asserts the difference.
   - date: 2026-09-12
     project: "01"
     status: building
     note: >-
       Every ranking is now priced at a budget rather than only scored on a curve, by two
-      independent estimators of what following it would actually have bought, and the
-      benchmark checkpoints its work so an interruption costs one fit rather than a night.
-      A cheap diagnostic, one outcome model, says in advance whether a problem is the kind
-      where ranking by risk is a trap or the kind where it is fine.
+      independent estimators of what following it would actually have bought. A cheap
+      diagnostic, one outcome model, says in advance whether a problem is the kind where
+      ranking by risk is a trap.
   - date: 2026-09-13
     project: "01"
     status: building
     note: >-
       The sensitivity section is built, with three devices that answer different questions
       about unmeasured confounding and a stated limitation that none of them can fail on the
-      data at hand. Dragonnet, the neural estimator, is in every table after a bug that had
-      it reporting random targeting as a result on the one dataset with missing values, which
-      is written up as the more useful finding of the two.
+      data at hand. Dragonnet is in every table after a bug that had it reporting random
+      targeting as a result, which is written up as the more useful finding of the two.
   - date: 2026-09-14
     project: "01"
     status: building
     note: >-
       The budget-slider demo is built from precomputed rankings and does no modelling in the
       browser, and the fraud worked case is built on real transaction features with an
-      invented review effect that it declares in its first sentence. Hosting the demo is what
-      remains before the repository goes public.
+      invented review effect that it declares in its first sentence. Hosting the demo is
+      what remains before the repository goes public.
   - date: 2026-09-14
     project: "01"
     status: building
     note: >-
       The fraud worked case is measured, and the result inverts the case's own design: the
       risk queue a fraud team already runs beats every fitted uplift model at every budget
-      tried, because finding fraud is worth far more than ordering within it, while a perfect
-      ranking would be worth nearly twice as much again. A sign convention that had the
-      benchmark and the cheap diagnostic reporting the opposite was caught by running the
-      diagnostic against the allocation, fixed with a declaration on the dataset, and kept as
+      tried, because finding fraud is worth far more than ordering within it. A sign
+      convention that had the benchmark reporting the opposite was caught, fixed and kept as
       a test.
   - date: 2026-09-14
     project: "01"
@@ -642,71 +550,44 @@ log:
     project: "09"
     status: building
     note: >-
-      The real fraud data now runs through the same pipeline as the synthetic stream, and
-      getting it there took more than a loader. The file has no merchant, and on measurement no
-      device either: the columns that looked like one describe a browser and screen shared by
-      thousands of shoppers, so a device feature built on them would have counted how popular a
-      browser is. No column is a card, so a card is pieced together from its issuer, billing
-      region and the day the account opened. Six of the sixteen features survive on real data,
-      and the point-in-time test passes on all of them across 590,540 transactions. The leak it
-      caught last week, remeasured with a card that is actually a card, would have corrupted 65
-      rows, where grouping by the obvious but wrong card column had put the exposure at 312, and
-      the first attempt at that remeasurement overcounted too, by comparing every transaction in
-      a burst with the last one. The local
-      streaming stack ran for the first time and failed twice before it worked: once on a
-      start-up setting the broker rejects, and once on every restart after the first.
+      Real fraud data now runs through the same pipeline as the synthetic stream, and
+      getting it there took more than a loader. The file has no merchant and no usable
+      device column, so a card is pieced together from its issuer, billing region and
+      account-open date. Six of the sixteen features survive, and the point-in-time test
+      passes on all of them across 590,540 transactions.
   - date: 2026-09-14
     project: "06"
     status: building
     note: >-
-      Week one is built, seven months ahead of its slot, and none of it is a measurement yet:
-      the fifteen-field extraction schema, a grader that names how a reading went wrong rather
-      than only counting that it did, the SEC fair-access client, the rule for choosing which
-      of the several correctly tagged numbers on one line of a statement is the answer, and
-      the company-level splits. Nothing has been fetched, trained, quantised, served or spent.
-      The fetcher refuses to start without a declared contact address, which is what the SEC
-      asks of anyone reading its archive in bulk, and that refusal is why the corpus is still
-      empty. Building it sent two things back to the plan. The held-out rule is now stated over
-      companies rather than over filings, so that the contamination gap is measured within the
-      same filers instead of across two different sets of them, where it would have mixed
-      contamination with whichever set held the easier companies. And where three of the
-      fifteen fields get their truth is recorded as an open question to settle against the live
-      API before any filing is labelled, rather than assumed and discovered later.
+      Week one is built seven months ahead of its slot, and none of it is a measurement yet:
+      the extraction schema, a grader that names how a reading went wrong, the SEC client
+      and the company-level splits. Nothing has been fetched, trained or spent, because the
+      fetcher refuses to start without a declared contact address. The held-out rule now
+      runs over companies rather than over filings.
   - date: 2026-09-17
     project: "01"
     status: building
     note: >-
-      The build is finished, and the last step was the one the whole standard rests on:
-      every dataset rebuilt from a fresh clone in a fresh environment and compared against
-      the committed numbers, with nothing allowed to differ. That check earned its place. It
-      found a defect in how one dataset's text columns were turned into numbers, which had
-      been producing different numbers in different runs of the same program, so part of a
-      committed table could not have been reproduced by anyone, including the machine that
-      produced it. It was fixed, remeasured, and then it reproduced, and the account of it
-      ships beside the result. Whether the repository opens is a separate decision.
+      The build is finished, and the last step is the one the whole standard rests on: every
+      dataset rebuilt from a fresh clone and compared against the committed numbers. It
+      found a defect producing different numbers in different runs, so part of a committed
+      table could not have been reproduced by anyone. Fixed, remeasured, and written up
+      beside the result.
   - date: 2026-09-17
     project: "08"
     status: building
     note: >-
-      The second neural model came close enough to be interesting: PatchTST matched ETS at the
-      city and the boroughs, produced the lowest city error of anything built here, and still
-      cannot claim it, because the gap is smaller than the uncertainty around it. It loses
-      where the ranking is actually decided, across the thirty-one dispatch areas, and it costs
-      about seventeen times as much to fit as the statistical model it failed to beat. Before
-      it, AutoARIMA spent fifteen hours confirming that ETS was already the best of the four
-      statistical baselines.
+      PatchTST came close enough to be interesting: it matched ETS at the city and the
+      boroughs and produced the lowest city error of anything built here, and still cannot
+      claim it, because the gap is smaller than the uncertainty around it. It loses across
+      the thirty-one dispatch areas where the ranking is decided, and costs about seventeen
+      times as much to fit.
   - date: 2026-09-17
     project: "02"
     status: shipped
     note: >-
-      The panel gained a twelfth model, picked so that two of the twelve differ in capability
-      and nothing else, being the same family and size apart on the same laptop, and rank
-      agreement rose from 0.855 to 0.879 with a hundred adaptively chosen questions still
-      reaching it for seventy-three cents against sixteen dollars to ask all three thousand.
-      Two published claims narrowed rather than grew: every model being worse when the right
-      answer comes first is now eleven of twelve, and the noise figure this project hands to
-      the release gate project was found to be understating by half, because it had been
-      averaged over models that barely disagree with themselves. The question bank was also
-      checked for exact duplicates for the first time, which found thirty-six questions that
-      appear twice among nineteen thousand, thirty-five of them because one benchmark was
-      built partly out of another, and they are reported rather than quietly removed.
+      The panel gained a twelfth model, chosen so that two of the twelve differ in
+      capability and nothing else, and rank agreement rose from 0.855 to 0.879. Two
+      published claims narrowed rather than grew, and the noise figure handed to the
+      release-gate project was found to be understating by half. A first duplicate check
+      found 36 questions appearing twice among 19,000, reported rather than quietly removed.
