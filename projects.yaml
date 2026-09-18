@@ -605,3 +605,14 @@ log:
       calculator for whether a given dataset is large enough to answer the question at all.
       Serving it under its own security policy for the first time found the chart legend's
       colours had been blocked on the live site since it went up.
+  - date: 2026-09-18
+    project: "08"
+    status: building
+    note: >-
+      The last model is the one that was never trained on this data at all. Google's
+      pretrained forecaster, used with no training whatsoever, matches a gradient-boosted
+      model fitted to these series on the stretch after its own training data ends, and beats
+      the best statistical model there. The write-up leads with the catch rather than burying
+      it: across the forty weeks since those weights were published, the only stretch nothing
+      could have leaked into, it is about one percent behind instead, and forty weeks cannot
+      settle whether that is leakage or a frozen model going stale against a weekly refit.
