@@ -1,4 +1,13 @@
 {% extends "base.html" %}
+{% macro log_item(entry) -%}
+        <li class="status-{{ entry.status.value }}">
+          <time datetime="{{ entry.date.isoformat() }}">{{ entry.date.isoformat() }}</time>
+          <div>
+            <p class="log-head"><span class="status">{{ status_label(entry.status) }}</span></p>
+            <p class="log-note">{{ entry.note }}</p>
+          </div>
+        </li>
+{%- endmacro %}
 {% set meta_title = project.name ~ " | " ~ site.title %}
 {% set meta_description = project.one_liner %}
 {% set canonical_path = path %}
@@ -24,17 +33,21 @@
       </div>
       {% set history = site.log_for(project.number) %}
       {% if history %}
+      {# The two newest here; anything older behind a disclosure. A project with eight updates
+         pushed its own README below the fold, which is the wrong way round on a page whose
+         job is the result. No script: <details> is what the explainer's "Learn more" uses. #}
       <ol class="log compact history">
-        {% for entry in history %}
-        <li class="status-{{ entry.status.value }}">
-          <time datetime="{{ entry.date.isoformat() }}">{{ entry.date.isoformat() }}</time>
-          <div>
-            <p class="log-head"><span class="status">{{ status_label(entry.status) }}</span></p>
-            <p class="log-note">{{ entry.note }}</p>
-          </div>
-        </li>
-        {% endfor %}
+        {% for entry in history[:2] %}{{ log_item(entry) }}{% endfor %}
       </ol>
+      {% set earlier = history[2:] %}
+      {% if earlier %}
+      <details class="history-more">
+        <summary>{{ earlier | length }} earlier update{{ "" if earlier | length == 1 else "s" }}</summary>
+        <ol class="log compact history">
+          {% for entry in earlier %}{{ log_item(entry) }}{% endfor %}
+        </ol>
+      </details>
+      {% endif %}
       {% endif %}
     </div>
   </div>
