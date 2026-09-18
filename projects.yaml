@@ -179,6 +179,12 @@ projects:
     name: Capacity Planning Forecaster
     status: building
     repo: Peter-A-P/capacity-planning-forecaster
+    demo: https://capacity.peterparker.ca
+    demo_note: >-
+      Seventeen years of emergency calls, forecast a fortnight ahead with a range around
+      every number, and a slider that turns that range into crews on shift. It opens on
+      March 2020, where the range breaks and the guarantee fails, which is the part a quiet
+      test set never shows.
     technical_line: >-
       hierarchical probabilistic forecasting · skill against seasonal naive ·
       adaptive conformal intervals · LightGBM, N-HiTS, PatchTST, TimesFM ·
@@ -189,8 +195,7 @@ projects:
       ranges that actually hold when conditions shift, and turns them into a staffing number
       at a chosen service level. Overstaffing costs money and understaffing costs patients
       or customers; this puts a defensible number on both, site by site, rolling up to the
-      region, with the coverage checked through a real distribution shift rather than on a
-      quiet test set.
+      region.
 
   - number: "09"
     themes: [decisioning, realtime, platform]
@@ -659,3 +664,11 @@ log:
       model and stops when the two are separated, in the browser, on twelve real models'
       recorded answers. Over all sixty-six pairs it settles 53 inside three hundred questions
       where asking at random settles 38.
+  - date: 2026-09-18
+    project: "08"
+    status: building
+    note: >-
+      The dashboard is live at capacity.peterparker.ca: any of the 37 series with the range
+      around its forecast, that range measured through the 2020 shift, and a slider that
+      turns a service level into crews on shift and prices them. Every model the plan named
+      is now measured and every results table is filled.
