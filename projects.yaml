@@ -62,7 +62,12 @@ projects:
     name: Model Selection at a Tenth of the Cost
     status: shipped
     repo: Peter-A-P/model-selection-tenth-cost
-    explainer: content/02-model-selection.md
+    demo: https://adaptive.peterparker.ca
+    demo_note: >-
+      Pick two AI models and watch a test decide which is better, one question at a time, on
+      the answers twelve real models gave. Beside it the same two are asked questions at
+      random, with the same budget, and usually fail to settle it at all. There is a button
+      that runs all sixty-six pairs, and a chart showing where the method stops winning.
     technical_line: >-
       adaptive testing, Fisher information · item response theory (2PL/3PL) ·
       marginal maximum likelihood by EM · items needed per effect size ·
@@ -646,3 +651,11 @@ log:
       loan, resolves the defined terms each covenant depends on, and checks the ones public
       filings can support against the borrower's own reported figures. The ones they cannot
       support are cited and handed to a person rather than guessed at.
+  - date: 2026-09-18
+    project: "02"
+    status: shipped
+    note: >-
+      The method is now a page: it picks the next question, updates what it believes about each
+      model and stops when the two are separated, in the browser, on twelve real models'
+      recorded answers. Over all sixty-six pairs it settles 53 inside three hundred questions
+      where asking at random settles 38.
