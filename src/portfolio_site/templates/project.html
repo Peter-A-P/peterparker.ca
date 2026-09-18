@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% set wrap_class = "wrap narrow" %}
 {% macro log_item(entry) -%}
         <li class="status-{{ entry.status.value }}">
           <time datetime="{{ entry.date.isoformat() }}">{{ entry.date.isoformat() }}</time>
