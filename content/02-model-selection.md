@@ -228,7 +228,7 @@ is wrong rather than its number.
 
 ## Why one command matters
 
-Eight years of production machine learning inside health and government is real work that
+Production machine learning inside health and government is real work that
 an outsider cannot verify. The portfolio exists to fix that, and the standard is the same in
 every project: a stranger clones the repository, runs one command, and gets the same table.
 Here that means a content-hashed question bank frozen at a version, question properties

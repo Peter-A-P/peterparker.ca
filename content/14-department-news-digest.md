@@ -188,7 +188,7 @@ budget.
 
 ## Why it ends in a table
 
-Eight years of production machine learning inside health and government is real work that
+Production machine learning inside health and government is real work that
 an outsider cannot verify. This portfolio exists to fix that, one project at a time, and
 the standard does not move: a stranger clones the repository, runs one command, and gets
 the same numbers. For this project that means precision and recall per audience with
