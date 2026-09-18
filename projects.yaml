@@ -621,3 +621,21 @@ log:
       estimators on six datasets, every score with a bootstrap interval and both baselines
       beside it, and a limitations section that says what is unfinished rather than leaving
       it out.
+  - date: 2026-09-18
+    project: "04"
+    status: shipped
+    note: >-
+      All three cloud platforms ration or refuse the same frontier models to a brand new
+      account, and none documents it. Amazon allowed ten requests a minute against a published
+      ten thousand. Google refused the first request the account ever made, with an error
+      saying slow down when no allowance had ever been set. On all three, the platform's own
+      models are provisioned normally and the partner's are not.
+  - date: 2026-09-18
+    project: "04"
+    status: shipped
+    note: >-
+      A Canadian deployment answers at last, though not with the model anyone wanted: the
+      vendor that cannot serve these in Canada serves another there happily. Its record reads
+      deployed in Canada and processed anywhere, the strongest honest claim on offer, because
+      no vendor reports where a request really went. Every call now records how far it was
+      allowed to travel, and a run can fail for exceeding it.
