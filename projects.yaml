@@ -695,3 +695,18 @@ log:
       about seventeen times as much to fit as the statistical model it failed to beat. Before
       it, AutoARIMA spent fifteen hours confirming that ETS was already the best of the four
       statistical baselines.
+  - date: 2026-09-17
+    project: "02"
+    status: shipped
+    note: >-
+      The panel gained a twelfth model, picked so that two of the twelve differ in capability
+      and nothing else, being the same family and size apart on the same laptop, and rank
+      agreement rose from 0.855 to 0.879 with a hundred adaptively chosen questions still
+      reaching it for seventy-three cents against sixteen dollars to ask all three thousand.
+      Two published claims narrowed rather than grew: every model being worse when the right
+      answer comes first is now eleven of twelve, and the noise figure this project hands to
+      the release gate project was found to be understating by half, because it had been
+      averaged over models that barely disagree with themselves. The question bank was also
+      checked for exact duplicates for the first time, which found thirty-six questions that
+      appear twice among nineteen thousand, thirty-five of them because one benchmark was
+      built partly out of another, and they are reported rather than quietly removed.
