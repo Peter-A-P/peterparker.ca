@@ -18,11 +18,10 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  {# The bar and the footer are the site rather than the page, so they are the same 66rem
-     everywhere and nothing in them moves when the reader clicks into a project. They
-     followed the reading page's 46rem for a day, and the whole frame then jumped inwards
-     by ten rem a side on every click, which reads as arriving somewhere else. What is
-     read keeps its own narrower column, set by the page's own template. #}
+  {# Every page is one width, .wrap, so nothing moves when the reader clicks into a project
+     and nothing moves on the way back. A project page and the log sat in a column a third
+     narrower than the index for a while, which made the pages you arrive at to read the
+     cramped ones and made the whole frame jump on every click. #}
   <header class="top">
     <div class="wrap">
       <a class="brand" href="/"><span class="mono-mark" aria-hidden="true">P</span>{{ site.title }}</a>

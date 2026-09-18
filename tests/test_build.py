@@ -96,7 +96,7 @@ def test_a_live_demo_is_a_button_at_the_top_of_its_page(tmp_path: Path, readme: 
     build(site, out, GitHub(fetch=fetch), today="2026-10-04")
 
     page = (out / "projects" / "open" / "index.html").read_text(encoding="utf-8")
-    hero = page.split('</div>\n  <div class="wrap narrow readme">', 1)[0]
+    hero = page.split('</div>\n  <div class="wrap readme">', 1)[0]
     assert 'class="demo-button" href="https://demo.example"' in hero
     assert "Open the live demo" in hero
     assert "A slider and six datasets." in hero
@@ -131,7 +131,7 @@ def test_nothing_on_a_wrap_cancels_its_gutter() -> None:
         for attr in re.findall(
             r'class="([^"]*\bwrap\b[^"]*)"', template.read_text(encoding="utf-8")
         ):
-            sharing.update(name for name in attr.split() if name not in {"wrap", "narrow"})
+            sharing.update(name for name in attr.split() if name != "wrap")
 
     for name in sorted(sharing):
         for body in re.findall(rf"\.{re.escape(name)}\s*{{([^}}]*)}}", stylesheet):
@@ -329,15 +329,14 @@ def test_a_short_history_gets_no_disclosure_and_one_earlier_update_is_singular(
     assert "<summary>1 earlier update</summary>" in page
 
 
-def test_the_bar_and_the_footer_are_the_same_width_on_every_page(
-    tmp_path: Path, readme: str
-) -> None:
-    """The site's frame holds still when the reader clicks into a project.
+def test_every_page_is_one_width(tmp_path: Path, readme: str) -> None:
+    """The site does not change shape when the reader clicks into a project.
 
-    The bar and the footer once followed the reading page's narrower column, so the whole
-    page, logo and all, jumped inwards by ten rem a side on every click into a project and
-    back out again on the way home. A reading column that is narrower than the frame is a
-    choice; a frame that resizes itself under the reader is not.
+    A project page and the log once set a column a third narrower than the index, on the
+    bar and the footer as well as the text, so clicking a project title pulled the whole
+    page in by ten rem a side and going back pushed it out again. It also left the pages a
+    reader actually arrives at to read as the cramped ones, which is backwards. Any second
+    width class on a .wrap brings both faults back, so nothing may add one.
     """
     fetch = FakeFetch(
         {"o/open": (False, readme), "o/secret": (True, "# S\n"), "o/early": (False, "# E\n")}
@@ -346,31 +345,20 @@ def test_the_bar_and_the_footer_are_the_same_width_on_every_page(
     build(_site(), out, GitHub(fetch=fetch), today="2026-10-04")
 
     pages = sorted(out.rglob("index.html"))
-    assert len(pages) > 1, "a one-page build cannot show the frame moving"
+    assert len(pages) > 1, "a one-page build cannot show the width changing"
+
+    stylesheet = (Path("src/portfolio_site") / "static" / "style.css").read_text(encoding="utf-8")
+    widening = {
+        name
+        for name, body in re.findall(r"\.([a-z-]+)\s*{([^}]*)}", stylesheet)
+        if "max-width" in body
+    }
+
     for page in pages:
         where = page.relative_to(out).as_posix()
-        html = page.read_text(encoding="utf-8")
-        bar = html.split('<header class="top">', 1)[1].split("</header>", 1)[0]
-        foot = html.split("<footer>", 1)[1].split("</footer>", 1)[0]
-        for part, name in ((bar, "bar"), (foot, "footer")):
-            outer = re.search(r'<div class="([^"]*)"', part)
-            assert outer is not None, f"{where}: no wrap in the {name}"
-            assert outer.group(1) == "wrap", (
-                f"{where}: the {name} is on '{outer.group(1)}' rather than the site-wide "
-                f"'wrap', so the frame changes width between pages"
+        for classes in re.findall(r'<div class="([^"]*\bwrap\b[^"]*)"', page.read_text("utf-8")):
+            clash = sorted(set(classes.split()) & widening - {"wrap"})
+            assert not clash, (
+                f"{where}: a .wrap also carries {clash}, which sets its own max-width, so "
+                f"this page is a different width from the rest of the site"
             )
-
-
-def test_a_wide_table_is_not_held_to_the_reading_measure() -> None:
-    """The results table a reader came for is seven columns wide and 46rem is not enough.
-
-    `.readme table` caps itself at its column, so the rule that lets a table out again has
-    to lift that cap as well as set a width. It did not, once, and the breakout did nothing
-    at all while looking exactly like it should have worked.
-    """
-    stylesheet = (Path("src/portfolio_site") / "static" / "style.css").read_text(encoding="utf-8")
-    body = re.search(r"\.readme > table[^{]*{([^}]*)}", stylesheet)
-    assert body is not None, "no breakout rule for a readme table"
-    assert "max-width: none" in body.group(1), (
-        "the breakout sets a width but leaves '.readme table { max-width: 100% }' capping it"
-    )

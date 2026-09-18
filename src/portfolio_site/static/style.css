@@ -78,14 +78,13 @@ a { color: var(--accent); text-decoration: none; text-underline-offset: .15em; }
 a:hover, a:focus-visible { text-decoration: underline; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .wrap { max-width: 66rem; margin: 0 auto; padding: 0 1.5rem; }
-.narrow { max-width: 46rem; }
-/* Two widths, and what a thing gets depends on whether it is read or scanned. The bar, the
-   footer and the index's card grid are 66rem on every page, so the site's frame holds still
-   when the reader clicks into a project: for a day the frame followed the reading column and
-   shrank by ten rem a side on every click, which looks like landing on a different site.
-   Everything meant to be read sits in .wrap.narrow, 46rem, about 85 characters to the line.
-   Section text takes the width of whatever holds it rather than setting a third width of its
-   own, so a heading ends where its tiles end. Four hand-set widths, 40rem to 46rem, used to
+/* One width, everywhere. A project page and the log used to sit in a 46rem column while the
+   index ran to 66rem, so clicking a project title narrowed the page by a third and clicking
+   back widened it again, and the pages you arrive at to read were the cramped ones. A
+   narrower measure is easier on the eye in the abstract, but not at the cost of the site
+   changing shape under the reader, and the index's own paragraphs have always run the full
+   width. Text takes the width of whatever holds it rather than setting a second width of its
+   own, so a heading ends where its tiles end. Six hand-set widths, 40rem to 66rem, used to
    make every one of these edges disagree with the next. */
 
 /* Top bar */
@@ -253,16 +252,6 @@ footer .fine { font-size: .8rem; }
 .readme code { font-family: var(--mono); font-size: .92em; }
 .readme :not(pre) > code { background: var(--code); padding: .08rem .35rem; border-radius: 4px; }
 .readme img { max-width: 100%; border-radius: 6px; }
-/* A table or a code block is not prose and does not want prose's measure. These take the
-   page's full 66rem, centred on the reading column, and fold back into it on a screen too
-   narrow to give them more. The results table on the release gate's page is seven columns
-   wide and scrolled sideways at 46rem, and it is the one thing on that page a reader came
-   for. `max-width` is reset because the rule above caps a table at its column. */
-.readme > table, .readme > pre {
-  max-width: none;
-  width: calc(min(66rem, 100vw) - 3rem);
-  margin-inline: calc(50% - (min(66rem, 100vw) - 3rem) / 2);
-}
 .readme blockquote { border-left: 3px solid var(--accent); margin: 1.25rem 0; padding: .2rem 1.1rem; color: var(--ink-2); background: var(--accent-soft); border-radius: 0 8px 8px 0; }
 .readme hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 .fine { font-size: .82rem; color: var(--muted); }
