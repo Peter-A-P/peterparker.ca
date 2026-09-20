@@ -101,7 +101,7 @@ projects:
   - number: "04"
     themes: [compliance, platform]
     slug: compliant-ai-gateway
-    name: Compliant AI Gateway
+    name: Inside the Boundary, On the Record
     status: shipped
     repo: Peter-A-P/compliant-ai-gateway
     explainer: content/04-compliant-ai-gateway.md
@@ -111,10 +111,10 @@ projects:
       hash-chained, tamper-evident log · reversible PII redaction (Presidio) ·
       semantic cache on Redis and pgvector · latency overhead per control
     one_liner: >-
-      Lets a bank, insurer, hospital or government department use frontier AI models without
-      personal data ever leaving the boundary, with a tamper-evident record of every call
-      and a hard cap on every team's spend. The blocker most regulated organisations cite
-      for AI adoption, removed, with the latency overhead measured rather than promised.
+      An AI gateway for banks, insurers, hospitals and government. Frontier models stay
+      usable while personal data is redacted before it leaves, every call carries a
+      tamper-evident record and a cost, and every team has a hard cap enforced before the
+      call. The detection rate and the latency overhead are measured rather than promised.
     note: Every model call in this portfolio routes through it.
 
   - number: "05"
@@ -702,3 +702,12 @@ log:
       every proposed redaction names the exemption category it rests on, and the tool will
       publish how often it keeps what should have gone, the number blunt PII tools never
       show. Nothing is measured yet and the repository stays private until it is.
+  - date: 2026-09-20
+    project: "04"
+    status: shipped
+    note: >-
+      Renamed. "Compliant" is the word every vendor uses, and the one claim this project
+      refuses to make: no provider reports where a request was actually processed, so what
+      is recorded is a declaration checked against the request, not a measurement. Also
+      corrected: the description said personal data never leaves. Detection recall is 96.3
+      percent, recall only on a synthetic corpus, so "ever" overclaimed.
