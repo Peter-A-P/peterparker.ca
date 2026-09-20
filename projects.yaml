@@ -176,12 +176,12 @@ projects:
   - number: "08"
     themes: [decisioning]
     slug: capacity-planning-forecaster
-    name: Capacity Planning Forecaster
+    name: How Many Crews, and How Sure
     status: shipped
     repo: Peter-A-P/capacity-planning-forecaster
     demo: https://capacity.peterparker.ca
     demo_note: >-
-      Seventeen years of emergency calls, forecast a fortnight ahead with a range around
+      Twenty-one years of emergency calls, forecast a fortnight ahead with a range around
       every number, and a slider that turns that range into crews on shift. It opens on
       March 2020, where the range breaks and the guarantee fails, which is the part a quiet
       test set never shows.
@@ -710,3 +710,12 @@ log:
       the point: the prediction is published before the race exists to check it against. The
       one-liner said "a field of thousands" in the same breath; the first race it predicts
       has 453 entrants, so that is corrected here rather than quietly edited away.
+  - date: 2026-09-20
+    project: "08"
+    status: shipped
+    note: >-
+      Renamed. A forecaster is an instrument; the question an operations director actually
+      asks is how many crews, and how sure. Everyone answers the first half. Also corrected
+      here: the note above said seventeen years of calls, where the record is twenty-one.
+      Seventeen is how many times more one of the models costs to fit, and it had wandered
+      into a claim about the data.
