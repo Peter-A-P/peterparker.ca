@@ -267,16 +267,16 @@ projects:
       The predictions are written down and hashed before the gun, and the error is published
       once the results are in.
     technical_line: >-
-      pre-registered predictions · hierarchical model, sparse histories ·
+      pre-registered predictions · two models over sparse histories ·
       conformal intervals by history depth · placing simulated from the field ·
       course, heat and wind normalisation · public race results only ·
       predictions tagged before the gun · error published after the race
     one_liner: >-
       Before the gun, a predicted finish time and placing for every registered runner in a
       field of thousands, from their public race history, published in advance, with the
-      error published once the results are in. For a race director that is pacing, corral
-      and medical staffing planned from expected finish times rather than guesses; for a
-      runner it is a goal time with an honest interval instead of a hunch.
+      error published once the results are in. For a runner that is a goal time with an
+      honest range instead of a hunch; for a race director it is pacing, corral and medical
+      staffing planned from expected finish times rather than guesses.
 
   - number: "13"
     themes: [grounded, agents]

@@ -6,6 +6,7 @@ from portfolio_site.render import (
     render_markdown,
     render_readme,
     rewrite_relative,
+    slug,
     split_more,
     split_title,
 )
@@ -130,3 +131,36 @@ def test_markers_between_the_separator_and_the_rows_do_not_split_the_table() -> 
     assert "<p>| 2026-09" not in html
     assert html.count("<table>") == 1
     assert "After the table." in html
+
+
+def test_a_headings_anchor_is_the_one_github_would_make() -> None:
+    """A README's own contents list has to work here, and it is written for GitHub.
+
+    So the slug is GitHub's: lower case, punctuation dropped, spaces to hyphens. If these
+    two disagree, every link in a project's contents list is dead on this site while it
+    still works on GitHub, which is the kind of breakage nobody notices until a reader
+    clicks one.
+    """
+    assert slug("The measured result") == "the-measured-result"
+    assert slug("Judgement, and what is borrowed") == "judgement-and-what-is-borrowed"
+    assert slug("**Bold** and `code`") == "bold-and-code"
+    assert slug("Run it yourself ") == "run-it-yourself"
+    assert slug("a_name kept") == "a_name-kept"
+
+
+def test_a_readmes_contents_list_finds_its_headings() -> None:
+    markdown = (
+        "## Contents\n\n- [The measured result](#the-measured-result)\n\n"
+        "## The measured result\n\nText.\n\n### By race length\n\nMore.\n\n"
+        "## The measured result\n\nSaid twice.\n"
+    )
+    html = render_readme(markdown, REPO, "main")
+    assert '<h2 id="the-measured-result">' in html
+    assert '<h3 id="by-race-length">' in html
+    assert '<h2 id="the-measured-result-1">' in html, "a repeat takes a suffix, as on GitHub"
+    assert '<a href="#the-measured-result">' in html
+
+
+def test_an_explainers_headings_are_anchored_too() -> None:
+    html = render_markdown("## How it works\n\nText.\n")
+    assert '<h2 id="how-it-works">' in html
