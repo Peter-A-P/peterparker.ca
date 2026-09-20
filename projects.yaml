@@ -158,7 +158,7 @@ projects:
     themes: [compliance, grounded]
     slug: access-to-information-redaction
     name: Access-to-Information Redaction
-    status: planned
+    status: building
     repo: Peter-A-P/access-to-information-redaction
     technical_line: >-
       context-dependent PII redaction · leak rate per category, with CIs ·
@@ -694,3 +694,11 @@ log:
       finishes by 23,830 runners, with a predicted time, a range and a likely place for every
       registered runner. Predictions are published and hashed before the gun and scored after
       it, with the first live race on 2026-10-18.
+  - date: 2026-09-19
+    project: "07"
+    status: building
+    note: >-
+      Started. It turns an access-to-information release into a review a person can check:
+      every proposed redaction names the exemption category it rests on, and the tool will
+      publish how often it keeps what should have gone, the number blunt PII tools never
+      show. Nothing is measured yet and the repository stays private until it is.
