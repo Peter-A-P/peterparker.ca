@@ -177,7 +177,7 @@ projects:
     themes: [decisioning]
     slug: capacity-planning-forecaster
     name: Capacity Planning Forecaster
-    status: building
+    status: shipped
     repo: Peter-A-P/capacity-planning-forecaster
     demo: https://capacity.peterparker.ca
     demo_note: >-
@@ -258,8 +258,14 @@ projects:
     themes: [decisioning]
     slug: finish-line-forecast
     name: Finish Line Forecast
-    status: building
+    status: shipped
     repo: Peter-A-P/finish-line-forecast
+    demo: https://finishline.peterparker.ca
+    demo_note: >-
+      Eighteen years of Newfoundland road results, 75,061 finishes, turned into a predicted
+      time, a range it should land in and a likely place for every runner on the start list.
+      The predictions are written down and hashed before the gun, and the error is published
+      once the results are in.
     technical_line: >-
       pre-registered predictions · hierarchical model, sparse histories ·
       conformal intervals by history depth · placing simulated from the field ·
@@ -672,3 +678,19 @@ log:
       around its forecast, that range measured through the 2020 shift, and a slider that
       turns a service level into crews on shift and prices them. Every model the plan named
       is now measured and every results table is filled.
+  - date: 2026-09-19
+    project: "08"
+    status: shipped
+    note: >-
+      The repository is public: nine models measured over 911 weekly forecasts, every score
+      with a bootstrap interval and the seasonal baseline beside it, and a dashboard that
+      turns a service level into crews on shift. The pretrained model that never saw this
+      data is on the same chart, over the only window it can honestly be read on.
+  - date: 2026-09-19
+    project: "12"
+    status: shipped
+    note: >-
+      The repository and the page are public: eighteen years of Newfoundland results, 75,061
+      finishes by 23,830 runners, with a predicted time, a range and a likely place for every
+      registered runner. Predictions are published and hashed before the gun and scored after
+      it, with the first live race on 2026-10-18.
