@@ -257,7 +257,7 @@ projects:
   - number: "12"
     themes: [decisioning]
     slug: finish-line-forecast
-    name: Finish Line Forecast
+    name: The Whole Field, Called Before the Gun
     status: shipped
     repo: Peter-A-P/finish-line-forecast
     demo: https://finishline.peterparker.ca
@@ -272,8 +272,8 @@ projects:
       course, heat and wind normalisation · public race results only ·
       predictions tagged before the gun · error published after the race
     one_liner: >-
-      Before the gun, a predicted finish time and placing for every registered runner in a
-      field of thousands, from their public race history, published in advance, with the
+      Before the gun, a predicted finish time and placing for every registered runner on the
+      start list, from eighteen years of public race results, published in advance, with the
       error published once the results are in. For a runner that is a goal time with an
       honest range instead of a hunch; for a race director it is pacing, corral and medical
       staffing planned from expected finish times rather than guesses.
@@ -702,3 +702,11 @@ log:
       every proposed redaction names the exemption category it rests on, and the tool will
       publish how often it keeps what should have gone, the number blunt PII tools never
       show. Nothing is measured yet and the repository stays private until it is.
+  - date: 2026-09-20
+    project: "12"
+    status: shipped
+    note: >-
+      Renamed. The old name said what the thing was and not what it claims, and the claim is
+      the point: the prediction is published before the race exists to check it against. The
+      one-liner said "a field of thousands" in the same breath; the first race it predicts
+      has 453 entrants, so that is corrected here rather than quietly edited away.
