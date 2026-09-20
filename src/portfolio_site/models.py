@@ -29,7 +29,7 @@ class Status(StrEnum):
 
 STATUS_LABEL: dict[Status, str] = {
     Status.LIVE: "Live",
-    Status.SHIPPED: "Result published",
+    Status.SHIPPED: "Shipped",
     Status.BUILDING: "In progress",
     Status.PLANNED: "Planned",
 }

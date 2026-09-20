@@ -65,7 +65,7 @@ def test_build_pages_index_and_sitemap(tmp_path: Path, readme: str) -> None:
     assert 'href="/projects/secret/"' not in index
     assert "No Repo" in index
     assert "Four projects, one standard." in index
-    assert "Result published" in index
+    assert "Shipped" in index
     assert "Planned" in index
 
     sitemap = (out / "sitemap.xml").read_text(encoding="utf-8")
