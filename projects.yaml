@@ -219,7 +219,7 @@ projects:
   - number: "10"
     themes: [agents, platform]
     slug: self-healing-production-ai
-    name: Self-Healing Production AI
+    name: From Failure to Reviewed Fix, in Minutes
     status: planned
     repo: Peter-A-P/self-healing-production-ai
     technical_line: >-
