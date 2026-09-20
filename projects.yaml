@@ -35,7 +35,7 @@ projects:
   - number: "01"
     themes: [decisioning]
     slug: intervention-targeting
-    name: Intervention Targeting Engine
+    name: Spend It Where It Changes the Outcome
     status: shipped
     repo: Peter-A-P/intervention-targeting-engine
     demo: https://targeting.peterparker.ca
