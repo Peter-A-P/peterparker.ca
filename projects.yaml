@@ -268,10 +268,10 @@ projects:
       The predictions are written down and hashed before the gun, and the error is published
       once the results are in.
     technical_line: >-
-      pre-registered predictions · two models over sparse histories ·
-      conformal intervals by history depth · placing simulated from the field ·
-      course, heat and wind normalisation · public race results only ·
-      predictions tagged before the gun · error published after the race
+      Bayesian hierarchical model (PyMC) · rolling-origin backtest ·
+      LightGBM quantile challenger · conformal prediction intervals ·
+      Monte Carlo placing simulation · bootstrap intervals throughout ·
+      course, heat and wind effects · predictions hashed before the gun
     one_liner: >-
       Before the gun, a predicted finish time and placing for every registered runner in a
       field of thousands, from their public race history, published in advance, with the
