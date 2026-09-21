@@ -158,7 +158,7 @@ projects:
   - number: "07"
     themes: [compliance, grounded]
     slug: access-to-information-redaction
-    name: Access-to-Information Redaction
+    name: Hundreds of Pages, Redacted in an Afternoon
     status: building
     repo: Peter-A-P/access-to-information-redaction
     technical_line: >-
