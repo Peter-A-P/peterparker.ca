@@ -204,12 +204,13 @@ projects:
     name: Real-Time Fraud and Risk Decisioning Platform
     status: live
     repo: Peter-A-P/realtime-risk-platform
-    demo: https://risk.peterparker.ca
+    demo: https://fraud.peterparker.ca
     demo_note: >-
-      The platform running now: about a thousand synthetic card transactions a second, each
-      scored and decided in milliseconds, with the latency, the decisions and the drift
-      monitors on one public dashboard. Fraud patterns shift on a schedule sealed before the
-      window opened, so nobody, including its author, knows when the next one lands.
+      What the platform does and what has been measured, in charts: one transaction's
+      milliseconds step by step, latency against four times the live load, the machine taken
+      away eleven times and recovering, and fraud shifting on days nobody told the monitors
+      about. At the top, the live dashboard, running now on a schedule sealed before the
+      window opened.
     technical_line: >-
       Kafka-compatible streaming (Redpanda) · point-in-time leakage test ·
       thousands of events per second · Feast store, online/offline parity ·
