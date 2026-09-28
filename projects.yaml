@@ -266,7 +266,7 @@ projects:
     themes: [decisioning]
     slug: finish-line-forecast
     name: The Whole Field, Called Before the Gun
-    status: shipped
+    status: live
     repo: Peter-A-P/finish-line-forecast
     demo: https://finishline.peterparker.ca
     demo_note: >-
@@ -717,3 +717,11 @@ log:
       Live for sixty days, and the repository is public. Every transaction is scored at a
       p99 of about 8 ms against a 50 ms budget, and the fraud patterns shift on a schedule
       sealed before the window opened, so the drift monitors cannot have been tuned to it.
+  - date: 2026-09-28
+    project: "12"
+    status: live
+    note: >-
+      Live: predictions are being published for real races. Every morning since 27 September
+      the newest Turkey Tea 10k entrants are predicted, hashed and tagged in the public
+      repository before the gun on 4 October, and Cape to Cabot follows on 18 October. Each
+      race is scored against its official results once they are posted.
