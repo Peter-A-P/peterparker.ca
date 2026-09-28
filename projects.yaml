@@ -202,8 +202,14 @@ projects:
     themes: [decisioning, realtime, platform]
     slug: realtime-risk-platform
     name: Real-Time Fraud and Risk Decisioning Platform
-    status: building
+    status: live
     repo: Peter-A-P/realtime-risk-platform
+    demo: https://risk.peterparker.ca
+    demo_note: >-
+      The platform running now: about a thousand synthetic card transactions a second, each
+      scored and decided in milliseconds, with the latency, the decisions and the drift
+      monitors on one public dashboard. Fraud patterns shift on a schedule sealed before the
+      window opened, so nobody, including its author, knows when the next one lands.
     technical_line: >-
       Kafka-compatible streaming (Redpanda) · point-in-time leakage test ·
       thousands of events per second · Feast store, online/offline parity ·
@@ -213,8 +219,8 @@ projects:
       Scores every transaction in under 50 milliseconds, thousands per second, before the
       money moves, and keeps working as fraud patterns shift, without the training-versus-
       production mismatch that quietly breaks most deployed models. The platform around the
-      model is what organisations are actually missing, and this is a working one you can
-      watch run: live behind a public dashboard, reproducible from one command.
+      model is what organisations are actually missing, and this one runs live behind a
+      public dashboard.
 
   - number: "10"
     themes: [agents, platform]
@@ -703,3 +709,10 @@ log:
       every proposed redaction names the exemption category it rests on, and the tool will
       publish how often it keeps what should have gone, the number blunt PII tools never
       show. Nothing is measured yet and the repository stays private until it is.
+  - date: 2026-09-28
+    project: "09"
+    status: live
+    note: >-
+      Live for sixty days, and the repository is public. Every transaction is scored at a
+      p99 of about 8 ms against a 50 ms budget, and the fraud patterns shift on a schedule
+      sealed before the window opened, so the drift monitors cannot have been tuned to it.
