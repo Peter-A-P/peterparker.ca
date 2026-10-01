@@ -1,5 +1,5 @@
-A hospital, a bank, an insurer or a government department wants to use the same AI models
-everybody else is using. The technology is not what stops it. What stops it is a meeting.
+A bank, an insurer, a retailer, a telecom, a hospital or a government department wants to
+use the same AI models everybody else is using. The technology is not what stops it. What stops it is a meeting.
 
 In that meeting, three people ask three questions. Privacy asks where the personal
 information goes and who at the vendor can read it. Audit asks to be shown exactly what
@@ -45,13 +45,14 @@ on a toy workload. The library is the piece the rest of this portfolio already d
 so it is load-bearing before it is presentable: if it is wrong, other projects break, and
 the record it keeps is the record their own results are checked against.
 
-**Where this stands: the library is public, with its numbers in it.** It is built, tested
-and released, with its programming interface deliberately frozen early so that another
-project in the portfolio could be written against it before it was finished. It carries real
-calls to eight providers, including all three of the big clouds' model platforms, and it has
-been the measuring instrument for tens of thousands of real calls made by other projects
-here. The full gateway, with redaction, residency enforcement, the audit chain, the cache,
-team budgets and the published latency budget, comes next.
+**Where this stands: both parts are built, public and running.** The library is released,
+with its programming interface deliberately frozen early so that another project in the
+portfolio could be written against it before it was finished, and it reaches eight
+providers, including all three of the big clouds' model platforms. The gateway around it
+runs at gateway.peterparker.ca: redaction, residency enforcement, the audit chain anchored
+daily in the public repository, the cache, team budgets, the portfolio dashboard and a
+public demo key, with the latency overhead measured on the server that runs it. The
+repository's README carries every measured table.
 
 This page is a stand-in kept for the record. The repository is public, so the project's page
 on this site is that repository's own README, which carries the measured tables.
@@ -164,7 +165,7 @@ the monitoring record is not a lapse of judgement in code review, it is a progra
 stops working. A test plants a fictional patient's name in a prompt and checks it appears
 nowhere in the output.
 
-## What the gateway adds next
+## What the gateway adds
 
 **It speaks the vendors' own protocol**, so an existing tool moves onto it by changing a
 base address and a key. Adoption cost is close to zero, which is the only version of this
@@ -180,10 +181,13 @@ signed.
 
 **Redaction is reversible.** Detected names, identifiers and places become consistent typed
 placeholders, so the same person is the same placeholder throughout one request. The
-mapping back lives in a short-lived, encrypted, per-request store that the audit log never
-sees. The reply is rehydrated on the way back. Models sometimes mangle placeholders, and
-that rate is measured and published, because it is the honest limit of the approach and the
-first thing an informed buyer will ask about.
+mapping back lives in memory for the life of the request and is written nowhere, not the
+audit log, not a log file, not a response header. The reply is rehydrated on the way back,
+and only with the values the caller sent: putting back every value, including ones from the
+application's own instructions, was tried and rejected, because it turned a model's refusal
+to disclose a record into a disclosure. Models sometimes mangle placeholders, and that rate
+is measured and published, because it is the honest limit of the approach and the first
+thing an informed buyer will ask about.
 
 **The recognisers are Canadian**, which public tooling largely is not: social insurance
 numbers checked against their checksum, provincial health numbers, postal codes, and a
@@ -202,15 +206,16 @@ trail is one.
 **The cache is published with its risk beside its saving.** Repeated questions can be
 answered from a store of previous answers, which saves real money. It can also answer a
 subtly different question with the confidence of an exact match, which is worse than having
-no cache. So the saving is reported next to the rate at which that happens, measured by
-hand-labelling a sample of the cache's own hits. It is switched off entirely for personal
-and sensitive data.
+no cache. So its hit rate is reported next to the rate at which that happens, and the money
+it saves waits for a replay of real traffic with hand-labelled hits. It is switched off
+entirely for personal and sensitive data, and under load it steps aside rather than make a
+request wait.
 
 **Injection screening is advisory by default.** Content that looks like an attempt to
 hijack the model is flagged in the audit record rather than blocked, because blocking has a
 false-positive cost that belongs to the policy owner rather than to the vendor of the tool.
 
-**The dashboard is public.** A read-only view of every project in this portfolio, showing
+**The dashboard is public**, at gateway.peterparker.ca/dashboard. A read-only view of every project in this portfolio, showing
 calls, latency, errors and cost broken down by project, model, provider and day. Next to it
 sits the panel that matters more: a comparison of how many calls the central record holds
 against how many each individual machine's own record holds. Dashboards are usually shown
@@ -220,9 +225,9 @@ and the gap between the two numbers is published rather than hidden.
 **The latency budget is published before the feature list grows.** The overhead is measured
 against a stand-in vendor with a fixed response time, with the protections switched on one
 at a time, at three levels of load, several runs each, with intervals across runs. The
-budget is set from the first measurement in the first week, so the budget constrains the
-architecture instead of the architecture excusing the budget. Whatever the final figures
-are, those are the figures that get published.
+budget was set from the first measurement, so the budget constrains the architecture instead
+of the architecture excusing the budget, and each run since has changed the design. Whatever
+the figures are, those are the figures that get published.
 
 ## Does redaction make the answers worse
 
@@ -230,10 +235,11 @@ This is the question a buyer asks second, right after the privacy question, and 
 almost never answered. Removing names and numbers from a prompt might well degrade the
 reply, and any honest version of this product has to say by how much.
 
-It gets answered with another project from this portfolio: the release gate, pointed at
-this gateway. The same questions are put through redacted and unredacted, paired item by
-item, tested for whether the redacted side is worse by more than a stated tolerance rather
-than for whether it happens to score higher. The measuring instrument is the same one every
+It is answered with another project from this portfolio: the release gate, pointed at this
+gateway. The same questions are put through redacted and unredacted, paired item by item,
+tested for whether the redacted side is worse by more than a stated tolerance rather than
+for whether it happens to score higher, and the answer, including where the cost turned out
+to be, is in the repository. The measuring instrument is the same one every
 other project in the portfolio uses, which is the point of building it first.
 
 ## What this deliberately does not do
