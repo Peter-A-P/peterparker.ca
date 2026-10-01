@@ -84,8 +84,14 @@ projects:
     themes: [llm-eval, compliance]
     slug: ai-release-gate
     name: AI Release Gate
-    status: shipped
+    status: live
     repo: Peter-A-P/ai-release-gate
+    demo: https://gate.peterparker.ca
+    demo_note: >-
+      Why an AI model's score moves when nothing has changed, and by how much, model by model.
+      The gate run where the right answer is known, with every false alarm drawn as a square,
+      the AI judges licensed against a person and the ones refused, and the red-team rates.
+      Rebuilt every night from the public record, with an interval on every number.
     technical_line: >-
       LLM eval platform (Python, SQLite) · five repeats set the noise floor ·
       judge calibrated on human labels · noise floor measured 0.2% to 5.0% ·
@@ -96,7 +102,6 @@ projects:
       discipline a test suite gives code, applied to AI, with an audit trail a regulator can
       read. Includes a public month-by-month record of how the major vendors' "frozen"
       models silently change, the evidence teams wish they had when something breaks.
-    note: Publishes a monthly public record of frontier-model drift.
 
   - number: "04"
     themes: [compliance, platform]
@@ -740,3 +745,10 @@ log:
       on the page calls a real model through it at up to US$0.25 a day, and the dashboard
       shows every model call the portfolio has made. In the published load test it answered
       all 150,041 requests, up to 500 a second.
+  - date: 2026-10-01
+    project: "03"
+    status: live
+    note: >-
+      Live at gate.peterparker.ca, rebuilt every night from the committed record: the noise
+      floor for each model, the gate's measured false-alarm rate of 7.0% where nothing changed,
+      the judge licences and the red-team rates. The monthly drift record continues from here.
