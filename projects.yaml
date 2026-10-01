@@ -104,6 +104,13 @@ projects:
     name: Inside the Boundary, On the Record
     status: shipped
     repo: Peter-A-P/compliant-ai-gateway
+    demo: https://gateway.peterparker.ca
+    demo_note: >-
+      What the gateway does and what it measured, in pictures: a customer's details swapped
+      for placeholders before a request leaves, where each kind of data may go, a record
+      nobody can quietly rewrite, and the delay each control adds at 500 requests a second.
+      A public key on the page calls a real model through it, and every call lands on the
+      portfolio's dashboard.
     explainer: content/04-compliant-ai-gateway.md
     technical_line: >-
       data-residency routing per request · provider routing by configuration ·
@@ -116,7 +123,6 @@ projects:
       tamper-evident record of every call and a hard cap on every team's spend. The blocker
       most regulated organisations cite for AI adoption, removed, with the latency overhead
       measured rather than promised.
-    note: Every model call in this portfolio routes through it.
 
   - number: "05"
     themes: [compliance, grounded]
