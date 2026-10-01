@@ -102,7 +102,7 @@ projects:
     themes: [compliance, platform]
     slug: compliant-ai-gateway
     name: Inside the Boundary, On the Record
-    status: shipped
+    status: live
     repo: Peter-A-P/compliant-ai-gateway
     demo: https://gateway.peterparker.ca
     demo_note: >-
@@ -731,3 +731,12 @@ log:
       the newest Turkey Tea 10k entrants are predicted, hashed and tagged in the public
       repository before the gun on 4 October, and Cape to Cabot follows on 18 October. Each
       race is scored against its official results once they are posted.
+  - date: 2026-10-01
+    project: "04"
+    status: live
+    note: >-
+      Live at gateway.peterparker.ca: redaction, residency enforcement, team budgets, the
+      semantic cache and an audit chain anchored daily in the public repository. A public key
+      on the page calls a real model through it at up to US$0.25 a day, and the dashboard
+      shows every model call the portfolio has made. In the published load test it answered
+      all 150,041 requests, up to 500 a second.
