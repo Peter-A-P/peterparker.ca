@@ -232,7 +232,7 @@ footer .fine { font-size: .8rem; }
 @media (prefers-color-scheme: dark) { .demo-button { color: #0e1013; } }
 @media (prefers-reduced-motion: reduce) { .demo-button, .demo-button:hover { transition: none; transform: none; } }
 .demo-where { font-family: var(--mono); font-size: .82rem; color: var(--muted); }
-.demo-note { flex-basis: 100%; color: var(--ink-2); font-size: .95rem; max-width: 40rem; }
+.demo-note { flex-basis: 100%; color: var(--ink-2); font-size: .95rem; }
 
 .meta { display: flex; flex-wrap: wrap; gap: .75rem 2rem; margin: 1.5rem 0 0; font-size: .92rem; }
 .meta div span { display: block; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
