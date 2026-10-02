@@ -93,10 +93,10 @@ projects:
       the AI judges licensed against a person and the ones refused, and the red-team rates.
       Rebuilt every night from the public record, with an interval on every number.
     technical_line: >-
-      LLM eval platform (Python, SQLite) · five repeats set the noise floor ·
-      judge calibrated on human labels · noise floor measured 0.2% to 5.0% ·
-      deterministic graders, no model judge · paired non-inferiority testing ·
-      CI regression gating in GitHub Actions · measured false-block rate
+      LLM evaluation platform (Python) · FastAPI and DuckDB dashboard ·
+      LLM-as-judge, calibrated by kappa · paired non-inferiority tests ·
+      bootstrap CIs and power analysis · CI release gate (GitHub Actions) ·
+      red-teaming: PII, prompt injection · OpenTelemetry tracing, Azure
     one_liner: >-
       No prompt or model change reaches users unless it is proven not to have regressed: the
       discipline a test suite gives code, applied to AI, with an audit trail a regulator can
