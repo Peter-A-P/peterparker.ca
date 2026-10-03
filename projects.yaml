@@ -151,7 +151,7 @@ projects:
     themes: [llm-eval, platform]
     slug: fraction-of-the-bill
     name: Frontier Quality at a Fraction of the Bill
-    status: building
+    status: shipped
     repo: Peter-A-P/fraction-of-the-bill
     technical_line: >-
       QLoRA fine-tuning (PyTorch, PEFT) · vLLM and llama.cpp serving ·
@@ -752,3 +752,11 @@ log:
       Live at gate.peterparker.ca, rebuilt every night from the committed record: the noise
       floor for each model, the gate's measured false-alarm rate of 7.0% where nothing changed,
       the judge licences and the red-team rates. The monthly drift record continues from here.
+  - date: 2026-10-03
+    project: "06"
+    status: shipped
+    note: >-
+      The repository, the models and the dataset are public. A 2B model fine-tuned on SEC
+      filings gets 96.9% of fields right, level with the dearest frontier result, for US$0.054
+      per 1,000 on a rented card against US$1.01 for the cheapest API, and pays for itself
+      from about 195,000 extractions a month.
