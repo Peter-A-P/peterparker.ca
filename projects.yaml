@@ -238,7 +238,7 @@ projects:
     themes: [agents, platform]
     slug: self-healing-production-ai
     name: From Failure to Reviewed Fix, in Minutes
-    status: planned
+    status: building
     repo: Peter-A-P/self-healing-production-ai
     technical_line: >-
       agentic incident triage (LangGraph) · failing test before any fix ·
@@ -762,6 +762,12 @@ log:
       from about 195,000 extractions a month.
   - date: 2026-10-06
     project: "13"
+    status: building
+    note: >-
+      Under construction, with no measured result yet. The repository stays private until
+      there is one.
+  - date: 2026-10-06
+    project: "10"
     status: building
     note: >-
       Under construction, with no measured result yet. The repository stays private until
