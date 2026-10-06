@@ -772,3 +772,11 @@ log:
     note: >-
       Under construction, with no measured result yet. The repository stays private until
       there is one.
+  - date: 2026-10-06
+    project: "03"
+    status: live
+    note: >-
+      Version 0.1.0 is released. Over-refusal was read by hand: one model's 10.7% is 4.0%,
+      because ten of its sixteen "refusals" refused a harmful reading and then answered the
+      question. The person who labelled the gold set agrees with their own second reading at
+      kappa 0.851, and the write-up is out: "Your LLM eval has no error bars".
