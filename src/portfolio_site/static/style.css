@@ -114,7 +114,7 @@ h3 { font-size: 1.42rem; line-height: 1.22; }
 .hint { color: var(--muted); font-size: .95rem; margin: .55rem 0 0; }
 
 /* Hero */
-.hero { padding: 4.5rem 0 2rem; }
+.hero { padding: 2.5rem 0 2rem; }
 /* The hero runs straight into the projects, so the two paddings do not both apply in
    full: 2rem under the intro and 1rem over the eyebrow, not 2rem and 3rem. */
 .hero + section.block { padding-top: 1rem; }
