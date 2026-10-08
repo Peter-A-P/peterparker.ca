@@ -153,6 +153,12 @@ projects:
     name: Frontier Quality at a Fraction of the Bill
     status: shipped
     repo: Peter-A-P/fraction-of-the-bill
+    demo: https://smallmodel.peterparker.ca
+    demo_note: >-
+      The results on one page, and a calculator: put in what you pay an API, what a rented
+      card costs and how busy you would keep it, and it works out the monthly volume at which
+      a small model you own is the cheaper, with the measured throughput behind it. Every
+      figure is read from the same runs as the repository's tables.
     technical_line: >-
       QLoRA fine-tuning (PyTorch, PEFT) · vLLM and llama.cpp serving ·
       AWQ / GPTQ / GGUF quantisation · break-even volume by utilisation ·
@@ -162,9 +168,8 @@ projects:
       Proves, with measurements, that a small model an organisation owns and hosts matches a
       frontier API on a high-volume task at a small fraction of the per-call cost, and shows
       exactly at what volume the switch pays for itself. For a team spending five figures a
-      month on API calls, this is the project that finds most of it: the quality gap
-      measured on identical items, and the break-even published as a curve you can put your
-      own prices into.
+      month on API calls, this is the project that finds most of it, with a calculator for
+      your own prices.
 
   - number: "07"
     themes: [compliance, grounded]
