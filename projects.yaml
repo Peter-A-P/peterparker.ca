@@ -264,6 +264,12 @@ projects:
     name: 'Overload: AI Coaching Team for Runners'
     status: live
     repo: Peter-A-P/TrainAI
+    demo: https://overload.peterparker.ca
+    demo_note: >-
+      The app itself, frozen from a real training log: the dashboard, the head coach's
+      weekly plan and its hard limits, and a race planned kilometre by kilometre for its
+      hills, wind and heat. Everything can be looked at and nothing can be saved, and routes
+      are trimmed 300 m around every start and finish.
     explainer: content/11-overload.md
     technical_line: >-
       Opus head coach, Sonnet specialists · VDOT from every training run ·
@@ -276,7 +282,6 @@ projects:
       actually run, and talks it through before anything is committed. Built by a data
       scientist and race-winning road runner after years on Garmin, Strava and
       TrainingPeaks.
-    note: In private use since 2025; opens with its first measured result.
 
   - number: "12"
     themes: [decisioning]
