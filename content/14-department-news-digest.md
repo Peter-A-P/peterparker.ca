@@ -88,13 +88,13 @@ reads every import in the codebase, the full list of installed libraries and the
 the tool offers, and fails the build if anything capable of sending appears. The decision
 of whether a piece of writing goes to a person stays with a person.
 
-**Where this stands in September 2026: in progress, with nothing measured.** The first
-stage is built and tested: reading the sources, storing them, collapsing the
-duplicates and grouping the day's stories, across four example audiences. The ranking, the
-cited summaries, the quote verifier and the daily hosted job follow, and then a week of
-items is labelled by hand to produce the accuracy numbers. No digest has been produced yet
-and no number has been measured, so there is nothing here to check and no results table
-pretending otherwise.
+**Where this stands in October 2026: running every day, still being measured.** The
+whole pipeline is built and has run every morning since 7 October 2026 for four example
+audiences: reading the sources, collapsing the duplicates, ranking against each audience's
+rubric, the cited summaries and the quote verifier. The digests are public, and the live
+demo above opens them. What is not finished is the part that makes it worth anything: days
+of stories are being labelled by hand, and until enough are, no precision or recall is
+published here, so there is nothing to check yet and no results table pretending otherwise.
 
 The fourth audience is regional: Newfoundland and Labrador, added because the other three
 are national or big-city and the claim being tested is that a small regional team gets the

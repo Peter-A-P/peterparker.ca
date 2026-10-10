@@ -332,6 +332,12 @@ projects:
     name: Department News Digest
     status: building
     repo: Peter-A-P/department-news-digest
+    demo: https://digest.peterparker.ca
+    demo_note: >-
+      This morning's digest for four example audiences, from artificial intelligence to
+      Newfoundland and Labrador: each story merged from every outlet that reported it, every
+      sentence citing its sources, every quote checked word for word, and why each story was
+      chosen. Below the audiences, how it works and what is still being measured.
     explainer: content/14-department-news-digest.md
     technical_line: >-
       multi-source ingestion · cited summarisation · DuckDB storage ·
@@ -340,11 +346,10 @@ projects:
       quote verification against source · LangGraph on GCP Cloud Run
     one_liner: >-
       One product, configured per department in a few lines, that reads the day's news,
-      public forums and social feeds, removes the duplicates, ranks what matters to that
-      audience, and delivers a short digest with every claim cited and every quote verified
-      against its source. One system in place of dozens of people each doing this by hand,
-      at a few dollars a month per department, with precision and recall measured against a
-      hand-labelled week.
+      forums and social feeds, removes the duplicates, ranks what matters to that audience,
+      and delivers a short digest with every claim cited and every quote checked against its
+      source. One system in place of dozens of people doing this by hand, for a few dollars a
+      month each, with measured precision and recall.
 
 # The status log. One entry for every change of a project's status, in the same edit as
 # the status itself; the build refuses a log whose latest entry disagrees with the card.
