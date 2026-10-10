@@ -795,3 +795,11 @@ log:
       because ten of its sixteen "refusals" refused a harmful reading and then answered the
       question. The person who labelled the gold set agrees with their own second reading at
       kappa 0.851, and the write-up is out: "Your LLM eval has no error bars".
+  - date: 2026-10-10
+    project: "14"
+    status: building
+    note: >-
+      Running every morning since 7 October at digest.peterparker.ca, now linked as a live
+      demo: four example audiences, each story merged from every outlet that reported it,
+      every sentence cited and every quote checked word for word against its source. Stories
+      are being labelled by hand; precision and recall are published when enough days are in.
