@@ -340,10 +340,10 @@ projects:
       chosen. Below the audiences, how it works and what is still being measured.
     explainer: content/14-department-news-digest.md
     technical_line: >-
+      LangGraph on GCP Cloud Run · quote verification against source ·
       multi-source ingestion · cited summarisation · DuckDB storage ·
       RSS, GDELT, Reddit and Bluesky · per-audience relevance ranking ·
-      precision and recall on a labelled week · clustering and deduplication ·
-      quote verification against source · LangGraph on GCP Cloud Run
+      precision and recall on a labelled week · clustering and deduplication
     one_liner: >-
       One product, configured per department in a few lines, that reads the day's news,
       forums and social feeds, removes the duplicates, ranks what matters to that audience,
