@@ -291,7 +291,7 @@ projects:
     repo: Peter-A-P/finish-line-forecast
     demo: https://finishline.peterparker.ca
     demo_note: >-
-      Eighteen years of Newfoundland road results, 75,061 finishes, turned into a predicted
+      Eighteen years of Newfoundland road results, 75,425 finishes, turned into a predicted
       time, a range it should land in and a likely place for every runner on the start list.
       The predictions are written down and hashed before the gun, and the error is published
       once the results are in.
@@ -803,3 +803,10 @@ log:
       demo: four example audiences, each story merged from every outlet that reported it,
       every sentence cited and every quote checked word for word against its source. Stories
       are being labelled by hand; precision and recall are published when enough days are in.
+  - date: 2026-10-11
+    project: "12"
+    status: live
+    note: >-
+      The first race is scored: the Turkey Tea 10k came in at 3.0 minutes of average miss,
+      2.3 closer than "you will run what you ran last time". Cape to Cabot's prediction week
+      opened today with 477 runners.
