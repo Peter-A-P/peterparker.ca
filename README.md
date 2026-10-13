@@ -10,6 +10,8 @@ Live at https://peterparker.ca.
 ## How it works
 
 - `projects.yaml` lists the projects: name, one-liner, technical line, status, repository.
+  Its `site:` block also holds the links in the top bar: `github`, and the optional
+  `linkedin` and `email` (the "Contact" link), which appear only when set.
   Together with the explainers in `content/`, it is the only hand-written content.
   Its `log:` section records every change of a
   project's status with a date and one sentence; the site renders it at `/log/`, as a

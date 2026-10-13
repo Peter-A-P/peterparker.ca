@@ -21,6 +21,10 @@ site:
     stranger can check.
   base_url: https://peterparker.ca
   github: https://github.com/Peter-A-P
+  # Optional. 'linkedin' is the profile URL and 'email' the address behind "Contact". Each
+  # shows in the top bar and the footer only when it is set.
+  linkedin: https://www.linkedin.com/in/peteralexanderparker/
+  email: peter.alexander.parker@outlook.com
   # Filter chips on the index, in this order. At most eight.
   themes:
     decisioning: Decisioning and forecasting

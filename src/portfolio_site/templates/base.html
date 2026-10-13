@@ -29,6 +29,8 @@
         <a href="/#projects">Projects</a>
         {% if site.log %}<a href="/log/">Log</a>{% endif %}
         <a href="{{ site.github }}" rel="me">GitHub</a>
+        {% if site.linkedin %}<a href="{{ site.linkedin }}" rel="me">LinkedIn</a>{% endif %}
+        {% if site.email %}<a href="mailto:{{ site.email }}">Contact</a>{% endif %}
       </nav>
     </div>
   </header>
@@ -45,6 +47,8 @@
       </div>
       <ul>
         <li><a href="{{ site.github }}">GitHub profile</a></li>
+        {% if site.linkedin %}<li><a href="{{ site.linkedin }}">LinkedIn profile</a></li>{% endif %}
+        {% if site.email %}<li><a href="mailto:{{ site.email }}">Contact</a></li>{% endif %}
         <li><a href="{{ site.github }}/peterparker.ca">Source of this site</a></li>
       </ul>
     </div>

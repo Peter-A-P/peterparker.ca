@@ -91,6 +91,8 @@ class Site:
     projects: tuple[Project, ...]
     themes: dict[str, str] = field(default_factory=dict)  # slug -> label, in display order
     log: tuple[LogEntry, ...] = ()  # newest first
+    linkedin: str | None = None  # profile URL; the top bar links it beside GitHub
+    email: str | None = None  # the address behind "Contact" in the top bar
 
     def project(self, number: str) -> Project:
         """The project with this number."""
@@ -236,6 +238,8 @@ def load_site(path: Path) -> Site:
         projects=tuple(projects),
         themes=themes,
         log=_log(raw.get("log"), projects),
+        linkedin=_optional(site_raw, "linkedin", "site"),
+        email=_optional(site_raw, "email", "site"),
     )
 
 

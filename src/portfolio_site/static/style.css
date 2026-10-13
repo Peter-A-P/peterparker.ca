@@ -102,6 +102,11 @@ a:hover, a:focus-visible { text-decoration: underline; }
 }
 .top nav { display: flex; gap: 1.5rem; font-size: .92rem; }
 .top nav a { color: var(--ink-2); }
+/* The name and five links do not fit one line on a phone, so the bar grows a second row. */
+@media (max-width: 34rem) {
+  .top .wrap { height: auto; min-height: 4rem; flex-wrap: wrap; gap: .25rem 1rem; padding-top: .6rem; padding-bottom: .6rem; }
+  .top nav { gap: 1.1rem; flex-wrap: wrap; }
+}
 
 /* Type */
 h1, h2, h3, .num { font-family: var(--serif); font-weight: 500; letter-spacing: -.012em; margin: 0; }

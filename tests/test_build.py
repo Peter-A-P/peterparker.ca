@@ -77,6 +77,23 @@ def test_build_pages_index_and_sitemap(tmp_path: Path, readme: str) -> None:
     assert (out / "robots.txt").read_text(encoding="utf-8").endswith("sitemap.xml\n")
 
 
+def test_the_top_bar_links_linkedin_and_contact_only_when_they_are_set(tmp_path: Path) -> None:
+    bare = tmp_path / "bare"
+    build(_site(), bare, None, today="2026-10-13")
+    index = (bare / "index.html").read_text(encoding="utf-8")
+    assert "LinkedIn" not in index
+    assert "mailto:" not in index
+
+    site = replace(_site(), linkedin="https://www.linkedin.com/in/o", email="o@example.org")
+    full = tmp_path / "full"
+    build(site, full, None, today="2026-10-13")
+    index = (full / "index.html").read_text(encoding="utf-8")
+    nav = index[index.index("<nav>") : index.index("</nav>")]
+    assert nav.index("GitHub") < nav.index("LinkedIn") < nav.index("Contact")
+    assert '<a href="https://www.linkedin.com/in/o" rel="me">LinkedIn</a>' in nav
+    assert '<a href="mailto:o@example.org">Contact</a>' in nav
+
+
 def test_a_live_demo_is_a_button_at_the_top_of_its_page(tmp_path: Path, readme: str) -> None:
     # The demo is the only thing on a project page a visitor can use rather than read, and
     # it spent a week as small print in the metadata row where nobody found it. It belongs
