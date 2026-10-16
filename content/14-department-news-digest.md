@@ -18,17 +18,17 @@ absence is invisible.
 | Quoting accurately under time pressure | Copy, paste, trim to fit | A quote that was tightened into something the source did not say |
 | Knowing whether any of this is working | There is no feedback and no score | The whole activity runs on faith |
 
-This project builds one product that does that job, configured per department in a single
+This project builds one product that does that job, configured per team in a single
 file, and it treats the last row of that table as the deliverable. A digest that feels
 relevant is not evidence. The point is to end with two numbers per audience, measured
 against a week of items judged by hand: how much of what it showed was worth showing, and
 how much of what was worth showing it missed.
 
-## What a department actually configures
+## What a team actually configures
 
 One file. Topics, the organisations, people and places that matter, the geography, the
 languages, which sources to trust, which to block, how long the digest should be, and what
-time it arrives. Adding a department is adding a file. There is no code to change and no
+time it arrives. Adding a team is adding a file. There is no code to change and no
 consultant to book.
 
 The file also carries something less usual: a written rubric saying what "relevant" means
@@ -39,17 +39,20 @@ against. A rubric that says "things we care about" is rejected by the software.
 
 ## The three things that make it more than a summariser
 
-**It removes the duplicates before it ranks.** The same announcement reaches the system as
+**It knows when twenty reports are one story.** The same announcement reaches the system as
 a wire story, three outlets' rewrites of that wire story, a government press release and
-two posts about it. Those become one story with the sources attached, so a ten-item digest
-holds ten things rather than four things and six echoes.
+two posts about it. Reprints are caught from the wording they share; independent reports,
+which share the subject and little of the wording, are joined by comparing their meaning
+with a small language model run on the job's own processor. They become one story with every
+source attached, so a ten-item digest holds ten things rather than four things and six
+echoes, and how many outlets carried a story becomes evidence of how much it matters.
 
 **It keeps the model away from most of the work.** The obvious build sends every article to
 a large language model and asks what matters. That is expensive enough to make the whole
 idea pointless at scale, and it is not obviously better. Here the day's pool is narrowed
 first by methods that cost nothing to run, and only the strongest candidates are put to a
-model. That single decision is the difference between a few dollars a month per department
-and a few hundred.
+model. That single decision is the difference between a few dollars a month per team and a
+few hundred.
 
 **Every quote is checked against its source, mechanically.** The summariser writes each
 sentence with the articles it drew on and marks its quotes. Then a separate piece of code,
@@ -62,7 +65,7 @@ are verified by something that can say no is not.
 ## Where the sources come from, and the rule about them
 
 Published feeds and official interfaces only: news and government feeds, a public global
-news index, and the official interfaces of two public discussion platforms. No scraping
+news index, and the official interfaces of three social platforms. No scraping
 around paywalls, and no ignoring the rules a site publishes about what machines may read.
 
 Every source's terms are read and recorded with the date before it is used, and a source
@@ -73,7 +76,8 @@ whose row does not say the terms were read, with the date. A source added withou
 not a rule broken in a code review. It is a run that fetches nothing and says why.
 
 Article text is kept thirty days and never republished. A digest shows a summary, a link,
-and quotes of at most twenty-five words.
+and quotes of at most twenty-five words. The one exception is the day's most discussed post
+from each social platform, shown whole with its author, as a post rather than as reporting.
 
 The rule earned its keep on the first day it was switched on. Until the terms for a source
 were read and dated, the software refused to fetch it, so the first live run made eleven
@@ -90,7 +94,8 @@ of whether a piece of writing goes to a person stays with a person.
 
 **Where this stands in October 2026: running every day, still being measured.** The
 whole pipeline is built and has run every morning since 7 October 2026 for four example
-audiences: reading the sources, collapsing the duplicates, ranking against each audience's
+audiences: reading the sources, grouping every report of an event into one story, ranking
+against each audience's
 rubric, the cited summaries and the quote verifier. The digests are public, and the live
 demo above opens them. What is not finished is the part that makes it worth anything: days
 of stories are being labelled by hand, and until enough are, no precision or recall is
@@ -182,9 +187,9 @@ It does not score sentiment, or produce "media tone" numbers. Those are the stan
 offering in commercial media monitoring, and they cannot be checked against anything true,
 which makes them the opposite of what this project is for.
 
-It does not read paywalled articles, and it does not use a large social platform that no
-longer offers affordable access on official terms. Both are out on the terms, not on the
-budget.
+It does not read paywalled articles, and it reads social platforms only through their
+official interfaces, on their terms and at their price. Anything else is out on the terms,
+not on the budget.
 
 ## Why it ends in a table
 
@@ -192,7 +197,8 @@ Production machine learning inside health and government is real work that
 an outsider cannot verify. This portfolio exists to fix that, one project at a time, and
 the standard does not move: a stranger clones the repository, runs one command, and gets
 the same numbers. For this project that means precision and recall per audience with
-intervals, the agreement between two labellers, the deduplication rate, the share of quotes
+intervals, the agreement between two labellers, how well reports are grouped into stories,
+the share of quotes
 that survived verification, the lag between publication and inclusion, and the cost per
 digest taken from a spending ledger rather than estimated. Whatever those figures turn out
 to be, they are the ones that get published.
