@@ -346,7 +346,7 @@ projects:
     technical_line: >-
       LangGraph on GCP Cloud Run · quote verification against source ·
       multi-source ingestion · cited summarisation · DuckDB storage ·
-      RSS, GDELT, Reddit and Bluesky · per-audience relevance ranking ·
+      RSS, GDELT, Reddit, Bluesky and X · per-audience relevance ranking ·
       precision and recall on a labelled week · clustering and deduplication
     one_liner: >-
       One product, configured per department in a few lines, that reads the day's news,
