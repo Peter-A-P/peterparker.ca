@@ -34,6 +34,7 @@ site:
     platform: Platform and infrastructure
     compliance: Compliance and privacy
     realtime: Real-time systems
+    vision: Vision and multimodal AI
 
 projects:
   - number: "01"
@@ -354,6 +355,43 @@ projects:
       to that audience, and delivers a short briefing with every claim cited and every quote
       checked against its source. One system in place of dozens of people doing this by hand, for a few dollars a
       month each, with measured precision and recall.
+
+  - number: "15"
+    themes: [compliance, decisioning]
+    slug: privacy-safe-data-sharing
+    name: Share the Data, Not the People
+    status: building
+    repo: Peter-A-P/privacy-safe-data-sharing
+    technical_line: >-
+      synthetic tabular data, six methods · differential privacy, AIM and MST ·
+      singling out, linkability, inference · membership inference attacks ·
+      train-on-synthetic, test-on-real · epsilon-utility-risk surface
+    one_liner: >-
+      Synthetic data promises the patterns without the people, and this measures whether it
+      keeps the promise: three public datasets of real people, synthesised six ways with and
+      without differential privacy, and every table attacked the way a regulator says and the
+      way a researcher would. How much each gives away, how useful it still is for the models people will train on
+      it, the price of privacy as a curve, and the configurations that leak, named down to
+      the library version and setting, every number with its interval.
+
+  - number: "16"
+    themes: [vision, llm-eval]
+    slug: scanned-form-extraction
+    name: Forms That Read Themselves
+    status: building
+    repo: Peter-A-P/scanned-form-extraction
+    technical_line: >-
+      vision-language models · multimodal QLoRA, Gemma 4 2B and 4B ·
+      frontier multimodal baselines · OCR and rules baselines ·
+      unseen-template evaluation · scan degradation curve ·
+      review rate at 99 percent · cost per thousand pages
+    one_liner: >-
+      Vision-language models on the backlog of paper forms, measured on more than 9,000
+      public pages with known answers: a frontier multimodal model, a 2B and a 4B open
+      vision model fine-tuned on page images, and the classic OCR pipelines. Every field
+      right or wrong with its interval, the cost per thousand pages, what breaks on an
+      unseen form design or a bad scan, and how many fields a person still checks at 99
+      percent accuracy.
 
 # The status log. One entry for every change of a project's status, in the same edit as
 # the status itself; the build refuses a log whose latest entry disagrees with the card.
@@ -814,3 +852,15 @@ log:
       The first race is scored: the Turkey Tea 10k came in at 3.0 minutes of average miss,
       2.3 closer than "you will run what you ran last time". Cape to Cabot's prediction week
       opened today with 477 runners.
+  - date: 2026-10-16
+    project: "16"
+    status: building
+    note: >-
+      Planned and started: five ways of reading a scanned form, from a frontier vision model
+      to a fine-tuned 2B, measured on public forms with known answers.
+  - date: 2026-10-16
+    project: "15"
+    status: building
+    note: >-
+      Planned and started: synthetic versions of three public datasets of real people, attacked
+      the way a regulator says and the way a researcher would.
