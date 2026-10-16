@@ -333,7 +333,7 @@ projects:
   - number: "14"
     themes: [grounded, agents]
     slug: department-news-digest
-    name: Department News Digest
+    name: Verified Media Briefing
     status: building
     repo: Peter-A-P/department-news-digest
     demo: https://digest.peterparker.ca
