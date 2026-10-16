@@ -367,12 +367,12 @@ projects:
       singling out, linkability, inference · membership inference attacks ·
       train-on-synthetic, test-on-real · epsilon-utility-risk surface
     one_liner: >-
-      Synthetic data promises the patterns without the people, and this measures whether it
-      keeps the promise: three public datasets of real people, synthesised six ways with and
-      without differential privacy, and every table attacked the way a regulator says and the
-      way a researcher would. How much each gives away, how useful it still is for the models people will train on
-      it, the price of privacy as a curve, and the configurations that leak, named down to
-      the library version and setting, every number with its interval.
+      Hand a synthetic copy of a sensitive dataset to a partner, a vendor or a research team
+      without handing over anyone in it, with the proof attached: before the copy leaves, it
+      is attacked the way a regulator says and the way a researcher would, and the report
+      says how much it gives away, how well models trained on it work on the real data, and
+      which settings to use. Proven on three public datasets of real people, six
+      synthesisers with and without differential privacy, every number with its interval.
 
   - number: "16"
     themes: [vision, llm-eval]
