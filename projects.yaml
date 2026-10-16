@@ -344,9 +344,9 @@ projects:
       chosen. Below the audiences, how it works and what is still being measured.
     explainer: content/14-department-news-digest.md
     technical_line: >-
-      LangGraph on GCP Cloud Run · quote verification against source ·
+      LangGraph on GCP Cloud Run · RSS, GDELT, Reddit, Bluesky and X ·
       multi-source ingestion · cited summarisation · DuckDB storage ·
-      RSS, GDELT, Reddit, Bluesky and X · per-audience relevance ranking ·
+      quote verification against source · per-audience relevance ranking ·
       precision and recall on a labelled week · clustering and deduplication
     one_liner: >-
       One product, configured per department in a few lines, that reads the day's news,
