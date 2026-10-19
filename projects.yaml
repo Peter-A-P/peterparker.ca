@@ -180,8 +180,14 @@ projects:
     themes: [compliance, grounded]
     slug: access-to-information-redaction
     name: Hundreds of Pages, Redacted in an Afternoon
-    status: building
+    status: live
     repo: Peter-A-P/access-to-information-redaction
+    demo: https://redaction.peterparker.ca
+    demo_note: >-
+      Review an invented access-to-information record yourself: the tool proposes every
+      redaction with the section of the law it rests on, you withhold or release each one,
+      and you download the redacted PDF with nothing left under its boxes. Beside it, every
+      measured result with its interval and a live count of visitors' decisions.
     technical_line: >-
       context-dependent PII redaction · leak rate per category, with CIs ·
       layout parsing and OCR (PyMuPDF) · Presidio and spaCy detection ·
@@ -192,8 +198,7 @@ projects:
       review: every proposed redaction carries the exemption category it rests on, a
       reviewer approves page by page with a full audit log, and the tool publishes how often
       it withholds what must go and, the number blunt PII tools never show, how often it
-      keeps what must stay. Scanned records as well as native ones, with the OCR error rate
-      printed beside the redaction rates.
+      keeps what must stay, with scanned records as well as native ones.
 
   - number: "08"
     themes: [decisioning]
@@ -864,3 +869,11 @@ log:
     note: >-
       Planned and started: synthetic versions of three public datasets of real people, attacked
       the way a regulator says and the way a researcher would.
+  - date: 2026-10-18
+    project: "07"
+    status: live
+    note: >-
+      Live at redaction.peterparker.ca: the reviewer's screen over six invented records, a
+      truly redacted PDF of each, a live dashboard of visitors' decisions, and every measured
+      result. Three timed reviewers were 2.3 times faster with the tool's proposals and leaked
+      2.8 times less.
