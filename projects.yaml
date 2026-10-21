@@ -184,21 +184,22 @@ projects:
     repo: Peter-A-P/access-to-information-redaction
     demo: https://redaction.peterparker.ca
     demo_note: >-
-      Review an invented access-to-information record yourself: the rules and Jev propose
+      Review an invented access-to-information record yourself: the rules and Jev, an AI
+      decision model, propose
       every redaction with the section of the law it rests on, you withhold or release each one,
       and you download the redacted PDF with nothing left under its boxes. Beside it, every
       measured result with its interval and a live count of visitors' decisions.
     technical_line: >-
-      context-dependent PII redaction · Jev, a calibrated decision model ·
+      context-dependent PII redaction · Jev, a calibrated AI decision model ·
       leak rate per category, with CIs · over-redaction published ·
       layout parsing and OCR (PyMuPDF) · PDF text-layer leak test ·
       rules, then Jev on the rest · reviewer workflow, audit log
     one_liner: >-
-      Turns an access-to-information request from days of staff reading into hours of
-      review: rules and then Jev, a decision model, propose every redaction with the
-      exemption category it rests on, a reviewer approves page by page with a full audit
-      log, and the tool publishes how often it withholds what must go and, the number blunt
-      PII tools never show, how often it keeps what must stay.
+      An access-to-information request means days of staff reading every page. This turns
+      it into hours of review. Rules, then Jev, an AI decision model, propose each redaction
+      with the exemption it rests on, and a person approves every page with a full audit
+      log. It also publishes what blunt PII tools never show: how often it keeps what must
+      stay.
 
   - number: "08"
     themes: [decisioning]
