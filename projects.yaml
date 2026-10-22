@@ -878,3 +878,11 @@ log:
       truly redacted PDF of each, a live dashboard of visitors' decisions, and every measured
       result. Three timed reviewers were 2.3 times faster with the tool's proposals and leaked
       2.8 times less.
+  - date: 2026-10-21
+    project: "07"
+    status: live
+    note: >-
+      The repository is public at v0.1.0. With Jev, a decision model, deciding what the rules
+      leave, the tool withholds 1.7 percent of what must be released, against 23.8 for the
+      rules alone, at the rules' own leak rate, and four timed reviewers were 2.3 times faster
+      with its proposals.
