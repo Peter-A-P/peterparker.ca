@@ -886,3 +886,11 @@ log:
       leave, the tool withholds 1.7 percent of what must be released, against 23.8 for the
       rules alone, at the rules' own leak rate, and four timed reviewers were 2.3 times faster
       with its proposals.
+  - date: 2026-10-27
+    project: "15"
+    status: building
+    note: >-
+      All 144 synthetic tables are made and attacked: six synthesisers on three datasets, each
+      table run through the three tests of anonymity and a membership attack, every attack
+      checked against its authors' own library. The attacks now run on anyone's synthetic table
+      in one call.
