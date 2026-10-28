@@ -384,20 +384,25 @@ projects:
     themes: [vision, llm-eval]
     slug: scanned-form-extraction
     name: Forms That Read Themselves
-    status: building
+    status: live
     repo: Peter-A-P/scanned-form-extraction
+    demo: https://forms.peterparker.ca
+    demo_note: >-
+      Watch each reader type in a real public form: the frontier models, the fine-tuned 2B and
+      4B, Azure's service and the OCR pipelines, every field drawn on the page green or red, with
+      a slider that makes the scan worse. Beside it, every measured result with its interval and
+      a break-even calculator.
     technical_line: >-
       vision-language models · multimodal QLoRA, Gemma 4 2B and 4B ·
       frontier multimodal baselines · OCR and rules baselines ·
       unseen-template evaluation · scan degradation curve ·
       review rate at 99 percent · cost per thousand pages
     one_liner: >-
-      A vision-language model you own, fine-tuned to type your scanned forms in: a 2B and a
-      4B open model trained here to read fields off the scan, measured against the frontier
-      multimodal APIs and the classic OCR pipelines on more than 9,000 public pages with
-      known answers. Every field right or wrong with its interval, cost per thousand pages,
-      what breaks on a new form design or a bad scan, and how many fields a person still
-      checks at 99 percent.
+      A vision-language model you own, fine-tuned to type your scanned forms in, measured
+      against the frontier multimodal APIs and the classic OCR pipelines on more than 9,000
+      public pages with known answers. Every field right or wrong with its interval, cost per
+      thousand pages, what breaks on a new form design or a bad scan, and how many fields a
+      person still checks at 99 percent.
 
 # The status log. One entry for every change of a project's status, in the same edit as
 # the status itself; the build refuses a log whose latest entry disagrees with the card.
@@ -894,3 +899,10 @@ log:
       table run through the three tests of anonymity and a membership attack, every attack
       checked against its authors' own library. The attacks now run on anyone's synthetic table
       in one call.
+  - date: 2026-10-28
+    project: "16"
+    status: live
+    note: >-
+      Live at forms.peterparker.ca, and the repository is public. The fine-tuned models beat
+      Azure AI Document Intelligence on two of four form types and match it on the other two, at
+      47 to 509 times less a page; the frontier vision models still read best.
