@@ -254,8 +254,8 @@ projects:
     themes: [agents, platform]
     slug: self-healing-production-ai
     name: From Failure to Reviewed Fix, in Minutes
-    status: building
-    repo: Peter-A-P/self-healing-production-ai
+    status: shipped
+    repo: Peter-A-P/failure-to-reviewed-fix
     technical_line: >-
       agentic incident triage (LangGraph) · failing test before any fix ·
       confidently-wrong rate published · failure clustering into one ticket ·
@@ -906,3 +906,10 @@ log:
       Live at forms.peterparker.ca, and the repository is public. The fine-tuned models beat
       Azure AI Document Intelligence on two of four form types and match it on the other two, at
       47 to 509 times less a page; the frontier vision models still read best.
+  - date: 2026-10-31
+    project: "10"
+    status: shipped
+    note: >-
+      The repository is public at v0.1.0. On 120 SWE-bench Verified tasks judged by hidden
+      tests it resolves 67.5 percent, but 9.8 percent of what it would have proposed was
+      wrong, against a 3 percent target, so on 03 and 04 it posts suggestions as comments.
