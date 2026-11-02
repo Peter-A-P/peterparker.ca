@@ -366,19 +366,24 @@ projects:
     themes: [compliance, decisioning]
     slug: privacy-safe-data-sharing
     name: Share the Data, Not the People
-    status: building
+    status: live
     repo: Peter-A-P/privacy-safe-data-sharing
+    demo: https://privacy.peterparker.ca
+    demo_note: >-
+      Pick a dataset and see, for seven synthesisers at every privacy budget, what each gives
+      away and what it costs in model quality: the trade-off chart, the leakage ladder from a
+      perturbed copy down to differential privacy, the release gate's verdict, and the one leak,
+      told beside the one that was withdrawn.
     technical_line: >-
-      synthetic tabular data, six methods · differential privacy, AIM and MST ·
+      synthetic data, seven methods · differential privacy, AIM and MST ·
       singling out, linkability, inference · membership inference attacks ·
       train-on-synthetic, test-on-real · epsilon-utility-risk surface
     one_liner: >-
       Hand a synthetic copy of a sensitive dataset to a partner, a vendor or a research team
-      without handing over anyone in it, with the proof attached: before the copy leaves, it
-      is attacked the way a regulator says and the way a researcher would, and the report
-      says how much it gives away, how well models trained on it work on the real data, and
-      which settings to use. Proven on three public datasets of real people, six
-      synthesisers with and without differential privacy, every number with its interval.
+      without handing over anyone in it, with the proof attached: each copy is attacked the
+      way a regulator says and the way a researcher would, and the report says what it gives
+      away, how well models trained on it work on the real data, and which settings to use.
+      Seven synthesisers, three public datasets of real people, every number with its interval.
 
   - number: "16"
     themes: [vision, llm-eval]
@@ -913,3 +918,12 @@ log:
       The repository is public at v0.1.0. On 120 SWE-bench Verified tasks judged by hidden
       tests it resolves 67.5 percent, but 9.8 percent of what it would have proposed was
       wrong, against a 3 percent target, so on 03 and 04 it posts suggestions as comments.
+  - date: 2026-11-02
+    project: "15"
+    status: live
+    note: >-
+      Live at privacy.peterparker.ca. Of seven synthesisers on three datasets, TabDDPM comes
+      nearest the real data, within 2.2 AUC points on two of them, but none holds within 2 on
+      every task and seed. The regulators' three tests find one leak, AIM at epsilon 1 on the
+      census data, and a TabDDPM leak reported earlier was withdrawn once singling out was
+      averaged over five searches.
