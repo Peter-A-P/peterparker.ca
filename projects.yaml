@@ -233,11 +233,10 @@ projects:
     repo: Peter-A-P/realtime-risk-platform
     demo: https://fraud.peterparker.ca
     demo_note: >-
-      What the platform does and what has been measured, in charts: one transaction's
-      milliseconds step by step, latency against four times the live load, the machine taken
-      away eleven times and recovering, and fraud shifting on days nobody told the monitors
-      about. At the top, the live dashboard, running now on a schedule sealed before the
-      window opened.
+      What the platform does and what was measured, in charts: a short video, one
+      transaction's milliseconds step by step, latency against four times the live load, every
+      day of the thirty-day live window, and fraud shifting on days nobody told the monitors
+      about. The live dashboard stays up until the stack stops, about 6 November.
     technical_line: >-
       Kafka-compatible streaming (Redpanda) · point-in-time leakage test ·
       thousands of events per second · Feast store, online/offline parity ·
@@ -927,3 +926,11 @@ log:
       every task and seed. The regulators' three tests find one leak, AIM at epsilon 1 on the
       census data, and a TabDDPM leak reported earlier was withdrawn once singling out was
       averaged over five searches.
+  - date: 2026-11-02
+    project: "09"
+    status: live
+    note: >-
+      The thirty-day live window ended on 29 October: three billion transactions decided, and
+      the day's p99 inside the 50 ms budget on 28 of 34 days. The model was retrained twice on
+      the window's own history, each time approved by a person. The stack runs on to about
+      6 November for the last labels, then the sealed schedule is revealed.
