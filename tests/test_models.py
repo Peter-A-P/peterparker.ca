@@ -217,4 +217,3 @@ def test_every_project_has_a_link_preview_card() -> None:
         head = card.read_bytes()[:24]
         assert head[:8] == bytes.fromhex("89504e470d0a1a0a"), f"{card.name}: not a PNG"
         assert struct.unpack(">II", head[16:24]) == (1200, 630), f"{card.name}: not 1200 x 630"
-
