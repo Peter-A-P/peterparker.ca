@@ -237,7 +237,7 @@ projects:
       What the platform does and what was measured, in charts: a short video, one
       transaction's milliseconds step by step, latency against four times the live load, every
       day of the thirty-day live window, and fraud shifting on days nobody told the monitors
-      about. The live dashboard stays up until the stack stops, about 6 November.
+      about. The stack was shut down on 7 November, and the live dashboard with it.
     technical_line: >-
       Kafka-compatible streaming (Redpanda) · point-in-time leakage test ·
       thousands of events per second · Feast store, online/offline parity ·
