@@ -408,6 +408,28 @@ projects:
       thousand pages, what breaks on a new form design or a bad scan, and how many fields a
       person still checks at 99 percent.
 
+  - number: "17"
+    themes: [decisioning, platform]
+    slug: transaction-graph-fraud
+    name: Fraud Known by the Company It Keeps
+    status: live
+    repo: Peter-A-P/transaction-graph-fraud
+    demo: https://graph.peterparker.ca
+    demo_note: >-
+      One laundering ring scored by each model, in a short film and on the page: which shapes
+      each way of scoring catches, how many hops of neighbours pay, what happened after a dark
+      market shut down, and what a live score costs, every number with its interval.
+    technical_line: >-
+      graph neural networks, PyTorch Geometric · graph features, XGBoost ·
+      tabular foundation model · temporal split, leakage test ·
+      recall by laundering pattern · k-hop ablation ·
+      Neo4j and DuckDB serving latency
+    one_liner: >-
+      A fraud model that scores the account alone misses the fraud that lives in the links
+      between accounts. This measures how much, on millions of real and synthetic transactions:
+      which laundering shapes each way of scoring catches, how many hops it takes, what happens
+      after a dark market shuts down, and what a live score costs.
+
 # The status log. One entry for every change of a project's status, in the same edit as
 # the status itself; the build refuses a log whose latest entry disagrees with the card.
 # Entries are never edited after the fact; a wrong entry gets a later entry that corrects
@@ -934,3 +956,11 @@ log:
       the day's p99 inside the 50 ms budget on 28 of 34 days. The model was retrained twice on
       the window's own history, each time approved by a person. The stack runs on to about
       6 November for the last labels, then the sealed schedule is revealed.
+  - date: 2026-11-06
+    project: "17"
+    status: live
+    note: >-
+      Public at v0.1.0, with the demo at graph.peterparker.ca. On synthetic bank transfers,
+      scoring each account with features from its neighbours catches 71 percent of laundering
+      in a 1 percent alert queue, against 47 percent for the account alone. The graph neural
+      network beat plain graph features on none of the four datasets.
