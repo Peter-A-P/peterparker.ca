@@ -201,3 +201,20 @@ def test_the_stylesheet_has_a_filter_rule_for_every_theme_slot() -> None:
     )
     site = load_site(ROOT / "projects.yaml")
     assert len(site.themes) <= MAX_THEMES
+
+
+def test_every_project_has_a_link_preview_card() -> None:
+    """Each project page names /og/<number>.png as its og:image; a missing file is a broken
+    preview on every share of that page. Cards are made by the portfolio plan's tools/og."""
+    import struct
+
+    static = ROOT / "src" / "portfolio_site" / "static"
+    cards = [static / "og.png"] + [
+        static / "og" / f"{p.number}.png" for p in load_site(ROOT / "projects.yaml").projects
+    ]
+    for card in cards:
+        assert card.exists(), f"{card.name}: no link-preview card"
+        head = card.read_bytes()[:24]
+        assert head[:8] == bytes.fromhex("89504e470d0a1a0a"), f"{card.name}: not a PNG"
+        assert struct.unpack(">II", head[16:24]) == (1200, 630), f"{card.name}: not 1200 x 630"
+

@@ -11,6 +11,8 @@
 {% set meta_title = project.name ~ " | " ~ site.title %}
 {% set meta_description = project.one_liner %}
 {% set canonical_path = path %}
+{% set og_image = "/og/" ~ project.number ~ ".png" %}
+{% set og_image_alt = project.name %}
 {% block main %}
 <article class="project status-{{ project.status.value }}">
   <div class="project-hero">
