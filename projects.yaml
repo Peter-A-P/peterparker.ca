@@ -25,9 +25,10 @@ site:
   # shows in the top bar and the footer only when it is set.
   linkedin: https://www.linkedin.com/in/peteralexanderparker/
   email: peter.alexander.parker@outlook.com
-  # Filter chips on the index, in this order. At most eight.
+  # Filter chips on the index, in this order. At most nine.
   themes:
     decisioning: Decisioning and forecasting
+    fraud: Fraud and financial crime
     llm-eval: LLM evaluation and cost
     agents: AI agents and automation
     grounded: Grounded generation
@@ -38,7 +39,7 @@ site:
 
 projects:
   - number: "01"
-    themes: [decisioning]
+    themes: [decisioning, fraud]
     slug: intervention-targeting
     name: Spend It Where It Changes the Outcome
     status: shipped
@@ -226,7 +227,7 @@ projects:
       region.
 
   - number: "09"
-    themes: [decisioning, realtime, platform]
+    themes: [fraud, realtime, platform, decisioning]
     slug: realtime-risk-platform
     name: Real-Time Fraud and Risk Decisioning Platform
     status: live
@@ -409,7 +410,7 @@ projects:
       person still checks at 99 percent.
 
   - number: "17"
-    themes: [decisioning, platform]
+    themes: [fraud, decisioning, platform]
     slug: transaction-graph-fraud
     name: Fraud Known by the Company It Keeps
     status: live

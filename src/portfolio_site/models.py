@@ -15,7 +15,7 @@ from portfolio_site.render import MORE_MARKER
 
 REPO_RE = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 SLUG_RE = re.compile(r"^[a-z0-9-]+$")
-MAX_THEMES = 8  # the stylesheet carries one filter rule per slot
+MAX_THEMES = 9  # the stylesheet carries one filter rule per slot; a test keeps them equal
 
 
 class Status(StrEnum):

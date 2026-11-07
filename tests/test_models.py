@@ -186,3 +186,18 @@ def test_two_entries_on_one_day_order_by_the_file(tmp_path: Path) -> None:
     )
     site = load_site(_write(tmp_path, good + log))
     assert [e.note for e in site.log] == ["Public.", "Started."], "later write reads as newer"
+
+
+def test_the_stylesheet_has_a_filter_rule_for_every_theme_slot() -> None:
+    """A theme past the last rule would render a chip that filters nothing."""
+    import re
+
+    from portfolio_site.models import MAX_THEMES
+
+    stylesheet = (ROOT / "src" / "portfolio_site" / "static" / "style.css").read_text("utf-8")
+    slots = {int(n) for n in re.findall(r"#f-t(\d+):checked\) \.card:not\(\.t\1\)", stylesheet)}
+    assert slots == set(range(1, MAX_THEMES + 1)), (
+        f"style.css filters slots {sorted(slots)}, but MAX_THEMES is {MAX_THEMES}"
+    )
+    site = load_site(ROOT / "projects.yaml")
+    assert len(site.themes) <= MAX_THEMES

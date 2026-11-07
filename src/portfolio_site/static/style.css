@@ -160,7 +160,8 @@ body:has(#f-t4:checked) .card:not(.t4),
 body:has(#f-t5:checked) .card:not(.t5),
 body:has(#f-t6:checked) .card:not(.t6),
 body:has(#f-t7:checked) .card:not(.t7),
-body:has(#f-t8:checked) .card:not(.t8) { display: none; }
+body:has(#f-t8:checked) .card:not(.t8),
+body:has(#f-t9:checked) .card:not(.t9) { display: none; }
 
 /* Sections */
 section.block { padding: 3rem 0 1rem; }
