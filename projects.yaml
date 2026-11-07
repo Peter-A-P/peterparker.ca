@@ -230,7 +230,7 @@ projects:
     themes: [fraud, realtime, platform, decisioning]
     slug: realtime-risk-platform
     name: Real-Time Fraud and Risk Decisioning Platform
-    status: live
+    status: shipped
     repo: Peter-A-P/realtime-risk-platform
     demo: https://fraud.peterparker.ca
     demo_note: >-
@@ -247,8 +247,8 @@ projects:
       Scores every transaction in under 50 milliseconds, thousands per second, before the
       money moves, and keeps working as fraud patterns shift, without the training-versus-
       production mismatch that quietly breaks most deployed models. The platform around the
-      model is what organisations are actually missing, and this one runs live behind a
-      public dashboard.
+      model is what organisations are actually missing, and this one ran live for thirty
+      days behind a public dashboard.
 
   - number: "10"
     themes: [agents, platform]
@@ -965,3 +965,11 @@ log:
       scoring each account with features from its neighbours catches 71 percent of laundering
       in a 1 percent alert queue, against 47 percent for the account alone. The graph neural
       network beat plain graph features on none of the four datasets.
+  - date: 2026-11-07
+    project: "09"
+    status: shipped
+    note: >-
+      Shut down on 7 November after thirty days live and a week more for the last labels.
+      Over the window the platform decided 2.7 billion transactions at a p99 of 45.8 ms while
+      serving, against a 50 ms budget, with 99.96 percent uptime. The demo site stays up with
+      every day of the window.
