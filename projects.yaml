@@ -342,17 +342,17 @@ projects:
     themes: [grounded, agents]
     slug: department-news-digest
     name: Verified Media Briefing
-    status: building
+    status: live
     repo: Peter-A-P/department-news-digest
     demo: https://digest.peterparker.ca
     demo_note: >-
       This morning's digest for four example audiences, from artificial intelligence to
       Newfoundland and Labrador: each story merged from every outlet that reported it, every
       sentence citing its sources, every quote checked word for word, and why each story was
-      chosen. Below the audiences, how it works and what is still being measured.
-    explainer: content/14-department-news-digest.md
+      chosen. Below the audiences, the measured results with their intervals, how it works
+      and what did not work.
     technical_line: >-
-      LangGraph on GCP Cloud Run · RSS, GDELT, Reddit, Bluesky and X ·
+      LangGraph on GCP Cloud Run · RSS, GDELT, Bluesky and X ·
       multi-source ingestion · cited summarisation · DuckDB storage ·
       quote verification against source · per-audience relevance ranking ·
       precision and recall on a labelled week · semantic story clustering
@@ -1061,3 +1061,12 @@ log:
       Planned and started: whether learning which message works while sending it beats a
       fixed A/B split, on a real email experiment and real logged recommendations, and who
       pays for the exploration. The repository is private for now.
+  - date: 2026-11-08
+    project: "14"
+    status: live
+    note: >-
+      Public at v0.1.0, with the demo at digest.peterparker.ca. Against a person's labels, 69
+      to 100 percent of the stories each digest shows are worth showing, 99 percent of 111
+      sentences checked by hand say only what their sources say, and readers were briefed in
+      half the time. All four audiences cost about CA$18 a month, and a month of unattended
+      runs began on 9 November.
