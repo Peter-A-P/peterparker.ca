@@ -257,6 +257,11 @@ projects:
     name: From Failure to Reviewed Fix, in Minutes
     status: shipped
     repo: Peter-A-P/failure-to-reviewed-fix
+    demo: https://triage.peterparker.ca
+    demo_note: >-
+      What it does and what was measured, in charts: an animation of one real failure becoming
+      a reviewed fix, step by step, how often its proposals were right and how often wrong, the
+      five wrong fixes one by one, and its live comments on two other projects' pull requests.
     technical_line: >-
       agentic incident triage (LangGraph) · failing test before any fix ·
       confidently-wrong rate published · failure clustering into one ticket ·
@@ -267,8 +272,7 @@ projects:
       twenty symptoms of one bug into one ticket, writes a failing test that proves the bug,
       drafts the fix, has a second AI review it adversarially, and hands an engineer a
       ready-to-approve pull request. Triage in minutes instead of days, engineers back on
-      new work, and nothing changes without a person saying yes. The headline number is how
-      often it would have been confidently wrong.
+      new work, and nothing changes without a person saying yes.
 
   - number: "11"
     themes: [agents, decisioning]
@@ -1070,3 +1074,10 @@ log:
       sentences checked by hand say only what their sources say, and readers were briefed in
       half the time. All four audiences cost about CA$18 a month, and a month of unattended
       runs began on 9 November.
+  - date: 2026-11-08
+    project: "10"
+    status: shipped
+    note: >-
+      The site is up at triage.peterparker.ca. It fixes two real bugs in three before a person
+      looks, and 46 of the 51 fixes it was confident enough to propose were right. Since
+      v0.1.2 it has answered failing pull requests on 03 and 04 as comments, for US$0.82 so far.
