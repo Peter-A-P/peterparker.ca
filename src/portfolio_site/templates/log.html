@@ -8,9 +8,9 @@
     <p class="crumbs"><a href="/#projects">All projects</a></p>
     <p class="eyebrow">Log</p>
     <h1>What changed, and when.</h1>
-    <p class="lede">One line for every change of a project's status: planned, in progress,
-    shipped, live. Nothing is edited after the fact; a wrong entry gets a later
-    entry that corrects it.</p>
+    <p class="lede">An entry for every change of a project's status (planned, in progress,
+    shipped, live) and for releases a reader would notice. A wrong entry is never quietly
+    changed: a later entry corrects it.</p>
     <ol class="log">
       {% for entry in site.log %}
       {% set project = site.project(entry.number) %}

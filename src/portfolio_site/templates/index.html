@@ -68,15 +68,19 @@
 </section>
 {% endif %}
 
-<section class="about">
+{# In the first person, as on every project site: the decisions are his, the assistant is
+   stated as ordinary practice, and the evidence is the one-command rerun. Until 2026-11-08
+   this was third person ("judgement are Peter Parker's"), the form the project sites'
+   writing rules name as the wrong one. #}
+<section class="about" id="built">
   <div class="wrap">
-    <p class="eyebrow">How this was built</p>
-    <h2>Judgement is human. Implementation is assisted. Results are reproducible.</h2>
-    <p>Design, methodology, evaluation choices and judgement are {{ site.title }}'s. AI coding
-    assistants were used for implementation and drafting, the way a senior engineer uses
-    them. Every number in every results table is reproducible from its repository with one
-    command, and that reproducibility is the evidence that matters. Each repository also
-    records one approach that was tried and did not work, with the evidence.</p>
+    <h2>How this was built</h2>
+    <p>I designed each of these projects and made the calls in it: what to measure, against
+    which baseline, and what to do when a test came back wrong. I used AI coding assistants
+    for implementation and drafting, which is now ordinary practice in software and machine
+    learning work. Every number in every results table is reproducible from its repository
+    with one command, and each repository also records one approach that was tried and did
+    not work, with the evidence.</p>
   </div>
 </section>
 {% endblock %}
