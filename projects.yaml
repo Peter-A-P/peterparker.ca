@@ -14,8 +14,8 @@ site:
   tagline: Production machine learning and applied AI, with the numbers to check.
   intro: >-
     Built in health and government, and most of it stays behind a wall. These projects put
-    the work where it can be inspected: each one ends with a measured result in a table,
-    reproducible from its public repository with one command.
+    the work where it can be inspected: each one is built to end with a measured result in a
+    table, reproducible from its public repository with one command.
   description: >-
     Production-grade machine learning and AI projects, each ending in a measured result a
     stranger can check.
@@ -95,8 +95,9 @@ projects:
     demo: https://gate.peterparker.ca
     demo_note: >-
       Why an AI model's score moves when nothing has changed, and by how much, model by model.
-      The gate run where the right answer is known, with every false alarm drawn as a square,
-      the AI judges licensed against a person and the ones refused, and the red-team rates.
+      The gate run on cases where the right answer is known, with every false alarm drawn as a
+      square; which AI judges agreed with a person closely enough to be licensed, and which
+      were refused; and the red-team rates.
       Rebuilt every night from the public record, with an interval on every number.
     technical_line: >-
       LLM evaluation platform (Python) · FastAPI and DuckDB dashboard ·
@@ -245,8 +246,8 @@ projects:
       shadow deployment and rollback · expected-loss review queue
     one_liner: >-
       Scores every transaction in under 50 milliseconds, thousands per second, before the
-      money moves, and keeps working as fraud patterns shift, without the training-versus-
-      production mismatch that quietly breaks most deployed models. The platform around the
+      money moves, and keeps working as fraud patterns shift, without the
+      training-versus-production mismatch that quietly breaks most deployed models. The platform around the
       model is what organisations are actually missing, and this one ran live for thirty
       days behind a public dashboard.
 
@@ -431,10 +432,66 @@ projects:
       which laundering shapes each way of scoring catches, how many hops it takes, what happens
       after a dark market shuts down, and what a live score costs.
 
+  - number: "18"
+    themes: [platform, llm-eval]
+    slug: serving-on-kubernetes
+    name: Same Answers, a Tenth of the Servers
+    status: building
+    repo: Peter-A-P/serving-on-kubernetes
+    technical_line: >-
+      Kubernetes, built by Terraform · scaling on queue depth (KEDA) ·
+      spot nodes and scale to zero · vLLM serving, 2B and 7B models ·
+      Azure LLM trace, open-loop replay · cost per correct answer ·
+      cold starts and spot reclaims · same answers under load
+    one_liner: >-
+      Real traffic comes in bursts, so a model server is either idle and paid for or full and
+      late. This project replays a public production trace against small models that were
+      already trained and published, on a cluster that scales itself and on one machine left
+      on, and measures the cost of each correct answer, the latency a user sees, the minutes a
+      new server takes, and whether the answers change when the servers are busy.
+
+  - number: "19"
+    themes: [decisioning]
+    slug: feed-ranking
+    name: Which Story First
+    status: building
+    repo: Peter-A-P/feed-ranking
+    technical_line: >-
+      two-tower retriever (Keras 3) · cross-encoder re-ranking ·
+      HNSW index against FAISS · MIND-large, 15M impressions ·
+      off-policy estimates, sealed first · feedback-loop collapse ·
+      price of variety in relevance · DuckDB against PySpark
+    one_liner: >-
+      A news feed that learns from its own clicks narrows what each reader sees, round after
+      round, and the usual offline score cannot tell you which ranker will do better live.
+      This project measures both: how many retraining rounds it takes for a feed to collapse
+      onto a few topics, and what stops it; how wrong an offline estimate of a ranker is when
+      it is sealed before the randomised truth is opened; and what relevance a reader gives up
+      for each step of variety.
+
+  - number: "20"
+    themes: [decisioning]
+    slug: contextual-bandits
+    name: Learn Which Message Works, While Sending It
+    status: building
+    repo: Peter-A-P/contextual-bandits
+    technical_line: >-
+      contextual bandits, eight policies · Thompson sampling ·
+      off-policy estimators against truth · Open Bandit Dataset, Hillstrom ·
+      Vowpal Wabbit · regret against a fixed A/B split ·
+      exploration burden by segment · detection lag after a shift
+    one_liner: >-
+      An organisation that sends one of several messages can learn which works for whom while
+      it sends them, instead of running a fixed A/B test and then committing. This project
+      measures what that buys, on a real randomised email experiment and 26 million logged
+      recommendations: what a learning policy earns against a fixed split, how far
+      off-policy estimates are from the truth, who pays for exploring, and how soon a policy
+      notices when a message stops working.
+
 # The status log. One entry for every change of a project's status, in the same edit as
 # the status itself; the build refuses a log whose latest entry disagrees with the card.
-# Entries are never edited after the fact; a wrong entry gets a later entry that corrects
-# it. Rendered at /log/, as the "Latest" strip on the index, and as history on the page.
+# A wrong entry is never quietly changed: a later entry corrects it. Wording may be
+# tightened where no fact, date or status changes. Rendered at /log/, as the "Latest" strip on the index, and as history on the page.
 log:
   - date: 2026-09-07
     project: "04"
@@ -875,6 +932,14 @@ log:
       because ten of its sixteen "refusals" refused a harmful reading and then answered the
       question. The person who labelled the gold set agrees with their own second reading at
       kappa 0.851, and the write-up is out: "Your LLM eval has no error bars".
+  - date: 2026-10-09
+    project: "11"
+    status: live
+    note: >-
+      A frozen, read-only copy of the app is live at overload.peterparker.ca, made from a real
+      training log: the dashboard, the head coach's weekly plan and its hard limits, and a race
+      planned kilometre by kilometre. The repository stays private, with no published result
+      yet.
   - date: 2026-10-10
     project: "14"
     status: building
@@ -939,7 +1004,8 @@ log:
     note: >-
       The repository is public at v0.1.0. On 120 SWE-bench Verified tasks judged by hidden
       tests it resolves 67.5 percent, but 9.8 percent of what it would have proposed was
-      wrong, against a 3 percent target, so on 03 and 04 it posts suggestions as comments.
+      wrong, against a 3 percent target, so on the release gate and the gateway (03 and 04)
+      it posts suggestions as comments.
   - date: 2026-11-02
     project: "15"
     status: live
@@ -966,10 +1032,32 @@ log:
       in a 1 percent alert queue, against 47 percent for the account alone. The graph neural
       network beat plain graph features on none of the four datasets.
   - date: 2026-11-07
+    project: "19"
+    status: building
+    note: >-
+      Planned and started: how fast a news feed retrained on its own clicks narrows onto a few
+      topics, and how wrong an offline estimate of a ranker is when it is sealed before the
+      randomised truth is read. No measured result yet; the repository stays private until
+      there is one.
+  - date: 2026-11-07
     project: "09"
     status: shipped
     note: >-
       Shut down on 7 November after thirty days live and a week more for the last labels.
-      Over the window the platform decided 2.7 billion transactions at a p99 of 45.8 ms while
-      serving, against a 50 ms budget, with 99.96 percent uptime. The demo site stays up with
-      every day of the window.
+      Over the window the platform decided 2.7 billion transactions, 99 in every 100 within
+      45.8 ms while serving, against a 50 ms budget, with 99.96 percent uptime. The demo site
+      stays up with every day of the window.
+  - date: 2026-11-07
+    project: "18"
+    status: building
+    note: >-
+      Planned and started: a public production trace replayed against small published models,
+      on a cluster that scales itself and on one machine left on, to measure what each correct
+      answer costs. No measured result yet; the repository stays private until there is one.
+  - date: 2026-11-07
+    project: "20"
+    status: building
+    note: >-
+      Planned and started: whether learning which message works while sending it beats a
+      fixed A/B split, on a real email experiment and real logged recommendations, and who
+      pays for the exploration. The repository is private for now.
