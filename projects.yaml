@@ -71,9 +71,9 @@ projects:
     demo: https://adaptive.peterparker.ca
     demo_note: >-
       Pick two AI models and watch a test decide which is better, one question at a time, on
-      the answers twelve real models gave. Beside it the same two are asked questions at
+      the answers sixteen real models gave. Beside it the same two are asked questions at
       random, with the same budget, and usually fail to settle it at all. There is a button
-      that runs all sixty-six pairs, and a chart showing where the method stops winning.
+      that runs all hundred and twenty pairs, and a chart showing where the method stops winning.
     technical_line: >-
       adaptive testing, Fisher information · item response theory (2PL/3PL) ·
       marginal maximum likelihood by EM · items needed per effect size ·
@@ -1081,3 +1081,8 @@ log:
       The site is up at triage.peterparker.ca. It fixes two real bugs in three before a person
       looks, and 46 of the 51 fixes it was confident enough to propose were right. Since
       v0.1.2 it has answered failing pull requests on 03 and 04 as comments, for US$0.82 so far.
+  - date: 2026-11-18
+    project: "02"
+    status: shipped
+    note: >-
+      Seventeen decision models, which answer with a probability for each option instead of text, joined four current text models on the same calibrated questions and the same ability scale. The best rank alongside current text models for about five cents a full test. A defect that had dropped two models' settings since September was fixed and both were rerun, with little change. The demo now covers sixteen models.
